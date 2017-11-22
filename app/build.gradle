@@ -22,6 +22,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
+    implementation "com.android.support:design:$project.version_support"
     implementation "com.android.support:appcompat-v7:$project.version_support"
     implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
 
