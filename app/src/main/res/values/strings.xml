@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Sebastian</string>
-    <string name="auth_login_hint">Login</string>
+    <string name="auth_login_hint">Email or login</string>
     <string name="auth_password_hint">Password</string>
 </resources>
