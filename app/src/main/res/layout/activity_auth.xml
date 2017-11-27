@@ -6,7 +6,9 @@
 
     <include layout="@layout/layout_toolbar_appbar" />
 
-    <LinearLayout style="@style/AuthTheme.Container">
+    <LinearLayout
+        android:id="@+id/container"
+        style="@style/AuthTheme.Container">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             style="@style/AuthTheme.EditText"
@@ -16,6 +18,11 @@
             style="@style/AuthTheme.EditText"
             android:hint="@string/auth_password_hint"
             android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/AuthTheme.Button"
+            android:text="@string/auth_btn_login_text" />
 
     </LinearLayout>
 
