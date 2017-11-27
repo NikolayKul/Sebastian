@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_appbar" />
+
+    <LinearLayout style="@style/AuthTheme.Container">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/AuthTheme.EditText"
+            android:hint="@string/auth_login_hint" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            style="@style/AuthTheme.EditText"
+            android:hint="@string/auth_password_hint"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
