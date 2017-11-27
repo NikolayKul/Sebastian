@@ -1,10 +1,11 @@
-package io.seekord.sebastian
+package io.seekord.sebastian.presentation.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import io.seekord.sebastian.R
+import io.seekord.sebastian.presentation.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
