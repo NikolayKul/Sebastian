@@ -6,7 +6,7 @@
     <style name="AuthTheme.Container" parent="ConstraintLayout.Center">
         <item name="android:layout_width">@dimen/auth_container_width</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/gray_300</item>
+        <item name="android:background">@color/transparent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:padding">@dimen/auth_container_padding</item>
     </style>
