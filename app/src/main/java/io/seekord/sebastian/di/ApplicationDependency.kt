@@ -11,8 +11,11 @@ import javax.inject.Singleton
  * Created by nikolay
  */
 
+@Singleton
 @Component(modules = [ApplicationModule::class])
-interface ApplicationComponent
+interface ApplicationComponent {
+    fun plusActivityComponent(module: ActivityModule): ActivityComponent
+}
 
 
 @Module
