@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include layout="@layout/layout_toolbar_appbar" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/container"
-        style="@style/AuthTheme.Container">
+        <include layout="@layout/layout_toolbar_appbar" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            style="@style/AuthTheme.EditText"
-            android:hint="@string/auth_login_hint" />
+        <LinearLayout
+            android:id="@+id/container"
+            style="@style/AuthTheme.Container">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            style="@style/AuthTheme.EditText"
-            android:hint="@string/auth_password_hint"
-            android:inputType="textPassword" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                style="@style/AuthTheme.EditText"
+                android:hint="@string/auth_login_hint" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            style="@style/AuthTheme.Button"
-            android:text="@string/auth_btn_login_text" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                style="@style/AuthTheme.EditText"
+                android:hint="@string/auth_password_hint"
+                android:inputType="textPassword" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/AuthTheme.Button"
+                android:text="@string/auth_btn_login_text" />
 
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
