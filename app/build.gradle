@@ -25,6 +25,10 @@ dependencies {
     // other
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
 
+    // dagger
+    compile "com.google.dagger:dagger:$project.version_dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.version_dagger"
+
     // support
     implementation "com.android.support:appcompat-v7:$project.version_support"
     implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
