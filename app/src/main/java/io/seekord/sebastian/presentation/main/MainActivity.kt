@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityMainBinding
+import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.presentation.base.BaseActivity
 
 class MainActivity : BaseActivity() {
@@ -16,6 +17,10 @@ class MainActivity : BaseActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.title = "Dummy title"
         toolbar.subtitle = "Dummy subtitle"
+    }
+
+    override fun injectSelf(component: ActivityComponent) {
+        component.inject(this)
     }
 
 }

@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityAuthBinding
+import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.presentation.base.BaseActivity
 
 /**
@@ -15,6 +16,10 @@ class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)
+    }
+
+    override fun injectSelf(component: ActivityComponent) {
+        component.inject(this)
     }
 
 }
