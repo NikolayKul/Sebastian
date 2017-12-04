@@ -10,6 +10,7 @@ ext {
     version_kotlin = '1.2.0'
     version_gradle = '3.0.1'
 
+    version_moxy = '1.5.3'
     version_dagger = '2.13'
     version_support = '27.0.1'
     version_constraint_layout = '1.0.2'

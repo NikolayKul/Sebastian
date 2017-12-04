@@ -1,14 +1,14 @@
 package io.seekord.sebastian.presentation.base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.arellomobile.mvp.MvpAppCompatActivity
 import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.di.DependencyManager
 
 /**
  * Created by Nikolay Kulachenko
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : MvpAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

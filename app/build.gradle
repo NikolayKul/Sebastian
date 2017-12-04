@@ -40,6 +40,11 @@ dependencies {
     compile "com.google.dagger:dagger:$project.version_dagger"
     kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
 
+    // moxy
+    compile "com.arello-mobile:moxy:$project.version_moxy"
+    compile "com.arello-mobile:moxy-app-compat:$project.version_moxy"
+    kapt "com.arello-mobile:moxy-compiler:$project.version_moxy"
+
     // support
     implementation "com.android.support:appcompat-v7:$project.version_support"
     implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
@@ -50,4 +55,8 @@ dependencies {
 
     // test
     testImplementation "junit:junit:$project.version_junit"
+}
+
+kapt {
+    generateStubs = true
 }
