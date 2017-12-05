@@ -9,11 +9,15 @@ import io.seekord.sebastian.di.DependencyManager
 /**
  * Created by Nikolay Kulachenko
  */
-abstract class BaseActivity : MvpAppCompatActivity() {
+abstract class BaseActivity : MvpAppCompatActivity(), ErrorMvpView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injectSelf(DependencyManager.createActivityComponent(this))
         super.onCreate(savedInstanceState)
+    }
+
+    override fun showError(error: Throwable) {
+        TODO("not implemented")
     }
 
     protected abstract fun providePresenter(): BasePresenter<out MvpView>

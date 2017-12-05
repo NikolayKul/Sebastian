@@ -6,7 +6,11 @@ import com.arellomobile.mvp.MvpView
  * Created by nikolay
  */
 
-interface LoadingMvpView : MvpView {
+interface ErrorMvpView : MvpView {
+    fun showError(error: Throwable)
+}
+
+interface LoadingMvpView : ErrorMvpView {
     fun showLoading()
     fun hideLoading()
 }
