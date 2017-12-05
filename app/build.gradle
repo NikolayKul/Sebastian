@@ -37,12 +37,12 @@ dependencies {
     kapt "com.android.databinding:compiler:$project.version_gradle"
 
     // dagger
-    compile "com.google.dagger:dagger:$project.version_dagger"
+    implementation "com.google.dagger:dagger:$project.version_dagger"
     kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
 
     // moxy
-    compile "com.arello-mobile:moxy:$project.version_moxy"
-    compile "com.arello-mobile:moxy-app-compat:$project.version_moxy"
+    implementation "com.arello-mobile:moxy:$project.version_moxy"
+    implementation "com.arello-mobile:moxy-app-compat:$project.version_moxy"
     kapt "com.arello-mobile:moxy-compiler:$project.version_moxy"
 
     // support
