@@ -32,6 +32,7 @@ dependencies {
 
     // other
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
+    implementation "com.jakewharton.timber:timber:$project.version_timber"
 
     // data binding
     kapt "com.android.databinding:compiler:$project.version_gradle"

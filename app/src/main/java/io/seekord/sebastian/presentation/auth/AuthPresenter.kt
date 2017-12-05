@@ -1,8 +1,8 @@
 package io.seekord.sebastian.presentation.auth
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import io.seekord.sebastian.presentation.base.BasePresenter
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -14,27 +14,27 @@ class AuthPresenter @Inject constructor() : BasePresenter<AuthMvpView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        Log.d("presenter", "first attach view")
+        Timber.d("first attach view")
     }
 
     override fun attachView(view: AuthMvpView?) {
         super.attachView(view)
-        Log.d("presenter", "attach view")
+        Timber.d("attach view")
     }
 
     override fun detachView(view: AuthMvpView?) {
         super.detachView(view)
-        Log.d("presenter", "detach view")
+        Timber.d("detach view")
     }
 
     override fun destroyView(view: AuthMvpView?) {
         super.destroyView(view)
-        Log.d("presenter", "destroy view")
+        Timber.d("destroy view")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("presenter", "destroy presenterFromDagger")
+        Timber.d("destroy presenterFromDagger")
     }
 
 }

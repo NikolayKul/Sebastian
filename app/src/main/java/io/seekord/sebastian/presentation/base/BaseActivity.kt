@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.MvpView
 import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.di.DependencyManager
+import timber.log.Timber
 
 /**
  * Created by Nikolay Kulachenko
@@ -17,7 +18,7 @@ abstract class BaseActivity : MvpAppCompatActivity(), ErrorMvpView {
     }
 
     override fun showError(error: Throwable) {
-        TODO("not implemented")
+        Timber.e(error)
     }
 
     protected abstract fun providePresenter(): BasePresenter<out MvpView>
