@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="handler"
+            type="io.seekord.sebastian.presentation.auth.AuthHandler" />
+
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,17 +20,19 @@
             style="@style/AuthTheme.Container">
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etLogin"
                 style="@style/AuthTheme.EditText"
                 android:hint="@string/auth_login_hint" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPassword"
                 style="@style/AuthTheme.EditText"
                 android:hint="@string/auth_password_hint"
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/btnLogin"
                 style="@style/AuthTheme.Button"
+                android:onClick="@{v -> handler.onLoginClick()}"
                 android:text="@string/auth_btn_login_text" />
 
         </LinearLayout>

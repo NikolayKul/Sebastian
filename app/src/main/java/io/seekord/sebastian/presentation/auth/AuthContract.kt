@@ -7,3 +7,7 @@ import io.seekord.sebastian.presentation.base.LoadingMvpView
  */
 
 interface AuthMvpView : LoadingMvpView
+
+interface AuthHandler {
+    fun onLoginClick()
+}
