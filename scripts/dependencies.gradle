@@ -17,5 +17,6 @@ ext {
     version_constraint_layout = '1.0.2'
     version_material_edit_text = '2.1.4'
     version_junit = '4.12'
+    version_mockito = '2.13.0'
 
 }

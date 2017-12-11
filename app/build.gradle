@@ -56,6 +56,7 @@ dependencies {
 
     // test
     testImplementation "junit:junit:$project.version_junit"
+    testImplementation "org.mockito:mockito-core:$project.version_mockito"
 }
 
 kapt {
