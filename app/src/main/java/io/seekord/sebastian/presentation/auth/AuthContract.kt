@@ -6,7 +6,9 @@ import io.seekord.sebastian.presentation.base.LoadingMvpView
  * Created by nikolay
  */
 
-interface AuthMvpView : LoadingMvpView
+interface AuthMvpView : LoadingMvpView {
+    fun showLoginSuccess()
+}
 
 interface AuthHandler {
     fun onLoginClick()

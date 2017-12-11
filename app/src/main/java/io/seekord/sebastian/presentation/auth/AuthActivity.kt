@@ -38,6 +38,8 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
 
     override fun hideLoading() = TODO("not implemented")
 
+    override fun showLoginSuccess() = TODO("not implemented")
+
     override fun onLoginClick() {
         val authCredentials = AuthCredentials(
                 binding.etLogin.textString(),

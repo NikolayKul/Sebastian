@@ -5,7 +5,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.seekord.sebastian.domain.auth.AuthUseCase
 import io.seekord.sebastian.domain.auth.models.AuthCredentials
 import io.seekord.sebastian.presentation.base.BasePresenter
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -22,7 +21,7 @@ class AuthPresenter @Inject constructor(private val authUseCase: AuthUseCase)
                 .doOnSubscribe { viewState.showLoading() }
                 .doOnTerminate { viewState.hideLoading() }
                 .subscribe(
-                        { Timber.d("Its ok") },
+                        { viewState.showLoginSuccess() },
                         { viewState.showError(it) })
                 .attachToLifecycle()
     }
