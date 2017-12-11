@@ -37,6 +37,10 @@ dependencies {
     // data binding
     kapt "com.android.databinding:compiler:$project.version_gradle"
 
+    // rx
+    implementation "io.reactivex.rxjava2:rxjava:$project.version_rx_java"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.version_rx_android"
+
     // dagger
     implementation "com.google.dagger:dagger:$project.version_dagger"
     kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
