@@ -3,8 +3,8 @@ package io.seekord.sebastian.data.repository.auth
 import dagger.Reusable
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.seekord.sebastian.domain.auth.models.AuthCredentials
 import io.seekord.sebastian.domain.auth.models.AuthData
+import io.seekord.sebastian.domain.auth.models.AuthParams
 import javax.inject.Inject
 
 /**
@@ -14,7 +14,7 @@ import javax.inject.Inject
 @Reusable
 class AuthRepository @Inject constructor() {
 
-    fun auth(authCredentials: AuthCredentials): Single<AuthData> = TODO("Not implemented yet")
+    fun auth(authParams: AuthParams): Single<AuthData> = TODO("Not implemented yet")
 
     fun getAuthData(): Single<AuthData> = TODO("Not implemented yet")
 

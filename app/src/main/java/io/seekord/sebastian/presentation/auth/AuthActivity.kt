@@ -7,7 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityAuthBinding
 import io.seekord.sebastian.di.ActivityComponent
-import io.seekord.sebastian.domain.auth.models.AuthCredentials
+import io.seekord.sebastian.domain.auth.models.AuthParams
 import io.seekord.sebastian.presentation.base.BaseActivity
 import io.seekord.sebastian.utils.view.textString
 import javax.inject.Inject
@@ -41,7 +41,7 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
     override fun showLoginSuccess() = TODO("not implemented")
 
     override fun onLoginClick() {
-        val authCredentials = AuthCredentials(
+        val authCredentials = AuthParams(
                 binding.etLogin.textString(),
                 binding.etPassword.textString())
         presenter.auth(authCredentials)

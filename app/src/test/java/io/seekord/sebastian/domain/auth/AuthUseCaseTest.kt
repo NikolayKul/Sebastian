@@ -4,8 +4,8 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import io.seekord.sebastian.RxSchedulerRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
-import io.seekord.sebastian.domain.auth.models.AuthCredentials
 import io.seekord.sebastian.domain.auth.models.AuthData
+import io.seekord.sebastian.domain.auth.models.AuthParams
 import io.seekord.sebastian.utils.NetworkManager
 import org.junit.Before
 import org.junit.Rule
@@ -34,7 +34,7 @@ class AuthUseCaseTest {
     @Test
     fun `auth success`() {
         val authData = mock(AuthData::class.java)
-        val authCredentials = mock(AuthCredentials::class.java)
+        val authCredentials = mock(AuthParams::class.java)
         given(networkManager.checkNetworkOrThrow()).willReturn(Completable.complete())
         given(repository.auth(authCredentials)).willReturn(Single.just(authData))
         given(repository.saveAuthData(authData)).willReturn(Completable.complete())
