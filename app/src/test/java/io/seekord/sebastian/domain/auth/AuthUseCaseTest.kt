@@ -66,7 +66,17 @@ class AuthUseCaseTest {
 
     @Test
     fun `auth failed wrong credentials`() {
-        TODO("not implemented")
+        val params = mock(AuthParams::class.java)
+        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
+        given(networkManager.isNetworkAvailable()).willReturn(true)
+        given(repository.auth(params)).willReturn(Single.error(AccountNotFoundException()))
+
+        val testObserver = useCase.execute(params).test()
+
+        testObserver.assertNoErrors()
+        testObserver.assertNotComplete()
+        schedulerRule.scheduler.triggerActions()
+        testObserver.assertError(AccountNotFoundException::class.java)
     }
 
 }
