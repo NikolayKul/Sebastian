@@ -4,8 +4,6 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import io.seekord.sebastian.RxSchedulerRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
-import io.seekord.sebastian.domain.auth.models.AuthData
-import io.seekord.sebastian.domain.auth.models.AuthParams
 import io.seekord.sebastian.domain.base.NetworkException
 import io.seekord.sebastian.utils.NetworkManager
 import org.junit.Before

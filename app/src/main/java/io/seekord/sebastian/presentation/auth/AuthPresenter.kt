@@ -2,8 +2,8 @@ package io.seekord.sebastian.presentation.auth
 
 import com.arellomobile.mvp.InjectViewState
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.seekord.sebastian.domain.auth.AuthParams
 import io.seekord.sebastian.domain.auth.AuthUseCase
-import io.seekord.sebastian.domain.auth.models.AuthParams
 import io.seekord.sebastian.presentation.base.BasePresenter
 import javax.inject.Inject
 

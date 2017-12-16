@@ -4,7 +4,6 @@ import dagger.Reusable
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import io.seekord.sebastian.data.repository.auth.AuthRepository
-import io.seekord.sebastian.domain.auth.models.AuthParams
 import io.seekord.sebastian.domain.base.UseCase
 import io.seekord.sebastian.utils.NetworkManager
 import javax.inject.Inject

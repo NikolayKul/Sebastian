@@ -7,7 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityAuthBinding
 import io.seekord.sebastian.di.ActivityComponent
-import io.seekord.sebastian.domain.auth.models.AuthParams
+import io.seekord.sebastian.domain.auth.AuthParams
 import io.seekord.sebastian.presentation.base.BaseActivity
 import io.seekord.sebastian.utils.view.textString
 import javax.inject.Inject

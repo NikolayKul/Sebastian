@@ -3,8 +3,8 @@ package io.seekord.sebastian.data.repository.auth
 import dagger.Reusable
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.seekord.sebastian.domain.auth.models.AuthData
-import io.seekord.sebastian.domain.auth.models.AuthParams
+import io.seekord.sebastian.domain.auth.AuthData
+import io.seekord.sebastian.domain.auth.AuthParams
 import javax.inject.Inject
 
 /**
