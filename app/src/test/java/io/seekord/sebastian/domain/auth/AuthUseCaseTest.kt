@@ -36,7 +36,7 @@ class AuthUseCaseTest {
         given(repository.auth(authCredentials)).willReturn(Single.just(authData))
         given(repository.saveAuthData(authData)).willReturn(Completable.complete())
 
-        val testObserver = useCase.auth(authCredentials).test()
+        val testObserver = useCase.execute(authCredentials).test()
         schedulerRule.scheduler.triggerActions()
 
         testObserver.assertComplete()

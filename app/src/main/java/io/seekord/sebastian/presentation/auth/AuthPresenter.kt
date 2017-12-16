@@ -16,7 +16,7 @@ class AuthPresenter @Inject constructor(private val authUseCase: AuthUseCase)
     : BasePresenter<AuthMvpView>() {
 
     fun auth(authCredentials: AuthCredentials) {
-        authUseCase.auth(authCredentials)
+        authUseCase.execute(authCredentials)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.showLoading() }
                 .doOnTerminate { viewState.hideLoading() }
