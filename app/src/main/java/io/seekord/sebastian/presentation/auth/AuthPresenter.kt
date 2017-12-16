@@ -12,8 +12,9 @@ import javax.inject.Inject
  */
 
 @InjectViewState
-class AuthPresenter @Inject constructor(private val authUseCase: AuthUseCase)
-    : BasePresenter<AuthMvpView>() {
+class AuthPresenter @Inject constructor(
+        private val authUseCase: AuthUseCase
+) : BasePresenter<AuthMvpView>() {
 
     fun auth(authParams: AuthParams) {
         authUseCase.execute(authParams)

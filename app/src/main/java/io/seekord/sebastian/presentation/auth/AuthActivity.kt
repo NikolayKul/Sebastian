@@ -2,6 +2,7 @@ package io.seekord.sebastian.presentation.auth
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
@@ -34,11 +35,17 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
         component.inject(this)
     }
 
-    override fun showLoading() = TODO("not implemented")
+    override fun showLoading() {
+        binding.isLoading = true
+    }
 
-    override fun hideLoading() = TODO("not implemented")
+    override fun hideLoading() {
+        binding.isLoading = false
+    }
 
-    override fun showLoginSuccess() = TODO("not implemented")
+    override fun showLoginSuccess() {
+        Toast.makeText(this, "Login success!", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onLoginClick() {
         val authCredentials = AuthParams(
