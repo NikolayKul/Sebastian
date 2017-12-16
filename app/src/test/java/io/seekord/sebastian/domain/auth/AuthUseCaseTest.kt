@@ -34,14 +34,13 @@ class AuthUseCaseTest {
     fun `auth success`() {
         val data = mock(AuthData::class.java)
         val params = mock(AuthParams::class.java)
-        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
         given(networkManager.isNetworkAvailable()).willReturn(true)
         given(repository.auth(params)).willReturn(Single.just(data))
         given(repository.saveAuthData(data)).willReturn(Completable.complete())
 
         val testObserver = useCase.execute(params).test()
-        schedulerRule.scheduler.triggerActions()
 
+        schedulerRule.scheduler.triggerActions()
         testObserver.assertComplete()
         verify(repository).auth(params)
         verify(repository).saveAuthData(data)
@@ -50,16 +49,11 @@ class AuthUseCaseTest {
 
     @Test
     fun `auth failed no network`() {
-        val data = mock(AuthData::class.java)
         val params = mock(AuthParams::class.java)
-        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
         given(networkManager.isNetworkAvailable()).willReturn(false)
-        given(repository.auth(params)).willReturn(Single.just(data))
 
         val testObserver = useCase.execute(params).test()
 
-        testObserver.assertNoErrors()
-        testObserver.assertNotComplete()
         schedulerRule.scheduler.triggerActions()
         testObserver.assertError(NetworkException::class.java)
     }
@@ -67,14 +61,11 @@ class AuthUseCaseTest {
     @Test
     fun `auth failed wrong credentials`() {
         val params = mock(AuthParams::class.java)
-        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
         given(networkManager.isNetworkAvailable()).willReturn(true)
         given(repository.auth(params)).willReturn(Single.error(AccountNotFoundException()))
 
         val testObserver = useCase.execute(params).test()
 
-        testObserver.assertNoErrors()
-        testObserver.assertNotComplete()
         schedulerRule.scheduler.triggerActions()
         testObserver.assertError(AccountNotFoundException::class.java)
     }
