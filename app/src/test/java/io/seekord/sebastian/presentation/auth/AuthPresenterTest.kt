@@ -1,7 +1,5 @@
 package io.seekord.sebastian.presentation.auth
 
-import io.seekord.sebastian.data.repository.auth.AuthRepository
-import io.seekord.sebastian.domain.auth.AuthUseCase
 import org.junit.Before
 import org.junit.Test
 
@@ -10,12 +8,9 @@ import org.junit.Test
  */
 
 class AuthPresenterTest {
-    private lateinit var authPresenter: AuthPresenter
 
     @Before
     fun setUp() {
-        val useCase = AuthUseCase(AuthRepository())
-        authPresenter = AuthPresenter(useCase)
     }
 
     @Test

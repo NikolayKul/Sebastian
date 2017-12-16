@@ -6,6 +6,7 @@ import io.seekord.sebastian.RxSchedulerRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.domain.auth.models.AuthCredentials
 import io.seekord.sebastian.domain.auth.models.AuthData
+import io.seekord.sebastian.utils.NetworkManager
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -21,18 +22,20 @@ import org.mockito.junit.MockitoJUnit
 class AuthUseCaseTest {
     @Rule @JvmField val mockitoRule = MockitoJUnit.rule()!!
     @Rule @JvmField val schedulerRule = RxSchedulerRule()
+    @Mock private lateinit var networkManager: NetworkManager
     @Mock private lateinit var repository: AuthRepository
     private lateinit var useCase: AuthUseCase
 
     @Before
     fun setUp() {
-        useCase = AuthUseCase(repository)
+        useCase = AuthUseCase(networkManager, repository)
     }
 
     @Test
     fun `auth success`() {
         val authData = mock(AuthData::class.java)
         val authCredentials = mock(AuthCredentials::class.java)
+        given(networkManager.checkNetworkOrThrow()).willReturn(Completable.complete())
         given(repository.auth(authCredentials)).willReturn(Single.just(authData))
         given(repository.saveAuthData(authData)).willReturn(Completable.complete())
 

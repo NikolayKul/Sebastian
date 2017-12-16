@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 /**
@@ -23,6 +24,11 @@ class ApplicationModule(private val app: Application) {
 
     @Provides
     @Singleton
+    @AppContext
     fun provideApplicationContext(): Context = app.applicationContext
 
 }
+
+@Qualifier
+@Retention(value = AnnotationRetention.RUNTIME)
+annotation class AppContext

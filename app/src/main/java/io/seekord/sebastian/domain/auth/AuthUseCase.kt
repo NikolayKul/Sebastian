@@ -5,7 +5,8 @@ import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.domain.auth.models.AuthCredentials
-import io.seekord.sebastian.domain.base.NetworkAwareUseCase
+import io.seekord.sebastian.domain.base.UseCase
+import io.seekord.sebastian.utils.NetworkManager
 import javax.inject.Inject
 
 /**
@@ -13,11 +14,13 @@ import javax.inject.Inject
  */
 
 @Reusable
-class AuthUseCase @Inject constructor(private val authRepository: AuthRepository)
-    : NetworkAwareUseCase<AuthCredentials, Completable>() {
+class AuthUseCase @Inject constructor(
+        private val networkManager: NetworkManager,
+        private val authRepository: AuthRepository)
+    : UseCase<AuthCredentials, Completable> {
 
     override fun execute(params: AuthCredentials): Completable {
-        return checkNetwork()
+        return networkManager.checkNetworkOrThrow()
                 .andThen(authRepository.auth(params))
                 .flatMapCompletable { authRepository.saveAuthData(it) }
                 .subscribeOn(Schedulers.io())
