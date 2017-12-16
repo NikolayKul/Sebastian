@@ -6,6 +6,7 @@ import io.seekord.sebastian.RxSchedulerRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.domain.auth.models.AuthData
 import io.seekord.sebastian.domain.auth.models.AuthParams
+import io.seekord.sebastian.domain.base.NetworkException
 import io.seekord.sebastian.utils.NetworkManager
 import org.junit.Before
 import org.junit.Rule
@@ -33,28 +34,41 @@ class AuthUseCaseTest {
 
     @Test
     fun `auth success`() {
-        val authData = mock(AuthData::class.java)
-        val authCredentials = mock(AuthParams::class.java)
-        given(networkManager.checkNetworkOrThrow()).willReturn(Completable.complete())
-        given(repository.auth(authCredentials)).willReturn(Single.just(authData))
-        given(repository.saveAuthData(authData)).willReturn(Completable.complete())
+        val data = mock(AuthData::class.java)
+        val params = mock(AuthParams::class.java)
+        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
+        given(networkManager.isNetworkAvailable()).willReturn(true)
+        given(repository.auth(params)).willReturn(Single.just(data))
+        given(repository.saveAuthData(data)).willReturn(Completable.complete())
 
-        val testObserver = useCase.execute(authCredentials).test()
+        val testObserver = useCase.execute(params).test()
         schedulerRule.scheduler.triggerActions()
 
         testObserver.assertComplete()
-        verify(repository).auth(authCredentials)
-        verify(repository).saveAuthData(authData)
+        verify(repository).auth(params)
+        verify(repository).saveAuthData(data)
         verifyNoMoreInteractions(repository)
     }
 
     @Test
-    fun `auth failed no connection`() {
-        TODO("not implemented")
+    fun `auth failed no network`() {
+        val data = mock(AuthData::class.java)
+        val params = mock(AuthParams::class.java)
+        given(networkManager.checkNetworkOrThrow()).willCallRealMethod()
+        given(networkManager.isNetworkAvailable()).willReturn(false)
+        given(repository.auth(params)).willReturn(Single.just(data))
+
+        val testObserver = useCase.execute(params).test()
+
+        testObserver.assertNoErrors()
+        testObserver.assertNotComplete()
+        schedulerRule.scheduler.triggerActions()
+        testObserver.assertError(NetworkException::class.java)
     }
 
     @Test
     fun `auth failed wrong credentials`() {
         TODO("not implemented")
     }
+
 }
