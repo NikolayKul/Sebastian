@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import io.seekord.sebastian.data.api.SebastianApiFactory
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -26,6 +27,10 @@ class ApplicationModule(private val app: Application) {
     @Singleton
     @AppContext
     fun provideApplicationContext(): Context = app.applicationContext
+
+    @Provides
+    @Singleton
+    fun provideApi(apiFactory: SebastianApiFactory) = apiFactory.createStubApiWithDelay()
 
 }
 
