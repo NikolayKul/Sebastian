@@ -1,6 +1,7 @@
 package io.seekord.sebastian.utils
 
 import android.content.Context
+import android.net.ConnectivityManager
 import io.seekord.sebastian.di.AppContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -10,7 +11,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class NetworkManager @Inject constructor(@AppContext context: Context) {
+    private val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    fun isNetworkAvailable() = true // TODO: stub
+    fun isNetworkAvailable() = cm.activeNetworkInfo?.isConnected ?: false
 
 }
