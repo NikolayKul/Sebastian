@@ -37,9 +37,8 @@ class SebastianApiFactory @Inject constructor() {
 private object StubApi : SebastianApi {
 
     override fun auth(credentials: AuthParams): Single<AuthData> = Single.fromCallable {
-        val requestToken = UUID.randomUUID().toString()
-        val refreshToken = UUID.randomUUID().toString()
-        AuthData(requestToken, refreshToken)
+        val accessToken = UUID.randomUUID().toString()
+        AuthData(accessToken)
     }
 
 }

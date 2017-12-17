@@ -20,7 +20,7 @@ private const val DEFAULT_DELAY = 2_000L
 class AuthRepository @Inject constructor(
         private val api: SebastianApi
 ) {
-    private val authData = AuthData("requestToken", "refreshToken")
+    private val authData = AuthData("accessToken")
 
     fun auth(authParams: AuthParams) = api.auth(authParams)
 
