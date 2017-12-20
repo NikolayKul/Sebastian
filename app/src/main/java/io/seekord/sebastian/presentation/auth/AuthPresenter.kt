@@ -20,7 +20,7 @@ class AuthPresenter @Inject constructor(
         authUseCase.execute(authParams)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.showLoading() }
-                .doOnTerminate { viewState.hideLoading() }
+                .doOnEvent { _, _ -> viewState.hideLoading() }
                 .subscribe(
                         { viewState.showLoginSuccess() },
                         { viewState.showError(it) })

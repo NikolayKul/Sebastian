@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import dagger.Reusable
-import io.seekord.sebastian.data.api.SebastianApi
 import io.seekord.sebastian.di.AppContext
-import io.seekord.sebastian.domain.auth.AccountAuthParams
 import io.seekord.sebastian.domain.auth.AuthData
+import io.seekord.sebastian.domain.auth.AuthParams
+import io.seekord.sebastian.domain.auth.AuthUseCase
 import io.seekord.sebastian.presentation.auth.AuthActivity
 import timber.log.Timber
 import javax.inject.Inject
@@ -21,7 +21,7 @@ import javax.inject.Inject
 @Reusable
 class SebastianAuthenticator @Inject constructor(
         @AppContext private val context: Context,
-        private val sebastianApi: SebastianApi
+        private val authUseCase: AuthUseCase
 ) : AbstractAccountAuthenticator(context) {
 
     override fun editProperties(accountAuthenticatorResponse: AccountAuthenticatorResponse,
@@ -48,7 +48,7 @@ class SebastianAuthenticator @Inject constructor(
 
         if (authToken.isNullOrEmpty()) {
             authToken = accountManager.getPassword(account)
-                    ?.let { AccountAuthParams(account.name, it, authTokenType) }
+                    ?.let { AuthParams(account.name, it, authTokenType) }
                     ?.let { fetchAuthTokenFromRemote(it) }
         }
 
@@ -106,8 +106,8 @@ class SebastianAuthenticator @Inject constructor(
         }
     }
 
-    private fun fetchAuthTokenFromRemote(accountParams: AccountAuthParams): String? {
-        return sebastianApi.accountAuth(accountParams)
+    private fun fetchAuthTokenFromRemote(accountParams: AuthParams): String? {
+        return authUseCase.execute(accountParams)
                 .doOnError { Timber.e(it) }
                 .onErrorReturn { AuthData("") }
                 .blockingGet()
