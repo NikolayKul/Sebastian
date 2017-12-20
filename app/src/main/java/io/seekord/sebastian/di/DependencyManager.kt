@@ -16,6 +16,8 @@ object DependencyManager {
                 .build()
     }
 
+    fun getApplicationComponent() = applicationComponent
+
     fun createActivityComponent(activity: Activity): ActivityComponent = applicationComponent
             .plusActivityComponent(ActivityModule(activity))
 

@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import io.seekord.sebastian.data.api.SebastianApiFactory
+import io.seekord.sebastian.data.service.auth.SebastianAuthenticatorService
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent {
     fun plusActivityComponent(module: ActivityModule): ActivityComponent
+    fun inject(service: SebastianAuthenticatorService)
 }
 
 
