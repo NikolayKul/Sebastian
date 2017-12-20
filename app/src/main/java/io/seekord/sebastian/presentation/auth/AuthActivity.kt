@@ -12,7 +12,6 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityAuthBinding
 import io.seekord.sebastian.di.ActivityComponent
-import io.seekord.sebastian.domain.auth.AuthParams
 import io.seekord.sebastian.presentation.base.BaseActivity
 import io.seekord.sebastian.utils.view.textString
 import javax.inject.Inject
@@ -21,11 +20,6 @@ import javax.inject.Inject
  * Created by Nikolay Kulachenko
  */
 class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
-    object BundleOptions {
-        val ACCOUNT_TYPE = "ACCOUNT_TYPE"
-        val AUTH_TYPE = "AUTH_TYPE"
-        val IS_ADDING_NEW_ACCOUNT = "IS_ADDING_NEW_ACCOUNT"
-    }
 
     @Inject
     @InjectPresenter
@@ -79,10 +73,9 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
     }
 
     override fun onLoginClick() {
-        val authCredentials = AuthParams(
-                binding.etLogin.textString(),
-                binding.etPassword.textString())
-        presenter.auth(authCredentials)
+        with(binding) {
+            presenter.auth(etLogin.textString(), etPassword.textString())
+        }
     }
 
     private fun applyAccountResult() {
@@ -96,8 +89,7 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
     }
 
     private fun initAccountResponse() {
-        val key = AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE
-        accountResponse = intent.getParcelableExtra(key)
+        accountResponse = intent.getParcelableExtra(AuthBundleOptions.ACCOUNT_RESPONSE)
         accountResponse?.onRequestContinued()
     }
 

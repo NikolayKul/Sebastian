@@ -10,6 +10,7 @@ import io.seekord.sebastian.domain.auth.AuthData
 import io.seekord.sebastian.domain.auth.AuthParams
 import io.seekord.sebastian.domain.auth.AuthUseCase
 import io.seekord.sebastian.presentation.auth.AuthActivity
+import io.seekord.sebastian.presentation.auth.AuthBundleOptions
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -89,6 +90,7 @@ class SebastianAuthenticator @Inject constructor(
         return null
     }
 
+    // TODO: replace with a router call
     private fun createLoginIntent(
             accountType: String,
             authTokenType: String,
@@ -96,10 +98,10 @@ class SebastianAuthenticator @Inject constructor(
             isNew: Boolean = false
     ): Bundle {
         val intent = Intent(context, AuthActivity::class.java).apply {
-            putExtra(AuthActivity.BundleOptions.ACCOUNT_TYPE, accountType)
-            putExtra(AuthActivity.BundleOptions.AUTH_TYPE, authTokenType)
-            putExtra(AuthActivity.BundleOptions.IS_ADDING_NEW_ACCOUNT, isNew)
-            putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response)
+            putExtra(AuthBundleOptions.ACCOUNT_TYPE, accountType)
+            putExtra(AuthBundleOptions.AUTH_TYPE, authTokenType)
+            putExtra(AuthBundleOptions.IS_ADDING_NEW_ACCOUNT, isNew)
+            putExtra(AuthBundleOptions.ACCOUNT_RESPONSE, response)
         }
         return Bundle().apply {
             putParcelable(AccountManager.KEY_INTENT, intent)

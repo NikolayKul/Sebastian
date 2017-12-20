@@ -19,16 +19,19 @@ class AuthPresenter @Inject constructor(
         private val authUseCase: AuthUseCase
 ) : BasePresenter<AuthMvpView>() {
     private lateinit var accountType: String
+    private lateinit var authType: String
     private var isNewAccount: Boolean = false
 
     fun init(intent: Intent) {
         intent.apply {
             accountType = getStringExtra(AuthBundleOptions.ACCOUNT_TYPE)
+            authType = getStringExtra(AuthBundleOptions.AUTH_TYPE)
             isNewAccount = getBooleanExtra(AuthBundleOptions.IS_ADDING_NEW_ACCOUNT, false)
         }
     }
 
-    fun auth(authParams: AuthParams) {
+    fun auth(username: String, password: String) {
+        val authParams = AuthParams(username, password, authType)
         authUseCase.execute(authParams)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.showLoading() }
