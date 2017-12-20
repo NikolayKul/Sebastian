@@ -17,6 +17,12 @@ import javax.inject.Inject
  * Created by Nikolay Kulachenko
  */
 class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
+    object BundleOptions {
+        val ACCOUNT_TYPE = "ACCOUNT_TYPE"
+        val AUTH_TYPE = "AUTH_TYPE"
+        val IS_ADDING_NEW_ACCOUNT = "IS_ADDING_NEW_ACCOUNT"
+    }
+
     @Inject
     @InjectPresenter
     lateinit var presenter: AuthPresenter
