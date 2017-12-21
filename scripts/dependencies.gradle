@@ -7,7 +7,7 @@ ext {
     sdk_target = 27
     sdk_compile = 27
 
-    version_kotlin = '1.2.0'
+    version_kotlin = '1.2.10'
     version_gradle = '3.0.1'
     version_support = '27.0.2'
 
