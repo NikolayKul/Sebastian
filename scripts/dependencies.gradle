@@ -13,6 +13,7 @@ ext {
     version_rx_java = '2.1.7'
     version_rx_android = '2.0.1'
 
+    version_hawk = '2.0.1'
     version_moxy = '1.5.3'
     version_dagger = '2.13'
     version_support = '27.0.2'
