@@ -5,3 +5,5 @@ package io.seekord.sebastian.domain.auth
  */
 
 class AccountNotFoundException : Exception()
+
+class TokenNotFoundException : Exception()
