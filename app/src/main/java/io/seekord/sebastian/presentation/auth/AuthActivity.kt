@@ -1,7 +1,6 @@
 package io.seekord.sebastian.presentation.auth
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -17,16 +16,16 @@ import javax.inject.Inject
 /**
  * Created by Nikolay Kulachenko
  */
-class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
+class AuthActivity : BaseActivity<ActivityAuthBinding>(), AuthMvpView, AuthHandler {
 
     @Inject @InjectPresenter lateinit var presenter: AuthPresenter
-    private lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)
         binding.handler = this
     }
+
+    override fun getLayoutId() = R.layout.activity_auth
 
     @ProvidePresenter
     override fun providePresenter() = presenter
