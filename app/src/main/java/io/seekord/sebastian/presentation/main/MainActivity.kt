@@ -1,18 +1,32 @@
 package io.seekord.sebastian.presentation.main
 
-import android.os.Bundle
-import android.support.v7.widget.Toolbar
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
+import io.seekord.sebastian.databinding.ActivityMainBinding
+import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.presentation.base.BaseActivity
+import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+/**
+ * Created by nikolay
+ */
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.title = "Dummy title"
-        toolbar.subtitle = "Dummy subtitle"
+class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
+
+    @Inject @InjectPresenter lateinit var presenter: MainPresenter
+
+    override fun getLayoutId() = R.layout.activity_main
+
+    @ProvidePresenter
+    override fun providePresenter() = presenter
+
+    override fun injectSelf(component: ActivityComponent) {
+        component.inject(this)
+    }
+
+    override fun showCurrentAuthToken(token: String) {
+        binding.tvToken.text = token
     }
 
 }

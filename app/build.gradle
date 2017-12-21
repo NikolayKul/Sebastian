@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.sdk_compile
@@ -18,12 +18,38 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding.enabled true
+}
+
+// dagger + dataBinding sometimes generate more than 100 errors :(
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "200"
+    }
 }
 
 dependencies {
 
     // other
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
+    implementation "com.jakewharton.timber:timber:$project.version_timber"
+    implementation "com.orhanobut:hawk:$project.version_hawk"
+
+    // data binding
+    kapt "com.android.databinding:compiler:$project.version_gradle"
+
+    // rx
+    implementation "io.reactivex.rxjava2:rxjava:$project.version_rx_java"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.version_rx_android"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$project.version_dagger"
+    kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
+
+    // moxy
+    implementation "com.arello-mobile:moxy:$project.version_moxy"
+    implementation "com.arello-mobile:moxy-app-compat:$project.version_moxy"
+    kapt "com.arello-mobile:moxy-compiler:$project.version_moxy"
 
     // support
     implementation "com.android.support:appcompat-v7:$project.version_support"
@@ -35,4 +61,9 @@ dependencies {
 
     // test
     testImplementation "junit:junit:$project.version_junit"
+    testImplementation "org.mockito:mockito-core:$project.version_mockito"
+}
+
+kapt {
+    generateStubs = true
 }
