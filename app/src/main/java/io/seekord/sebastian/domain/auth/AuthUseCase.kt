@@ -1,7 +1,7 @@
 package io.seekord.sebastian.domain.auth
 
 import dagger.Reusable
-import io.reactivex.Single
+import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.domain.base.NetworkAwareUseCase
@@ -16,12 +16,12 @@ import javax.inject.Inject
 class AuthUseCase @Inject constructor(
         networkManager: NetworkManager,
         private val authRepository: AuthRepository
-) : NetworkAwareUseCase<AuthParams, Single<AuthData>>(networkManager) {
+) : NetworkAwareUseCase<AuthParams, Completable>(networkManager) {
 
-    override fun execute(params: AuthParams): Single<AuthData> {
+    override fun execute(params: AuthParams): Completable {
         return checkNetworkAndReturn(params)
                 .flatMap { authRepository.auth(it) }
-                .flatMap { authRepository.saveAuthData(it).toSingle { it } }
+                .flatMapCompletable { authRepository.saveAuthData(it) }
                 .subscribeOn(Schedulers.io())
     }
 

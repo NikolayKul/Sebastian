@@ -41,7 +41,6 @@ class AuthUseCaseTest {
         val testObserver = useCase.execute(params).test()
 
         schedulerRule.scheduler.triggerActions()
-        testObserver.assertValue(data)
         testObserver.assertComplete()
         verify(repository).auth(params)
         verify(repository).saveAuthData(data)
