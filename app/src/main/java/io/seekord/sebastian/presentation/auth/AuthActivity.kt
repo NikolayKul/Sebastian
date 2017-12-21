@@ -1,5 +1,6 @@
 package io.seekord.sebastian.presentation.auth
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,7 @@ import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityAuthBinding
 import io.seekord.sebastian.di.ActivityComponent
 import io.seekord.sebastian.presentation.base.BaseActivity
+import io.seekord.sebastian.presentation.main.MainActivity
 import io.seekord.sebastian.utils.view.textString
 import javax.inject.Inject
 
@@ -43,6 +45,9 @@ class AuthActivity : BaseActivity(), AuthMvpView, AuthHandler {
 
     override fun showLoginSuccess() {
         Toast.makeText(this, "Login success!", Toast.LENGTH_SHORT).show()
+        // TODO: temp
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onLoginClick() {
