@@ -22,7 +22,7 @@ android {
 }
 
 kotlin {
-    experimental { coroutines 'enable' }
+    experimental.coroutines = "enable"
 }
 
 // dagger + dataBinding sometimes generate more than 100 errors :(
@@ -73,6 +73,7 @@ dependencies {
     // unit test
     testImplementation "junit:junit:$project.version_junit"
     testImplementation "org.mockito:mockito-core:$project.version_mockito"
+    testImplementation "com.nhaarman:mockito-kotlin:$project.version_mockito_kotlin"
 }
 
 kapt {
