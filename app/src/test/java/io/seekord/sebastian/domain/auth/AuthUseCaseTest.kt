@@ -4,6 +4,7 @@ import com.nhaarman.mockito_kotlin.*
 import io.seekord.sebastian.CoroutineContextRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.utils.NetworkManager
+import io.seekord.sebastian.utils.givenSuspended
 import kotlinx.coroutines.experimental.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -31,8 +32,8 @@ internal class AuthUseCaseTest {
     internal fun `auth success`() {
         val authData = mock<AuthData>()
         given { networkManager.isNetworkAvailable() } willReturn { true }
-        given { runBlocking { repository.auth(any()) } } willReturn { authData }
-        given { runBlocking { repository.saveAuthData(any()) } } willReturn { Unit }
+        givenSuspended { repository.auth(any()) } willReturn { authData }
+        givenSuspended { repository.saveAuthData(any()) } willReturn { Unit }
 
         runBlocking {
             val authParams = mock<AuthParams>()
@@ -43,10 +44,6 @@ internal class AuthUseCaseTest {
         }
     }
 
-//    private fun <T : Any, R> KStubbing<T>.mk(m: suspend T.() -> R): OngoingStubbing<R> {
-//        return runBlocking { `when`(m()) }
-//    }
-//
 //    @Test
 //    internal fun `auth failed no network`() {
 //        val params = mock(AuthParams::class.java)
