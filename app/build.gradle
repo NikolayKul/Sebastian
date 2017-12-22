@@ -21,6 +21,10 @@ android {
     dataBinding.enabled true
 }
 
+kotlin {
+    experimental { coroutines 'enable' }
+}
+
 // dagger + dataBinding sometimes generate more than 100 errors :(
 gradle.projectsEvaluated {
     tasks.withType(JavaCompile) {
@@ -37,6 +41,10 @@ dependencies {
 
     // data binding
     kapt "com.android.databinding:compiler:$project.version_gradle"
+
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$project.version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$project.version_coroutines"
 
     // rx
     implementation "io.reactivex.rxjava2:rxjava:$project.version_rx_java"
