@@ -1,6 +1,5 @@
 package io.seekord.sebastian.data.api
 
-import io.reactivex.Single
 import io.seekord.sebastian.domain.auth.AuthData
 import io.seekord.sebastian.domain.auth.AuthParams
 
@@ -10,6 +9,6 @@ import io.seekord.sebastian.domain.auth.AuthParams
 
 interface SebastianApi {
 
-    fun auth(credentials: AuthParams): Single<AuthData>
+    fun auth(credentials: AuthParams): AuthData
 
 }

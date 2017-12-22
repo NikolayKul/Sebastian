@@ -1,8 +1,6 @@
 package io.seekord.sebastian.data.repository.auth
 
 import dagger.Reusable
-import io.reactivex.Completable
-import io.reactivex.Single
 import io.seekord.sebastian.data.source.auth.AuthSourceLocal
 import io.seekord.sebastian.data.source.auth.AuthSourceRemote
 import io.seekord.sebastian.domain.auth.AuthData
@@ -20,19 +18,12 @@ class AuthRepository @Inject constructor(
         private val sourceRemote: AuthSourceRemote
 ) {
 
-    fun auth(authParams: AuthParams) = sourceRemote.auth(authParams)
+    suspend fun auth(authParams: AuthParams) = sourceRemote.auth(authParams)
 
-    fun getAuthData(): Single<AuthData> = Single.defer {
-        val authData = sourceLocal.get()
-        if (authData != null) {
-            Single.just(authData)
-        } else {
-            Single.error(TokenNotFoundException())
-        }
-    }
+    suspend fun getAuthData() = sourceLocal.get() ?: throw TokenNotFoundException()
 
-    fun saveAuthData(authData: AuthData): Completable {
-        return Completable.fromCallable { sourceLocal.save(authData) }
+    suspend fun saveAuthData(authData: AuthData) {
+        sourceLocal.save(authData)
     }
 
 }
