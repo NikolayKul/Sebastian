@@ -4,8 +4,9 @@ import com.arellomobile.mvp.InjectViewState
 import io.seekord.sebastian.domain.auth.AuthParams
 import io.seekord.sebastian.domain.auth.AuthUseCase
 import io.seekord.sebastian.presentation.base.BasePresenter
+import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.IO
+import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class AuthPresenter @Inject constructor(
     private fun doAuth(authParams: AuthParams) = launch(UI) {
         viewState.showLoading()
         try {
-            async { authUseCase.execute(authParams) }.await()
+            async(IO) { authUseCase.execute(authParams) }.await()
             viewState.showLoginSuccess()
         } catch (error: Exception) {
             viewState.showError(error)

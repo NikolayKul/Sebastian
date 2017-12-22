@@ -3,8 +3,9 @@ package io.seekord.sebastian.presentation.main
 import com.arellomobile.mvp.InjectViewState
 import io.seekord.sebastian.domain.auth.GetAuthTokenUseCase
 import io.seekord.sebastian.presentation.base.BasePresenter
+import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.IO
+import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import timber.log.Timber
@@ -30,7 +31,7 @@ class MainPresenter @Inject constructor(
         job?.cancel()
     }
 
-    private fun doShowCurrentAuthToken() = async {
+    private fun doShowCurrentAuthToken() = async(IO) {
         val token = try {
             getAuthTokenUseCase.execute().accessToken
         } catch (e: Exception) {
