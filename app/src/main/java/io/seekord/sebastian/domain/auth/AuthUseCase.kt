@@ -19,7 +19,8 @@ class AuthUseCase @Inject constructor(
 ) : UseCase<AuthParams, Completable> {
 
     override fun execute(params: AuthParams): Completable {
-        return networkManager.checkNetworkOrThrow(params)
+        return networkManager.checkNetworkOrThrow()
+                .toSingle { params }
                 .flatMap { authRepository.auth(it) }
                 .flatMapCompletable { authRepository.saveAuthData(it) }
                 .subscribeOn(Schedulers.io())
