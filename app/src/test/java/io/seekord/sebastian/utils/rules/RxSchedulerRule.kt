@@ -1,4 +1,4 @@
-package io.seekord.sebastian
+package io.seekord.sebastian.utils.rules
 
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins

@@ -2,10 +2,10 @@ package io.seekord.sebastian.domain.auth
 
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.seekord.sebastian.RxSchedulerRule
 import io.seekord.sebastian.data.repository.auth.AuthRepository
 import io.seekord.sebastian.domain.base.NetworkException
 import io.seekord.sebastian.utils.NetworkManager
+import io.seekord.sebastian.utils.rules.RxSchedulerRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
