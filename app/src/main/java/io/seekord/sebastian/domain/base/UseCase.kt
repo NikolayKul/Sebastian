@@ -1,8 +1,5 @@
 package io.seekord.sebastian.domain.base
 
-import io.reactivex.Single
-import io.seekord.sebastian.utils.NetworkManager
-
 /**
  * Created by nikolay
  */
@@ -16,18 +13,4 @@ abstract class NoParamsUseCase<out R : Any> : UseCase<Any?, R> {
     override fun execute(params: Any?) = execute()
 
     abstract fun execute(): R
-}
-
-abstract class NetworkAwareUseCase<T : Any?, out R : Any>(
-        private val networkManager: NetworkManager
-) : UseCase<T, R> {
-
-    protected fun checkNetworkAndReturn(params: T): Single<T> = Single.defer {
-        if (networkManager.isNetworkAvailable()) {
-            Single.just(params)
-        } else {
-            Single.error(NetworkException())
-        }
-    }
-
 }
