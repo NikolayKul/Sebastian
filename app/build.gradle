@@ -59,7 +59,10 @@ dependencies {
     implementation "com.android.support:design:$project.version_support"
     implementation "com.rengwuxian.materialedittext:library:$project.version_material_edit_text"
 
-    // test
+    // ui test
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.version_espresso_core"
+
+    // unit test
     testImplementation "junit:junit:$project.version_junit"
     testImplementation "org.mockito:mockito-core:$project.version_mockito"
 }
