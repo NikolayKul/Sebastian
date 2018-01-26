@@ -44,7 +44,7 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>(), AuthMvpView, AuthHandl
 
     override fun showLoginSuccess() {
         Toast.makeText(this, "Login success!", Toast.LENGTH_SHORT).show()
-        // TODO: temp
+        // TODO: move to the router
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
