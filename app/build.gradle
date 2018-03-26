@@ -56,14 +56,13 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$project.version_support"
     implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
 
-    // design
+    // ui
     implementation "com.android.support:design:$project.version_support"
     implementation "com.rengwuxian.materialedittext:library:$project.version_material_edit_text"
 
     // unit test
     testImplementation "junit:junit:$project.version_junit"
     testImplementation "org.mockito:mockito-core:$project.version_mockito"
-    testImplementation "com.nhaarman:mockito-kotlin:$project.version_mockito_kotlin"
 }
 
 kapt {
