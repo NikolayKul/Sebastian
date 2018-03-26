@@ -25,13 +25,6 @@ kotlin {
     experimental.coroutines = "enable"
 }
 
-// dagger + dataBinding sometimes generate more than 100 errors :(
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xmaxerrs" << "200"
-    }
-}
-
 dependencies {
 
     // other
@@ -66,9 +59,6 @@ dependencies {
     // design
     implementation "com.android.support:design:$project.version_support"
     implementation "com.rengwuxian.materialedittext:library:$project.version_material_edit_text"
-
-    // ui test
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.version_espresso_core"
 
     // unit test
     testImplementation "junit:junit:$project.version_junit"
