@@ -1,4 +1,4 @@
-package io.seekord.sebastian
+package io.seekord.sebastian.utils.rules
 
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider
 import org.junit.rules.TestRule
