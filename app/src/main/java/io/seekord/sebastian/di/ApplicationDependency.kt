@@ -5,6 +5,9 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import ru.terrakok.cicerone.Cicerone
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -13,7 +16,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [ApplicationModule::class])
+@Component(modules = [ApplicationModule::class, RouterModule::class])
 interface ApplicationComponent {
     fun plusActivityComponent(module: ActivityModule): ActivityComponent
 }
@@ -26,6 +29,22 @@ class ApplicationModule(private val app: Application) {
     @Singleton
     @AppContext
     fun provideApplicationContext(): Context = app.applicationContext
+
+
+}
+
+
+@Module
+class RouterModule {
+    private val cicerone = Cicerone.create()
+
+    @Provides
+    @Singleton
+    fun provideNavigatorHolder(): NavigatorHolder = cicerone.navigatorHolder
+
+    @Provides
+    @Singleton
+    fun provideRouter(): Router = cicerone.router
 
 }
 

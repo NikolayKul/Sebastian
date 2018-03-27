@@ -21,10 +21,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
 
     @Inject @InjectPresenter lateinit var presenter: MainPresenter
 
-    override fun getLayoutId() = R.layout.activity_main
-
     @ProvidePresenter
-    override fun providePresenter() = presenter
+    fun providePresenter() = presenter
+
+    override fun getLayoutId() = R.layout.activity_main
 
     override fun injectSelf(component: ActivityComponent) {
         component.inject(this)
