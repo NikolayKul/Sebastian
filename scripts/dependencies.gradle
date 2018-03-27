@@ -16,6 +16,7 @@ ext {
     version_rx_android = '2.0.1'
 
     // other
+    version_cicerone = '3.0.0'
     version_moxy = '1.5.3'
     version_hawk = '2.0.1'
     version_timber = '4.6.0'

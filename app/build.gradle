@@ -29,6 +29,7 @@ dependencies {
 
     // other
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
+    implementation "ru.terrakok.cicerone:cicerone:$project.version_cicerone"
     implementation "com.jakewharton.timber:timber:$project.version_timber"
     implementation "com.orhanobut:hawk:$project.version_hawk"
 
