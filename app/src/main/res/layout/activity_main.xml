@@ -6,9 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
+        <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
-            layout="@layout/layout_toolbar_appbar" />
+            style="@style/Toolbar.ConstraintAppBar">
+
+            <include layout="@layout/layout_toolbar" />
+
+        </android.support.design.widget.AppBarLayout>
 
         <TextView
             style="@style/SimpleText.GravityCenter"
