@@ -31,7 +31,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
     }
 
     override fun showCurrentAuthToken(token: String) {
-        binding.tvToken.text = token
     }
 
 }

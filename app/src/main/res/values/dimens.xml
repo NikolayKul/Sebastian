@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolbar_title_text_size">20sp</dimen>
-    <dimen name="toolbar_subtitle_text_size">16sp</dimen>
-    <dimen name="auth_container_padding">15dp</dimen>
-    <dimen name="auth_container_width">250dp</dimen>
+
+    <!-- Text size -->
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+
+    <!-- Fab size -->
     <dimen name="fab_size_normal">56dp</dimen>
+
 </resources>

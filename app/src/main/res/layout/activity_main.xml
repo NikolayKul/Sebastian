@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,11 +10,9 @@
         <include layout="@layout/layout_toolbar_appbar" />
 
         <TextView
-            android:id="@+id/tvToken"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/TextView"
             android:gravity="center"
-            tools:text="Some dummy Auth token" />
+            android:text="@string/main_text_no_items" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
