@@ -10,8 +10,7 @@
         <include layout="@layout/layout_toolbar_appbar" />
 
         <TextView
-            style="@style/SimpleText"
-            android:gravity="center"
+            style="@style/SimpleText.GravityCenter"
             android:text="@string/main_text_no_items" />
 
         <android.support.v7.widget.RecyclerView

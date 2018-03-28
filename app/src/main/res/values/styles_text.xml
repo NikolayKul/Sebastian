@@ -2,12 +2,20 @@
 <resources>
 
     <style name="SimpleText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textColor">@color/back</item>
         <item name="android:textColorHint">@color/gray_300</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="SimpleText.GravityCenter">
+        <item name="android:layout_gravity">center</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
     </style>
 
 </resources>
