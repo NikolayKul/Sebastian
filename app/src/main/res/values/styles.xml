@@ -11,7 +11,7 @@
     </style>
 
     <!-- Fab -->
-    <style name="Fab">
+    <style name="SimpleFab">
         <item name="android:layout_width">@dimen/fab_size_normal</item>
         <item name="android:layout_height">@dimen/fab_size_normal</item>
         <item name="android:layout_gravity">bottom|end</item>

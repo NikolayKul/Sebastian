@@ -9,7 +9,7 @@
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
-            style="@style/ConstraintAppBar">
+            style="@style/SimpleAppBar.InConstraint">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -23,13 +23,13 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDummy"
-            style="@style/ConstraintRecyclerView"
+            style="@style/SimpleRecyclerView.InConstraint"
             app:layout_constraintTop_toBottomOf="@id/appBar"
             app:layout_constraintTop_toTopOf="-1" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
-            style="@style/Fab"
+            style="@style/SimpleFab"
             app:srcCompat="@drawable/ic_add" />
 
     </android.support.constraint.ConstraintLayout>
