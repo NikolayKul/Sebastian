@@ -6,11 +6,15 @@ android {
     compileSdkVersion project.sdk_compile
     defaultConfig {
         applicationId "io.seekord.sebastian"
+
         minSdkVersion project.sdk_min
         targetSdkVersion project.sdk_target
+
         versionCode project.version_code
         versionName project.version_name
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
