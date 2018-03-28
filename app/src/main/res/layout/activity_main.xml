@@ -10,9 +10,13 @@
         <include layout="@layout/layout_toolbar_appbar" />
 
         <TextView
-            style="@style/TextView"
+            style="@style/SimpleText"
             android:gravity="center"
             android:text="@string/main_text_no_items" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
