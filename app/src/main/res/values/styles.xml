@@ -10,17 +10,6 @@
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
-    <!-- Constraint layout -->
-
-    <style name="ConstraintLayout" />
-
-    <style name="ConstraintLayout.Center">
-        <item name="layout_constraintLeft_toLeftOf">parent</item>
-        <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-    </style>
-
     <!-- Fab -->
     <style name="Fab">
         <item name="android:layout_width">@dimen/fab_size_normal</item>
