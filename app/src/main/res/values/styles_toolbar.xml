@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Toolbar" />
+    <style name="SimpleToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.Subtitle</item>
+        <item name="titleTextAppearance">@style/Toolbar.Title</item>
+    </style>
 
-    <style name="Toolbar.SimpleAppBar">
+    <style name="SimpleAppBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="Toolbar.ConstraintAppBar">
+    <style name="ConstraintAppBar">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
@@ -17,7 +24,7 @@
         <item name="layout_constraintStart_toStartOf">parent</item>
     </style>
 
-    <style name="Toolbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Toolbar" />
 
     <style name="Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/text_size_big</item>
