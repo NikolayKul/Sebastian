@@ -1,9 +1,16 @@
 <resources>
 
+    <!-- TextAppearance -->
+    <style name="AppTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <!-- Theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textAppearance">@style/AppTextAppearance</item>
     </style>
 
     <style name="AppTheme.Launcher">
@@ -20,5 +27,6 @@
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
+
 
 </resources>
