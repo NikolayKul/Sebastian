@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
@@ -9,27 +8,39 @@
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
-            style="@style/SimpleAppBar.InConstraint">
+            style="@style/AppTheme.AppBar"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                style="@style/SimpleToolbar" />
+                style="@style/AppTheme.Toolbar" />
 
         </android.support.design.widget.AppBarLayout>
 
         <TextView
-            style="@style/SimpleText.GravityCenter"
-            android:text="@string/main_text_no_items" />
+            style="@style/AppTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_text_no_items"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDummy"
-            style="@style/SimpleRecyclerView.InConstraint"
-            app:layout_constraintTop_toBottomOf="@id/appBar"
-            app:layout_constraintTop_toTopOf="-1" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
-            style="@style/SimpleFab"
+            style="@style/AppTheme.Fab"
             app:srcCompat="@drawable/ic_add" />
 
     </android.support.constraint.ConstraintLayout>
