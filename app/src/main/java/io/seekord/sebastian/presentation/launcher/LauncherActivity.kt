@@ -1,4 +1,4 @@
-package io.seekord.sebastian.presentation.splash
+package io.seekord.sebastian.presentation.launcher
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
