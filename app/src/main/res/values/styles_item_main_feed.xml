@@ -3,15 +3,21 @@
 
     <style name="AppTheme.ItemMainFeed" />
 
+    <style name="AppTheme.ItemMainFeed.Date">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/gray_500</item>
+    </style>
+
     <style name="AppTheme.ItemMainFeed.Title">
         <item name="android:maxLines">2</item>
         <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="android:ellipsize">end</item>
         <item name="textAllCaps">true</item>
     </style>
 
-    <style name="AppTheme.ItemMainFeed.Date">
-        <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">@color/gray_400</item>
+    <style name="AppTheme.ItemMainFeed.Subtitle">
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/gray_600</item>
     </style>
 
 </resources>
