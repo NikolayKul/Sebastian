@@ -4,8 +4,14 @@
     <style name="AppTheme.ItemMainFeed" />
 
     <style name="AppTheme.ItemMainFeed.Title">
-        <item name="android:maxLines">3</item>
+        <item name="android:maxLines">2</item>
         <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="AppTheme.ItemMainFeed.Date">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/gray_400</item>
     </style>
 
 </resources>

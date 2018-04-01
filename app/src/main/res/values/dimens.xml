@@ -4,6 +4,10 @@
     <!-- Text size -->
     <dimen name="text_size_big">20sp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+
+    <!-- Margin & padding -->
+    <dimen name="space_normal">8dp</dimen>
 
     <!-- Fab size -->
     <dimen name="fab_size_normal">56dp</dimen>
