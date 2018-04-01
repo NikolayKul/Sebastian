@@ -9,9 +9,14 @@ import timber.log.Timber
 
 object TimberFactory {
     fun init() {
-        // TODO: add different strategies (e.g. Crashlytics, LOG_ENABLED, DEBUG)
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
+        // TODO: add Crashlytics Tree
+        val tree = if (BuildConfig.DEBUG) Timber.DebugTree() else NoLogTree()
+        Timber.plant(tree)
+    }
+}
+
+private class NoLogTree : Timber.Tree() {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+        // no-op
     }
 }
