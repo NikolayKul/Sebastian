@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
             style="@style/AppTheme.AppBar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -23,26 +24,34 @@
             style="@style/AppTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/main_text_no_items"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvDummy"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar" />
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_main_feed" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             style="@style/AppTheme.Fab"
+            android:layout_gravity="bottom|end"
+            app:layout_anchor="@id/rvDummy"
+            app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_add" />
 
-    </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>
