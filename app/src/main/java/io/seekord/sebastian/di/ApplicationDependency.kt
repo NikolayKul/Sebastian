@@ -12,7 +12,7 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @Singleton

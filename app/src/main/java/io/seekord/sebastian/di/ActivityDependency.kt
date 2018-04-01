@@ -7,7 +7,7 @@ import io.seekord.sebastian.presentation.main.MainActivity
 import javax.inject.Scope
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @PerActivity

@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 abstract class BasePresenter<T : MvpView> : MvpPresenter<T>() {

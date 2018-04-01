@@ -5,7 +5,7 @@ import org.mockito.BDDMockito
 import org.mockito.BDDMockito.BDDMyOngoingStubbing
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 fun <T> given(method: () -> T): BDDMyOngoingStubbing<T> = BDDMockito.given(method())

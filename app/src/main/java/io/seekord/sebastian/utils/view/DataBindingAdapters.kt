@@ -4,7 +4,7 @@ import android.databinding.BindingAdapter
 import android.view.View
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @BindingAdapter("android:visibility")

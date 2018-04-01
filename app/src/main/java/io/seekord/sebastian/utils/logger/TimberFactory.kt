@@ -4,7 +4,7 @@ import io.seekord.sebastian.BuildConfig
 import timber.log.Timber
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 object TimberFactory {

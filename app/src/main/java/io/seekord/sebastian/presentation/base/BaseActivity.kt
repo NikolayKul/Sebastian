@@ -14,7 +14,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Created by Nikolay Kulachenko
+ * @author NikolayKul
  */
 
 abstract class BaseActivity<B : ViewDataBinding> : MvpAppCompatActivity(), ErrorMvpView {

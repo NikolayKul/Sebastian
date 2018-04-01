@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @Singleton

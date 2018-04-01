@@ -3,7 +3,7 @@ package io.seekord.sebastian.presentation.main
 import io.seekord.sebastian.presentation.base.ErrorMvpView
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 interface MainMvpView : ErrorMvpView {

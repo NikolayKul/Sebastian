@@ -5,7 +5,7 @@ import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @StateStrategyType(OneExecutionStateStrategy::class)

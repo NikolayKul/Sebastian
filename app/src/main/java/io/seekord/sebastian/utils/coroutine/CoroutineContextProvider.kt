@@ -8,7 +8,7 @@ import kotlin.coroutines.experimental.CoroutineContext
 import kotlin.coroutines.experimental.EmptyCoroutineContext
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 object CoroutineContextProvider : ContextProvider {

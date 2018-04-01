@@ -12,7 +12,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 @InjectViewState

@@ -11,7 +11,7 @@ import io.seekord.sebastian.presentation.base.BaseActivity
 import javax.inject.Inject
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {

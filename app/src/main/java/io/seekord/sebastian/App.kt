@@ -6,7 +6,7 @@ import io.seekord.sebastian.di.DependencyManager
 import io.seekord.sebastian.utils.logger.TimberFactory
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 class App : Application() {

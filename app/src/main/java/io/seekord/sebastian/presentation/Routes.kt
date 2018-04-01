@@ -8,7 +8,7 @@ import io.seekord.sebastian.presentation.main.MainActivity
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 

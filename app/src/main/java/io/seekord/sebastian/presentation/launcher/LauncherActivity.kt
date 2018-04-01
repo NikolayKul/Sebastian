@@ -6,7 +6,7 @@ import io.seekord.sebastian.R
 import io.seekord.sebastian.presentation.main.MainActivity
 
 /**
- * Created by nikolay
+ * @author NikolayKul
  */
 
 class LauncherActivity : AppCompatActivity() {
