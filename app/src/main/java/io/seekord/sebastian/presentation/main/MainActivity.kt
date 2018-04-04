@@ -7,6 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityMainBinding
 import io.seekord.sebastian.di.ActivityComponent
+import io.seekord.sebastian.domain.rss.models.RssPreview
 import io.seekord.sebastian.presentation.base.BaseActivity
 import javax.inject.Inject
 
@@ -30,7 +31,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
         component.inject(this)
     }
 
-    override fun showCurrentAuthToken(token: String) {
+    override fun showRssPreviews(previews: List<RssPreview>) {
+        TODO("not implemented")
     }
 
 }

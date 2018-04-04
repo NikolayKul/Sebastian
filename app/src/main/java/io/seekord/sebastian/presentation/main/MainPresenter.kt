@@ -1,14 +1,12 @@
 package io.seekord.sebastian.presentation.main
 
 import com.arellomobile.mvp.InjectViewState
+import io.seekord.sebastian.domain.rss.LoadRssPreviewsUseCase
 import io.seekord.sebastian.presentation.base.BasePresenter
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.IO
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -16,12 +14,14 @@ import javax.inject.Inject
  */
 
 @InjectViewState
-class MainPresenter @Inject constructor() : BasePresenter<MainMvpView>() {
+class MainPresenter @Inject constructor(
+        private val previewsUseCase: LoadRssPreviewsUseCase
+) : BasePresenter<MainMvpView>() {
     private var job: Job? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        job = doShowCurrentAuthToken()
+        job = loadRssPreviews()
     }
 
     override fun onDestroy() {
@@ -29,15 +29,9 @@ class MainPresenter @Inject constructor() : BasePresenter<MainMvpView>() {
         job?.cancel()
     }
 
-    private fun doShowCurrentAuthToken() = async(IO) {
-        val token = try {
-            delay(1000)
-            "SomeToken"
-        } catch (e: Exception) {
-            Timber.e(e)
-            "No auth token"
-        }
-        launch(UI) { viewState.showCurrentAuthToken(token) }
+    private fun loadRssPreviews() = launch(IO) {
+        val previews = previewsUseCase.loadRssPreviews()
+        launch(UI) { viewState.showRssPreviews(previews) }
     }
 
 }

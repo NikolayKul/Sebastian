@@ -1,5 +1,6 @@
 package io.seekord.sebastian.presentation.main
 
+import io.seekord.sebastian.domain.rss.models.RssPreview
 import io.seekord.sebastian.presentation.base.ErrorMvpView
 
 /**
@@ -7,5 +8,5 @@ import io.seekord.sebastian.presentation.base.ErrorMvpView
  */
 
 interface MainMvpView : ErrorMvpView {
-    fun showCurrentAuthToken(token: String)
+    fun showRssPreviews(previews: List<RssPreview>)
 }
