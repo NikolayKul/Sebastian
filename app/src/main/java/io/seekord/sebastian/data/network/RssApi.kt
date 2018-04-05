@@ -10,6 +10,6 @@ import retrofit2.http.GET
 interface RssApi {
 
     @GET("interesting")
-    fun getRssPreviews(): Call<Any>
+    fun getRssPreviews(): Call<String>
 
 }

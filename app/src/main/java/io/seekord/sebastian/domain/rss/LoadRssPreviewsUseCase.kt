@@ -1,9 +1,9 @@
 package io.seekord.sebastian.domain.rss
 
 import dagger.Reusable
+import io.seekord.sebastian.data.repository.RssRepository
 import io.seekord.sebastian.domain.rss.models.RssPreview
-import kotlinx.coroutines.experimental.delay
-import java.util.concurrent.TimeUnit
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -11,10 +11,14 @@ import javax.inject.Inject
  */
 
 @Reusable
-class LoadRssPreviewsUseCase @Inject constructor() {
+class LoadRssPreviewsUseCase @Inject constructor(
+        private val repository: RssRepository
+) {
 
     suspend fun loadRssPreviews(): List<RssPreview> {
-        delay(1000, TimeUnit.MILLISECONDS)
+        val result = repository.getRssPreviews().await()
+        Timber.d("result: %s", result)
+
         return emptyList()
     }
 

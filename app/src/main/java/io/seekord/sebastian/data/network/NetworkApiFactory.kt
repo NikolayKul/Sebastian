@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.jaxb.JaxbConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -26,6 +27,7 @@ class NetworkApiFactory @Inject constructor() {
     private fun createRetrofit(): Retrofit = Retrofit.Builder()
             .baseUrl(GEEKTIMES_URL)
             .client(createClient())
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(JaxbConverterFactory.create())
             .build()
 

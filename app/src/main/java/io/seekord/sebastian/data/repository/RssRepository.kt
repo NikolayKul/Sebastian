@@ -15,6 +15,6 @@ class RssRepository @Inject constructor(
         private val rssApi: RssApi
 ) {
 
-    fun getRssPreviews(): Deferred<Any> = rssApi.getRssPreviews().toDeferred()
+    fun getRssPreviews(): Deferred<String> = rssApi.getRssPreviews().toDeferred()
 
 }
