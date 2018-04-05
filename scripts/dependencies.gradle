@@ -22,6 +22,10 @@ ext {
     version_timber = '4.6.0'
     version_dagger = '2.13'
 
+    // http
+    version_retrofit = '2.4.0'
+    version_okhttp = '3.10.0'
+
     // ui
     version_support = '27.1.0'
     version_constraint_layout = '1.0.2'

@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import io.seekord.sebastian.data.network.RetrofitFactory
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -16,7 +17,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [ApplicationModule::class, RouterModule::class])
+@Component(modules = [ApplicationModule::class, RouterModule::class, NetworkModule::class])
 interface ApplicationComponent {
     fun plusActivityComponent(module: ActivityModule): ActivityComponent
 }
@@ -29,7 +30,6 @@ class ApplicationModule(private val app: Application) {
     @Singleton
     @AppContext
     fun provideApplicationContext(): Context = app.applicationContext
-
 
 }
 
@@ -45,6 +45,16 @@ class RouterModule {
     @Provides
     @Singleton
     fun provideRouter(): Router = cicerone.router
+
+}
+
+
+@Module
+class NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(factory: RetrofitFactory) = factory.createRetrofit()
 
 }
 

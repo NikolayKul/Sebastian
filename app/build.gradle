@@ -40,6 +40,11 @@ dependencies {
     // data binding
     kapt "com.android.databinding:compiler:$project.version_gradle"
 
+    // http
+    implementation "com.squareup.retrofit2:retrofit:$project.version_retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$project.version_okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.version_okhttp"
+
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$project.version_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$project.version_coroutines"
@@ -69,7 +74,6 @@ dependencies {
     testImplementation "junit:junit:$project.version_junit"
     testImplementation "org.mockito:mockito-core:$project.version_mockito"
 }
-
 kapt {
     generateStubs = true
 }
