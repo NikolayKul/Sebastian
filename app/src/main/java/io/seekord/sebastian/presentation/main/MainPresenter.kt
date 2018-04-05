@@ -19,19 +19,16 @@ class MainPresenter @Inject constructor(
 ) : BasePresenter<MainMvpView>() {
     private var job: Job? = null
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        job = loadRssPreviews()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         job?.cancel()
     }
 
-    private fun loadRssPreviews() = launch(IO) {
-        val previews = previewsUseCase.loadRssPreviews()
-        launch(UI) { viewState.showRssPreviews(previews) }
+    fun loadRssPreviews() {
+        job = launch(IO) {
+            val previews = previewsUseCase.loadRssPreviews()
+            launch(UI) { viewState.showRssPreviews(previews) }
+        }
     }
 
 }

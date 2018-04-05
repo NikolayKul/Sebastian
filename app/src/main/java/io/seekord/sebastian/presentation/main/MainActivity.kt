@@ -32,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initRecyclerView()
+        initListeners()
     }
 
     override fun getLayoutId() = R.layout.activity_main
@@ -42,6 +43,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
 
     override fun showRssPreviews(previews: List<RssPreview>) {
         adapter.setItems(previews)
+    }
+
+    private fun initListeners() {
+        binding.fab.setOnClickListener { presenter.loadRssPreviews() }
     }
 
     private fun initRecyclerView() {
