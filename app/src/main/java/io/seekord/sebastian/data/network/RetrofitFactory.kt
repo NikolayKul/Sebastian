@@ -6,6 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.jaxb.JaxbConverterFactory
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -20,18 +21,15 @@ private const val GEEKTIMES_URL = "https://geektimes.ru/rss"
 @Reusable
 class RetrofitFactory @Inject constructor() {
 
-    fun createRetrofit(): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl(GEEKTIMES_URL)
-                .client(createClient())
-                .build()
-    }
+    fun createRetrofit(): Retrofit = Retrofit.Builder()
+            .baseUrl(GEEKTIMES_URL)
+            .client(createClient())
+            .addConverterFactory(JaxbConverterFactory.create())
+            .build()
 
-    private fun createClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-                .addInterceptor(createLoggingInterceptor())
-                .build()
-    }
+    private fun createClient(): OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(createLoggingInterceptor())
+            .build()
 
     private fun createLoggingInterceptor(): Interceptor {
         val level = if (BuildConfig.DEBUG) {
