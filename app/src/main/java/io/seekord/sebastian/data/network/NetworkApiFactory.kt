@@ -15,13 +15,15 @@ import javax.inject.Inject
  */
 
 
-private const val GEEKTIMES_URL = "https://geektimes.ru/rss"
+private const val GEEKTIMES_URL = "https://geektimes.ru/rss/"
 
 
 @Reusable
-class RetrofitFactory @Inject constructor() {
+class NetworkApiFactory @Inject constructor() {
 
-    fun createRetrofit(): Retrofit = Retrofit.Builder()
+    fun create(): RssApi = createRetrofit().create(RssApi::class.java)
+
+    private fun createRetrofit(): Retrofit = Retrofit.Builder()
             .baseUrl(GEEKTIMES_URL)
             .client(createClient())
             .addConverterFactory(JaxbConverterFactory.create())

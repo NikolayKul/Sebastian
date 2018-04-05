@@ -5,7 +5,7 @@ import android.content.Context
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import io.seekord.sebastian.data.network.RetrofitFactory
+import io.seekord.sebastian.data.network.NetworkApiFactory
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -54,7 +54,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(factory: RetrofitFactory) = factory.createRetrofit()
+    fun provideRetrofit(factory: NetworkApiFactory) = factory.create()
 
 }
 
