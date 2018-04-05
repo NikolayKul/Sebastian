@@ -45,7 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
     }
 
     private fun initRecyclerView() {
-        binding.rvDummy.apply {
+        binding.rvPreviews.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = this@MainActivity.adapter
         }

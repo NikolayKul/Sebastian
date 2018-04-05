@@ -33,7 +33,7 @@
             tools:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvDummy"
+            android:id="@+id/rvPreviews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -42,13 +42,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBar"
             tools:itemCount="5"
-            tools:listitem="@layout/item_main_feed" />
+            tools:listitem="@layout/item_rss_preview" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             style="@style/AppTheme.Fab"
             android:layout_gravity="bottom|end"
-            app:layout_anchor="@id/rvDummy"
+            app:layout_anchor="@id/rvPreviews"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_add" />
 
