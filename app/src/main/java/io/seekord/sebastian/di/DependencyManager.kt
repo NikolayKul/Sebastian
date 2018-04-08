@@ -2,23 +2,25 @@ package io.seekord.sebastian.di
 
 import android.app.Activity
 import android.app.Application
+import io.seekord.sebastian.di.application.ApplicationComponent
+import io.seekord.sebastian.di.application.ApplicationModule
+import io.seekord.sebastian.di.application.DaggerApplicationComponent
 
 /**
  * @author NikolayKul
  */
 
 object DependencyManager {
-    private lateinit var applicationComponent: ApplicationComponent
+    lateinit var appComponent: ApplicationComponent
+        private set
 
     fun init(app: Application) {
-        applicationComponent = DaggerApplicationComponent.builder()
+        appComponent = DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(app))
                 .build()
     }
 
-    fun getApplicationComponent() = applicationComponent
-
-    fun createActivityComponent(activity: Activity): ActivityComponent = applicationComponent
+    fun createActivityComponent(activity: Activity): ActivityComponent = appComponent
             .plusActivityComponent(ActivityModule(activity))
 
 }

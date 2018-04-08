@@ -2,7 +2,7 @@ package io.seekord.sebastian.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
-import io.seekord.sebastian.di.AppContext
+import io.seekord.sebastian.di.application.AppContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
