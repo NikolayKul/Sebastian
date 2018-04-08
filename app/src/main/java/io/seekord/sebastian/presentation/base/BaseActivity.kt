@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import com.arellomobile.mvp.MvpAppCompatActivity
 import io.seekord.sebastian.di.Injectable
-import io.seekord.sebastian.presentation.BaseNavigator
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
@@ -19,8 +18,7 @@ import javax.inject.Inject
 abstract class BaseActivity<B : ViewDataBinding>
     : MvpAppCompatActivity(), Injectable, ErrorMvpView {
 
-    private val navigator: Navigator by lazy { createActivityNavigator() }
-
+    @Inject lateinit var navigator: Navigator
     @Inject lateinit var navigatorHolder: NavigatorHolder
     protected lateinit var binding: B
 
@@ -28,7 +26,6 @@ abstract class BaseActivity<B : ViewDataBinding>
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -43,11 +40,6 @@ abstract class BaseActivity<B : ViewDataBinding>
     override fun showError(error: Throwable) {
         Timber.e(error)
     }
-
-    /**
-     * Provide [ru.terrakok.cicerone.Navigator]. The default is [BaseNavigator]
-     */
-    protected open fun createActivityNavigator() = BaseNavigator(this)
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
