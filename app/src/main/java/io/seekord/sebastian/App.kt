@@ -6,7 +6,7 @@ import com.orhanobut.hawk.Hawk
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import io.seekord.sebastian.di.application.DaggerAppComponent
+import io.seekord.sebastian.di.AppInjector
 import io.seekord.sebastian.utils.logger.TimberFactory
 import javax.inject.Inject
 
@@ -21,18 +21,11 @@ class App : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        initInjection()
+        AppInjector.init(this)
         TimberFactory.init()
         Hawk.init(this).build()
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
-
-    private fun initInjection() {
-        DaggerAppComponent.builder()
-                .context(this)
-                .build()
-                .inject(this)
-    }
 
 }

@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import com.arellomobile.mvp.MvpAppCompatActivity
-import dagger.android.AndroidInjection
+import io.seekord.sebastian.di.Injectable
 import io.seekord.sebastian.presentation.BaseNavigator
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -16,7 +16,8 @@ import javax.inject.Inject
  * @author NikolayKul
  */
 
-abstract class BaseActivity<B : ViewDataBinding> : MvpAppCompatActivity(), ErrorMvpView {
+abstract class BaseActivity<B : ViewDataBinding>
+    : MvpAppCompatActivity(), Injectable, ErrorMvpView {
 
     private val navigator: Navigator by lazy { createActivityNavigator() }
 
@@ -24,7 +25,6 @@ abstract class BaseActivity<B : ViewDataBinding> : MvpAppCompatActivity(), Error
     protected lateinit var binding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
     }
