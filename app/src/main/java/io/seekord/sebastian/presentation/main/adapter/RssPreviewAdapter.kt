@@ -35,7 +35,6 @@ class RssPreviewViewItem(private val preview: RssPreview) : CommonViewItem<ItemR
             tvDate.text = preview.createdAt.toString()
             tvTitle.text = preview.title
             tvSubtitle.text = preview.subtitle
-            executePendingBindings()
         }
     }
 }

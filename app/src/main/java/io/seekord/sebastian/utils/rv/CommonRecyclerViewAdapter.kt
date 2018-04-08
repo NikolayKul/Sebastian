@@ -27,6 +27,7 @@ open class CommonAdapter<TBinding : ViewDataBinding, TViewItem : CommonViewItem<
 
     override fun onBindViewHolder(holder: CommonViewHolder<TBinding>, position: Int) {
         items[position].bind(holder)
+        holder.binding.executePendingBindings()
     }
 
     override fun getItemCount() = items.size
