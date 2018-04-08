@@ -1,6 +1,6 @@
 package io.seekord.sebastian.di.application
 
-import android.app.Application
+import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import io.seekord.sebastian.App
@@ -19,7 +19,7 @@ interface AppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun context(app: Application): Builder
+        fun context(@AppContext context: Context): Builder
 
         fun build(): AppComponent
     }
