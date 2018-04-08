@@ -7,6 +7,7 @@ import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.IO
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.Job
 import kotlinx.coroutines.experimental.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -26,7 +27,13 @@ class MainPresenter @Inject constructor(
 
     fun loadRssPreviews() {
         job = launch(IO) {
-            val previews = previewsUseCase.loadRssPreviews()
+            val previews = try {
+                previewsUseCase.loadRssPreviews()
+            } catch (e: Exception) {
+                Timber.e(e)
+                return@launch
+            }
+
             launch(UI) { viewState.showRssPreviews(previews) }
         }
     }
