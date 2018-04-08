@@ -1,12 +1,13 @@
 package io.seekord.sebastian.data.network
 
+import com.tickaroo.tikxml.TikXml
+import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Reusable
 import io.seekord.sebastian.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.jaxb.JaxbConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import timber.log.Timber
 import javax.inject.Inject
@@ -28,7 +29,10 @@ class NetworkApiFactory @Inject constructor() {
             .baseUrl(GEEKTIMES_URL)
             .client(createClient())
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(JaxbConverterFactory.create())
+            .addConverterFactory(TikXmlConverterFactory.create(
+                    TikXml.Builder()
+                            .exceptionOnUnreadXml(false)
+                            .build()))
             .build()
 
     private fun createClient(): OkHttpClient = OkHttpClient.Builder()

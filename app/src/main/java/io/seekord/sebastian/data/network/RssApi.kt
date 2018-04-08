@@ -1,5 +1,6 @@
 package io.seekord.sebastian.data.network
 
+import io.seekord.sebastian.data.models.RssPreview
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -10,6 +11,6 @@ import retrofit2.http.GET
 interface RssApi {
 
     @GET("interesting")
-    fun getRssPreviews(): Call<String>
+    fun getRssPreviews(): Call<RssPreview>
 
 }

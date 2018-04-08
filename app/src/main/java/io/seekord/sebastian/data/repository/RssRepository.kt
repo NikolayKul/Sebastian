@@ -1,6 +1,7 @@
 package io.seekord.sebastian.data.repository
 
 import dagger.Reusable
+import io.seekord.sebastian.data.models.RssPreview
 import io.seekord.sebastian.data.network.RssApi
 import io.seekord.sebastian.utils.network.toDeferred
 import kotlinx.coroutines.experimental.Deferred
@@ -15,6 +16,6 @@ class RssRepository @Inject constructor(
         private val rssApi: RssApi
 ) {
 
-    fun getRssPreviews(): Deferred<String> = rssApi.getRssPreviews().toDeferred()
+    fun getRssPreviews(): Deferred<RssPreview> = rssApi.getRssPreviews().toDeferred()
 
 }

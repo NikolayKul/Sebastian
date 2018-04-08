@@ -9,7 +9,10 @@ ext {
 
     version_kotlin = '1.2.21'
     version_gradle = '3.0.1'
-    version_coroutines = '0.20'
+    version_coroutines = '0.22.5'
+
+    // xml
+    version_tikxml = '0.8.13'
 
     // rx
     version_rx_java = '2.1.7'
