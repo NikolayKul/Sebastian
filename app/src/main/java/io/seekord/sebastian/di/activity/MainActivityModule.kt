@@ -14,6 +14,7 @@ import ru.terrakok.cicerone.Navigator
 class MainActivityModule {
 
     @Provides
+    @PerActivity
     fun navigator(activity: MainActivity): Navigator = BaseNavigator(activity)
 
 }
