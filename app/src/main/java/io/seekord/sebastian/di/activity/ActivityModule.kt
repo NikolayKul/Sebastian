@@ -1,4 +1,4 @@
-package io.seekord.sebastian.di
+package io.seekord.sebastian.di.activity
 
 import dagger.Module
 
