@@ -5,8 +5,7 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import com.arellomobile.mvp.MvpAppCompatActivity
-import io.seekord.sebastian.di.ActivityComponent
-import io.seekord.sebastian.di.DependencyManager
+import dagger.android.AndroidInjection
 import io.seekord.sebastian.presentation.BaseNavigator
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -25,7 +24,7 @@ abstract class BaseActivity<B : ViewDataBinding> : MvpAppCompatActivity(), Error
     protected lateinit var binding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injectSelf(DependencyManager.createActivityComponent(this))
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
     }
@@ -52,7 +51,5 @@ abstract class BaseActivity<B : ViewDataBinding> : MvpAppCompatActivity(), Error
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
-
-    protected abstract fun injectSelf(component: ActivityComponent)
 
 }

@@ -62,7 +62,10 @@ dependencies {
 
     // dagger
     implementation "com.google.dagger:dagger:$project.version_dagger"
+    implementation "com.google.dagger:dagger-android:$project.version_dagger"
+    implementation "com.google.dagger:dagger-android-support:$project.version_dagger"
     kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
+    kapt "com.google.dagger:dagger-android-processor:$project.version_dagger"
 
     // moxy
     implementation "com.arello-mobile:moxy:$project.version_moxy"

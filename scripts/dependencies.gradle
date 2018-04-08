@@ -14,6 +14,9 @@ ext {
     // xml
     version_tikxml = '0.8.13'
 
+    // dagger
+    version_dagger = '2.13'
+
     // rx
     version_rx_java = '2.1.7'
     version_rx_android = '2.0.1'
@@ -23,7 +26,6 @@ ext {
     version_moxy = '1.5.3'
     version_hawk = '2.0.1'
     version_timber = '4.6.0'
-    version_dagger = '2.13'
 
     // http
     version_retrofit = '2.4.0'
