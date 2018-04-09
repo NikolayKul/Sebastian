@@ -40,7 +40,7 @@ object AppInjector {
 
     private fun injectApp(app: App) {
         DaggerAppComponent.builder()
-                .context(app)
+                .application(app)
                 .build()
                 .inject(app)
     }
