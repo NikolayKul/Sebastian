@@ -11,7 +11,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [AppModule::class, RouterModule::class, NetworkModule::class])
+@Component(modules = [AppInjectionModule::class, RouterModule::class, NetworkModule::class])
 interface AppComponent {
 
     fun inject(app: App)

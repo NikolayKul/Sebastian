@@ -12,7 +12,7 @@ import io.seekord.sebastian.presentation.main.MainActivity
  */
 
 @Module(includes = [AndroidSupportInjectionModule::class])
-interface AppModule {
+interface AppInjectionModule {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
