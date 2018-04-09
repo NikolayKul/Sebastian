@@ -12,32 +12,39 @@ import kotlin.coroutines.experimental.EmptyCoroutineContext
  */
 
 object CoroutineContextProvider : ContextProvider {
-    private var currentContextProvider: ContextProvider = DefaultContextProvider()
-    override val UI by lazy { currentContextProvider.UI }
-    override val IO = currentContextProvider.IO
+    private var provider: ContextProvider = DefaultContextProvider()
+    override val UI by lazy { provider.UI }
+    override val IO by lazy { provider.IO }
+    override val COMPUTATION by lazy { provider.COMPUTATION }
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
     fun mockContexts() {
-        currentContextProvider = MockContextProvider()
+        provider = MockContextProvider()
     }
 
 }
 
+
 private interface ContextProvider {
     val UI: CoroutineContext
     val IO: CoroutineContext
+    val COMPUTATION: CoroutineContext
 }
 
+
 private class DefaultContextProvider : ContextProvider {
-    override val UI by lazy { kotlinx.coroutines.experimental.android.UI }
+    override val UI = kotlinx.coroutines.experimental.android.UI
 
     // See: https://github.com/Kotlin/kotlinx.coroutines/issues/79
     // Change later on a real IO Handler Context implementation
     override val IO = CommonPool
 
+    override val COMPUTATION = CommonPool
 }
+
 
 private class MockContextProvider : ContextProvider {
     override val UI = EmptyCoroutineContext
     override val IO = EmptyCoroutineContext
+    override val COMPUTATION = EmptyCoroutineContext
 }
