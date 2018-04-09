@@ -1,5 +1,6 @@
 package io.seekord.sebastian.di.application
 
+import android.app.Application
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
@@ -7,6 +8,7 @@ import dagger.Provides
 import dagger.multibindings.IntoSet
 import io.seekord.sebastian.BuildConfig
 import io.seekord.sebastian.data.network.RssApi
+import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,6 +25,7 @@ import javax.inject.Singleton
 
 
 private const val GEEKTIMES_BASE_URL = "https://geektimes.ru/rss/"
+private const val CACHE_MAX_SIZE = 1024 * 1024 * 10L // 10 MB
 
 
 @Module
@@ -43,11 +46,15 @@ class NetworkModule {
     }
 
     @Provides
-    fun client(interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
+    fun client(cache: Cache, interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
         return OkHttpClient.Builder()
+                .cache(cache)
                 .apply { interceptors().addAll(interceptors) }
                 .build()
     }
+
+    @Provides
+    fun cache(application: Application): Cache = Cache(application.cacheDir, CACHE_MAX_SIZE)
 
     // converters
 
