@@ -1,7 +1,6 @@
 package io.seekord.sebastian.utils.network
 
-import kotlinx.coroutines.experimental.CompletableDeferred
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.suspendCancellableCoroutine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
@@ -12,29 +11,19 @@ import retrofit2.Response
  */
 
 
-fun <T> Call<T>.toDeferred(): Deferred<T> {
-    val deferred = CompletableDeferred<T>()
-
-    // cancel request as well
-    deferred.invokeOnCompletion {
-        if (deferred.isCancelled) {
-            cancel()
-        }
-    }
-
+suspend fun <T> Call<T>.await(): T = suspendCancellableCoroutine { cont ->
+    cont.invokeOnCompletion { cancel() }
     enqueue(object : Callback<T> {
-        override fun onFailure(call: Call<T>?, t: Throwable) {
-            deferred.completeExceptionally(t)
+        override fun onFailure(call: Call<T>, t: Throwable) {
+            cont.resumeWithException(t)
         }
 
-        override fun onResponse(call: Call<T>?, response: Response<T>) {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
             if (response.isSuccessful) {
-                deferred.complete(response.body()!!)
+                cont.resume(response.body()!!)
             } else {
-                deferred.completeExceptionally(HttpException(response))
+                cont.resumeWithException(HttpException(response))
             }
         }
     })
-
-    return deferred
 }

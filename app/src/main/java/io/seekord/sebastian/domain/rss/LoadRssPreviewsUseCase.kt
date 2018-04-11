@@ -16,7 +16,7 @@ class LoadRssPreviewsUseCase @Inject constructor(
 ) {
 
     suspend fun loadRssPreviews(): List<RssPreview> {
-        val result = repository.getRssPreviews().await()
+        val result = repository.getRssPreviews()
         Timber.d("result: %s", result)
 
         return emptyList()
