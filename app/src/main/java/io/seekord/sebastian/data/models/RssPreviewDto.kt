@@ -1,11 +1,11 @@
-/**
- * @author NikolayKul
- */
-
 package io.seekord.sebastian.data.models
 
 import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml
+
+/**
+ * @author NikolayKul
+ */
 
 @Xml(name = "item")
 class RssPreviewDto {
