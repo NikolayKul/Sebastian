@@ -1,6 +1,6 @@
 package io.seekord.sebastian.domain.rss.models
 
-import java.time.LocalDateTime
+import org.joda.time.DateTime
 
 /**
  * @author NikolayKul
@@ -9,5 +9,5 @@ import java.time.LocalDateTime
 data class RssPreview(
         val title: String,
         val subtitle: String,
-        val createdAt: LocalDateTime
+        val createdAt: DateTime
 )

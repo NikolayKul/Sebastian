@@ -2,12 +2,12 @@ package io.seekord.sebastian
 
 import android.app.Activity
 import android.app.Application
-import com.orhanobut.hawk.Hawk
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import io.seekord.sebastian.di.AppInjector
 import io.seekord.sebastian.utils.logger.TimberFactory
+import net.danlew.android.joda.JodaTimeAndroid
 import javax.inject.Inject
 
 /**
@@ -23,7 +23,7 @@ class App : Application(), HasActivityInjector {
         super.onCreate()
         AppInjector.init(this)
         TimberFactory.init()
-        Hawk.init(this).build()
+        JodaTimeAndroid.init(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector

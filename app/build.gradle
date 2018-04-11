@@ -35,7 +35,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
     implementation "ru.terrakok.cicerone:cicerone:$project.version_cicerone"
     implementation "com.jakewharton.timber:timber:$project.version_timber"
-    implementation "com.orhanobut:hawk:$project.version_hawk"
+    implementation "net.danlew:android.joda:$project.version_joda_time"
 
     // data binding
     kapt "com.android.databinding:compiler:$project.version_gradle"
@@ -84,6 +84,7 @@ dependencies {
     testImplementation "junit:junit:$project.version_junit"
     testImplementation "org.mockito:mockito-core:$project.version_mockito"
 }
+
 kapt {
     generateStubs = true
 }
