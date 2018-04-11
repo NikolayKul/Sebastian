@@ -1,25 +1,21 @@
-package io.seekord.sebastian.data.models
-
-import com.tickaroo.tikxml.annotation.Path
-import com.tickaroo.tikxml.annotation.PropertyElement
-import com.tickaroo.tikxml.annotation.Xml
-
 /**
  * @author NikolayKul
  */
 
-@Xml(name = "rss")
+package io.seekord.sebastian.data.models
+
+import com.tickaroo.tikxml.annotation.PropertyElement
+import com.tickaroo.tikxml.annotation.Xml
+
+@Xml(name = "item")
 class RssPreviewDto {
 
-    @Path("channel")
     @PropertyElement
     lateinit var title: String
 
-    @Path("channel")
-    @PropertyElement
+    @PropertyElement(name = "guid")
     lateinit var link: String
 
-    @Path("channel")
     @PropertyElement
     lateinit var description: String
 
