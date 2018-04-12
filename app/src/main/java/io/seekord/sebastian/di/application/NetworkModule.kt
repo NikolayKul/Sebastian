@@ -1,13 +1,13 @@
 package io.seekord.sebastian.di.application
 
 import android.app.Application
-import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
 import io.seekord.sebastian.BuildConfig
 import io.seekord.sebastian.data.network.RssApi
+import io.seekord.sebastian.utils.network.TikXmlFactory
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -64,9 +64,7 @@ class NetworkModule {
 
     @Provides
     @IntoSet
-    fun converterFactoryXml(): Converter.Factory = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .build()
+    fun converterFactoryXml(): Converter.Factory = TikXmlFactory.create()
             .let { TikXmlConverterFactory.create(it) }
 
     // interceptors
