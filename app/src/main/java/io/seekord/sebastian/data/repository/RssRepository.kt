@@ -1,8 +1,8 @@
 package io.seekord.sebastian.data.repository
 
 import dagger.Reusable
-import io.seekord.sebastian.data.models.RssInterestingDto
 import io.seekord.sebastian.data.network.RssApi
+import io.seekord.sebastian.domain.rss.models.RssPreview
 import io.seekord.sebastian.utils.network.await
 import javax.inject.Inject
 
@@ -15,6 +15,10 @@ class RssRepository @Inject constructor(
         private val rssApi: RssApi
 ) {
 
-    suspend fun getRssInteresting(): RssInterestingDto = rssApi.getRssInteresting().await()
+    suspend fun getRssPreviews(): List<RssPreview> {
+        val interesting = rssApi.getRssInteresting().await()
+        return interesting.previews
+                .map { RssPreview(it.title, it.description, it.date) }
+    }
 
 }

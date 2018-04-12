@@ -9,5 +9,5 @@ import org.joda.time.DateTime
 data class RssPreview(
         val title: String,
         val subtitle: String,
-        val createdAt: DateTime
+        val date: DateTime
 )

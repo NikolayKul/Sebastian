@@ -14,17 +14,17 @@ class RssPreviewDto {
     @PropertyElement
     lateinit var title: String
 
-    @PropertyElement(name = "pubDate")
-    lateinit var date: DateTime
-
     @PropertyElement
     lateinit var description: String
+
+    @PropertyElement(name = "pubDate")
+    lateinit var date: DateTime
 
     @PropertyElement(name = "guid")
     lateinit var link: String
 
     override fun toString(): String {
-        return "RssPreviewDto(title='$title', date=$date, description='$description', link='$link')"
+        return "RssPreviewDto(title='$title', description='$description', date=$date, link='$link')"
     }
 
 }

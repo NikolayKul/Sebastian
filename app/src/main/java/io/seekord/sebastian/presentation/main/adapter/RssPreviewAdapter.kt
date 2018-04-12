@@ -32,7 +32,7 @@ class RssPreviewViewItem(private val preview: RssPreview) : CommonViewItem<ItemR
 
     override fun bind(holder: CommonViewHolder<ItemRssPreviewBinding>) {
         holder.binding.apply {
-            tvDate.text = preview.createdAt.toString()
+            tvDate.text = preview.date.toString()
             tvTitle.text = preview.title
             tvSubtitle.text = preview.subtitle
         }
