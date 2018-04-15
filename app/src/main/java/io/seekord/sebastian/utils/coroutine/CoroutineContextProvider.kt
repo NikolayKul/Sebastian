@@ -33,7 +33,7 @@ private interface ContextProvider {
 
 
 private class DefaultContextProvider : ContextProvider {
-    override val UI = kotlinx.coroutines.experimental.android.UI
+    override val UI by lazy { kotlinx.coroutines.experimental.android.UI }
 
     // See: https://github.com/Kotlin/kotlinx.coroutines/issues/79
     // Change later on a real IO Handler Context implementation
