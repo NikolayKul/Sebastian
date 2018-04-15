@@ -14,6 +14,6 @@ class GetRssItemsUseCase @Inject constructor(
         private val repository: RssRepository
 ) {
 
-    suspend fun getPssItems(): List<RssItem> = repository.getRssItems()
+    suspend fun getRssItems(): List<RssItem> = repository.getRssItems()
 
 }

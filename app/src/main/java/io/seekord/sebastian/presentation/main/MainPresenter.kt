@@ -21,7 +21,7 @@ class MainPresenter @Inject constructor(
     fun loadRssPreviews() {
         launch(IO) {
             val items = try {
-                itemsUseCase.getPssItems()
+                itemsUseCase.getRssItems()
             } catch (e: Exception) {
                 viewState.showError(e)
                 return@launch
