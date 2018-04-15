@@ -6,7 +6,7 @@ import org.joda.time.DateTime
  * @author NikolayKul
  */
 
-data class RssPreview(
+data class RssItem(
         val title: String,
         val subtitle: String,
         val date: DateTime

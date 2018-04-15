@@ -1,6 +1,6 @@
 package io.seekord.sebastian.presentation.main
 
-import io.seekord.sebastian.domain.rss.models.RssPreview
+import io.seekord.sebastian.domain.rss.models.RssItem
 import io.seekord.sebastian.presentation.base.ErrorMvpView
 
 /**
@@ -8,5 +8,5 @@ import io.seekord.sebastian.presentation.base.ErrorMvpView
  */
 
 interface MainMvpView : ErrorMvpView {
-    fun showRssPreviews(previews: List<RssPreview>)
+    fun showRssPreviews(items: List<RssItem>)
 }

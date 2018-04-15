@@ -2,7 +2,7 @@ package io.seekord.sebastian.presentation.main.adapter
 
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ItemRssPreviewBinding
-import io.seekord.sebastian.domain.rss.models.RssPreview
+import io.seekord.sebastian.domain.rss.models.RssItem
 import io.seekord.sebastian.utils.rv.CommonAdapter
 import io.seekord.sebastian.utils.rv.CommonViewHolder
 import io.seekord.sebastian.utils.rv.CommonViewItem
@@ -14,11 +14,11 @@ import io.seekord.sebastian.utils.rv.CommonViewItem
 
 class RssPreviewAdapter : CommonAdapter<ItemRssPreviewBinding, RssPreviewViewItem>() {
 
-    fun setItems(previews: List<RssPreview>) {
-        previews.map(::RssPreviewViewItem)
+    fun setItems(items: List<RssItem>) {
+        items.map(::RssPreviewViewItem)
                 .let {
-                    items.clear()
-                    items += it
+                    this.items.clear()
+                    this.items += it
                     notifyDataSetChanged()
                 }
     }
@@ -26,15 +26,15 @@ class RssPreviewAdapter : CommonAdapter<ItemRssPreviewBinding, RssPreviewViewIte
 }
 
 
-class RssPreviewViewItem(private val preview: RssPreview) : CommonViewItem<ItemRssPreviewBinding> {
+class RssPreviewViewItem(private val item: RssItem) : CommonViewItem<ItemRssPreviewBinding> {
 
     override val layoutId = R.layout.item_rss_preview
 
     override fun bind(holder: CommonViewHolder<ItemRssPreviewBinding>) {
         holder.binding.apply {
-            tvDate.text = preview.date.toString()
-            tvTitle.text = preview.title
-            tvSubtitle.text = preview.subtitle
+            tvDate.text = item.date.toString()
+            tvTitle.text = item.title
+            tvSubtitle.text = item.subtitle
         }
     }
 }

@@ -2,7 +2,7 @@ package io.seekord.sebastian.domain.rss
 
 import dagger.Reusable
 import io.seekord.sebastian.data.repository.RssRepository
-import io.seekord.sebastian.domain.rss.models.RssPreview
+import io.seekord.sebastian.domain.rss.models.RssItem
 import javax.inject.Inject
 
 /**
@@ -10,10 +10,10 @@ import javax.inject.Inject
  */
 
 @Reusable
-class GetRssPreviewsUseCase @Inject constructor(
+class GetRssItemsUseCase @Inject constructor(
         private val repository: RssRepository
 ) {
 
-    suspend fun getPssPreviews(): List<RssPreview> = repository.getRssPreviews()
+    suspend fun getPssItems(): List<RssItem> = repository.getRssItems()
 
 }

@@ -8,7 +8,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityMainBinding
-import io.seekord.sebastian.domain.rss.models.RssPreview
+import io.seekord.sebastian.domain.rss.models.RssItem
 import io.seekord.sebastian.presentation.base.BaseActivity
 import io.seekord.sebastian.presentation.main.adapter.RssPreviewAdapter
 import javax.inject.Inject
@@ -36,8 +36,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
 
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun showRssPreviews(previews: List<RssPreview>) {
-        adapter.setItems(previews)
+    override fun showRssPreviews(items: List<RssItem>) {
+        adapter.setItems(items)
     }
 
     private fun initListeners() {

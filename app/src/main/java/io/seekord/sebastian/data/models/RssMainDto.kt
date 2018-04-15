@@ -9,14 +9,14 @@ import com.tickaroo.tikxml.annotation.Xml
  */
 
 @Xml(name = "rss")
-class RssInterestingDto {
+class RssMainDto {
 
     @Path("channel")
     @Element
-    lateinit var previews: List<RssPreviewDto>
+    lateinit var items: List<RssItemDto>
 
     override fun toString(): String {
-        return "RssInterestingDto(previews=$previews)"
+        return "RssMainDto(items=$items)"
     }
 
 }

@@ -9,7 +9,7 @@ import org.joda.time.DateTime
  */
 
 @Xml(name = "item")
-class RssPreviewDto {
+class RssItemDto {
 
     @PropertyElement
     lateinit var title: String
@@ -24,7 +24,7 @@ class RssPreviewDto {
     lateinit var link: String
 
     override fun toString(): String {
-        return "RssPreviewDto(title='$title', description='$description', date=$date, link='$link')"
+        return "RssItemDto(title='$title', description='$description', date=$date, link='$link')"
     }
 
 }
