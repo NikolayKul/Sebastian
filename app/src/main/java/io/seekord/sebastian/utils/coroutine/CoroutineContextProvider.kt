@@ -4,8 +4,8 @@ package io.seekord.sebastian.utils.coroutine
 
 import android.support.annotation.VisibleForTesting
 import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.Unconfined
 import kotlin.coroutines.experimental.CoroutineContext
-import kotlin.coroutines.experimental.EmptyCoroutineContext
 
 /**
  * @author NikolayKul
@@ -44,7 +44,7 @@ private class DefaultContextProvider : ContextProvider {
 
 
 private class MockContextProvider : ContextProvider {
-    override val UI = EmptyCoroutineContext
-    override val IO = EmptyCoroutineContext
-    override val COMPUTATION = EmptyCoroutineContext
+    override val UI = Unconfined
+    override val IO = Unconfined
+    override val COMPUTATION = Unconfined
 }
