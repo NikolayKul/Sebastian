@@ -3,10 +3,8 @@ package io.seekord.sebastian.presentation.main
 import com.arellomobile.mvp.InjectViewState
 import io.seekord.sebastian.domain.rss.GetRssItemsUseCase
 import io.seekord.sebastian.presentation.base.BasePresenter
-import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.IO
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -19,7 +17,7 @@ class MainPresenter @Inject constructor(
 ) : BasePresenter<MainMvpView>() {
 
     fun loadRssPreviews() {
-        launch(IO) {
+        launch(UI) {
             val items = try {
                 itemsUseCase.getRssItems()
             } catch (e: Exception) {
@@ -27,8 +25,7 @@ class MainPresenter @Inject constructor(
                 return@launch
             }
 
-            Timber.d("Items: $items")
-            launch(UI) { viewState.showRssPreviews(items) }
+            viewState.showRssPreviews(items)
 
         }.attachToLifecycle()
     }
