@@ -37,9 +37,9 @@ private class DefaultContextProvider : ContextProvider {
 
     // See: https://github.com/Kotlin/kotlinx.coroutines/issues/79
     // Change later on a real IO Handler Context implementation
-    override val IO = CommonPool
+    override val IO by lazy { CommonPool }
 
-    override val COMPUTATION = CommonPool
+    override val COMPUTATION by lazy { CommonPool }
 }
 
 
