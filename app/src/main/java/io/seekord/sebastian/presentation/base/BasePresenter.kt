@@ -28,8 +28,8 @@ abstract class BasePresenter<T : MvpView> : MvpPresenter<T>() {
     }
 
     private fun clearJobs() {
-        jobs.filter { it.isActive }
-                .forEach { it.cancel() }
+        jobs.filter { it.isActive }.forEach { it.cancel() }
+        jobs.clear()
     }
 
 }
