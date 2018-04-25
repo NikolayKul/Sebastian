@@ -13,13 +13,13 @@ import javax.inject.Inject
 
 @InjectViewState
 class MainPresenter @Inject constructor(
-        private val itemsUseCase: GetRssItemsUseCase
+        private val getRssItemsUseCase: GetRssItemsUseCase
 ) : BasePresenter<MainMvpView>() {
 
     fun loadRssPreviews() {
         launch(UI) {
             val items = try {
-                itemsUseCase.getRssItems()
+                getRssItemsUseCase.execute()
             } catch (e: Exception) {
                 viewState.showError(e)
                 return@launch

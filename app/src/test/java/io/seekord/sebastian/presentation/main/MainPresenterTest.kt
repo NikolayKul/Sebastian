@@ -40,7 +40,7 @@ class MainPresenterTest {
         val items = (0..10).map {
             RssItem("title_$it", "subtitle_$it", DateTime())
         }
-        givenSuspended { itemsUseCase.getRssItems() } willReturn { items }
+        givenSuspended { itemsUseCase.execute() } willReturn { items }
 
         presenter.loadRssPreviews()
 
@@ -50,7 +50,7 @@ class MainPresenterTest {
     @Test
     fun `load rss previews no internet exception`() = runBlocking {
         val exception = NetworkException()
-        givenSuspended { itemsUseCase.getRssItems() } willThrow { exception }
+        givenSuspended { itemsUseCase.execute() } willThrow { exception }
 
         presenter.loadRssPreviews()
 

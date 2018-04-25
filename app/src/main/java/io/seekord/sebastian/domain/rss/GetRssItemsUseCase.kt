@@ -2,6 +2,7 @@ package io.seekord.sebastian.domain.rss
 
 import dagger.Reusable
 import io.seekord.sebastian.data.repository.RssRepository
+import io.seekord.sebastian.domain.UseCaseNoParams
 import io.seekord.sebastian.domain.rss.models.RssItem
 import javax.inject.Inject
 
@@ -12,8 +13,8 @@ import javax.inject.Inject
 @Reusable
 class GetRssItemsUseCase @Inject constructor(
         private val repository: RssRepository
-) {
+) : UseCaseNoParams<List<RssItem>> {
 
-    suspend fun getRssItems(): List<RssItem> = repository.getRssItems()
+    override suspend fun execute() = repository.getRssItems()
 
 }
