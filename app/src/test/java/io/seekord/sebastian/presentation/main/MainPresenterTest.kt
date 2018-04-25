@@ -31,7 +31,7 @@ class MainPresenterTest {
 
     @Before
     fun setUp() {
-        presenter = MainPresenter(itemsUseCase)
+        presenter = MainPresenterImpl(itemsUseCase)
                 .apply { attachView(view) }
     }
 

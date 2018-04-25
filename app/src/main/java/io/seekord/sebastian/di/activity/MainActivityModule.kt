@@ -4,6 +4,8 @@ import dagger.Module
 import dagger.Provides
 import io.seekord.sebastian.presentation.BaseNavigator
 import io.seekord.sebastian.presentation.main.MainActivity
+import io.seekord.sebastian.presentation.main.MainPresenter
+import io.seekord.sebastian.presentation.main.MainPresenterImpl
 import ru.terrakok.cicerone.Navigator
 
 /**
@@ -14,7 +16,9 @@ import ru.terrakok.cicerone.Navigator
 class MainActivityModule {
 
     @Provides
-    @PerActivity
     fun navigator(activity: MainActivity): Navigator = BaseNavigator(activity)
+
+    @Provides
+    fun presenter(presenter: MainPresenterImpl): MainPresenter = presenter
 
 }

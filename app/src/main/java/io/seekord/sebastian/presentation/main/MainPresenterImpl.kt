@@ -2,7 +2,6 @@ package io.seekord.sebastian.presentation.main
 
 import com.arellomobile.mvp.InjectViewState
 import io.seekord.sebastian.domain.rss.GetRssItemsUseCase
-import io.seekord.sebastian.presentation.base.BasePresenter
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
@@ -12,11 +11,11 @@ import javax.inject.Inject
  */
 
 @InjectViewState
-class MainPresenter @Inject constructor(
+class MainPresenterImpl @Inject constructor(
         private val getRssItemsUseCase: GetRssItemsUseCase
-) : BasePresenter<MainMvpView>() {
+) : MainPresenter() {
 
-    fun loadRssPreviews() {
+    override fun loadRssPreviews() {
         launch(UI) {
             val items = try {
                 getRssItemsUseCase.execute()
