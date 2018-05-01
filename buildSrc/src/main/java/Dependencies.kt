@@ -1,5 +1,9 @@
 @file:Suppress("unused")
 
+/*
+    Put everything into a package
+    so we can use nested Objects (e.g. Libs.Core.*)
+ */
 package dependencies
 
 
