@@ -23,12 +23,9 @@ object Versions {
         const val gradle = "3.1.1"
         const val koltin = "1.2.21"
         const val coroutines = "0.22.5"
+        const val rx_java = "2.1.7"
+        const val rx_android = "2.0.1"
         const val dagger = "2.13"
-    }
-
-    object Rx {
-        const val java = "2.1.7"
-        const val android = "2.0.1"
     }
 
     object Network {
@@ -46,16 +43,16 @@ object Versions {
         const val material_edit_text = "2.1.4"
     }
 
-    object Testing {
-        const val junit = "4.12"
-        const val mockito = "2.13.0"
-    }
-
     object Other {
         const val cicerone = "3.0.0"
         const val moxy = "1.5.3"
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
+    }
+
+    object Testing {
+        const val junit = "4.12"
+        const val mockito = "2.13.0"
     }
 
 }
@@ -73,16 +70,14 @@ object Libs {
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
         const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"
 
+        const val rx_java = "io.reactivex.rxjava2:rxjava:${Versions.Core.rx_java}"
+        const val rx_android = "io.reactivex.rxjava2:rxandroid:${Versions.Core.rx_android}"
+
         const val dagger = "com.google.dagger:dagger:${Versions.Core.dagger}"
         const val dagger_android = "com.google.dagger:dagger-android:${Versions.Core.dagger}"
         const val dagger_android_support = "com.google.dagger:dagger-android-support:${Versions.Core.dagger}"
         const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.Core.dagger}"
         const val dagger_compiler_android = "com.google.dagger:dagger-android-processor:${Versions.Core.dagger}"
-    }
-
-    object Rx {
-        const val java = "io.reactivex.rxjava2:rxjava:${Versions.Rx.java}"
-        const val android = "io.reactivex.rxjava2:rxandroid:${Versions.Rx.android}"
     }
 
     object Network {
@@ -109,11 +104,6 @@ object Libs {
         const val material_edit_text = "com.rengwuxian.materialedittext:library:${Versions.Ui.material_edit_text}"
     }
 
-    object Testing {
-        const val junit = "junit:junit:${Versions.Testing.junit}"
-        const val mockito = "org.mockito:mockito-core:${Versions.Testing.mockito}"
-    }
-
     object Other {
         const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.Other.cicerone}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
@@ -122,6 +112,11 @@ object Libs {
         const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
         const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"
         const val moxy_compiler = "com.arello-mobile:moxy-compiler:${Versions.Other.moxy}"
+    }
+
+    object Testing {
+        const val junit = "junit:junit:${Versions.Testing.junit}"
+        const val mockito = "org.mockito:mockito-core:${Versions.Testing.mockito}"
     }
 
 }

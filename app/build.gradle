@@ -45,16 +45,14 @@ dependencies {
     implementation Libs.Core.coroutines
     implementation Libs.Core.coroutines_android
 
+    implementation Libs.Core.rx_java
+    implementation Libs.Core.rx_android
+
     implementation Libs.Core.dagger
     implementation Libs.Core.dagger_android
     implementation Libs.Core.dagger_android_support
     kapt Libs.Core.dagger_compiler
     kapt Libs.Core.dagger_compiler_android
-
-    // rx
-
-    implementation Libs.Rx.java
-    implementation Libs.Rx.android
 
     // network
 
