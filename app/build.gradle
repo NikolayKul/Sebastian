@@ -1,4 +1,7 @@
-import dependencies.*
+import dependencies.ApplicationId
+import dependencies.Libs
+import dependencies.Releases
+import dependencies.Sdk
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -33,55 +36,60 @@ kotlin {
 
 dependencies {
 
-    // other
+    // core
+
     implementation Libs.Core.kotlin_stdlib
-    implementation Libs.Other.cicerone
-    implementation Libs.Other.timber
-    implementation Libs.Other.joda_time
 
     kapt Libs.Core.data_binding
 
-    // xml
-    implementation Libs.Network.tikxml
-    implementation Libs.Network.tikxml_annotations
-    implementation Libs.Network.tikxml_converter
-    kapt Libs.Network.tikxml_compiler
-
-    // http
-    implementation Libs.Network.retrofit
-    implementation Libs.Network.retrofit_converter_scalars
-    implementation Libs.Network.okhttp
-    implementation Libs.Network.okhttp_logging
-
-    // coroutines
     implementation Libs.Core.coroutines
     implementation Libs.Core.coroutines_android
 
-    // rx
-    implementation Libs.Rx.java
-    implementation Libs.Rx.android
-
-    // dagger
     implementation Libs.Core.dagger
     implementation Libs.Core.dagger_android
     implementation Libs.Core.dagger_android_support
     kapt Libs.Core.dagger_compiler
     kapt Libs.Core.dagger_compiler_android
 
-    // moxy
-    implementation Libs.Other.moxy
-    implementation Libs.Other.moxy_appcompat
-    kapt Libs.Other.moxy_compiler
+    // rx
+
+    implementation Libs.Rx.java
+    implementation Libs.Rx.android
+
+    // network
+
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.retrofit_converter_scalars
+    implementation Libs.Network.okhttp
+    implementation Libs.Network.okhttp_logging
+
+    implementation Libs.Network.tikxml
+    implementation Libs.Network.tikxml_annotations
+    implementation Libs.Network.tikxml_converter
+    kapt Libs.Network.tikxml_compiler
 
     // support
+
     implementation Libs.Support.appcompat
     implementation Libs.Support.constraint_layout
     implementation Libs.Support.design
 
     // ui
+
     implementation Libs.Ui.material_edit_text
 
+    // other
+
+    implementation Libs.Other.cicerone
+    implementation Libs.Other.timber
+    implementation Libs.Other.joda_time
+
+    implementation Libs.Other.moxy
+    implementation Libs.Other.moxy_appcompat
+    kapt Libs.Other.moxy_compiler
+
     // testing
+
     testImplementation Libs.Testing.junit
     testImplementation Libs.Testing.mockito
 }
