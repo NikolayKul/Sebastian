@@ -1,14 +1,13 @@
+import dependencies.Libraries
+
 buildscript {
-
-    apply from: 'scripts/dependencies.gradle'
-
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$version_gradle"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
+        classpath Libraries.Core.gradle
+        classpath Libraries.Core.kotlin_plugin
     }
 }
 

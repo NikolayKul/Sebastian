@@ -1,17 +1,19 @@
+import dependencies.*
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion project.sdk_compile
+    compileSdkVersion Sdk.compile
     defaultConfig {
-        applicationId "io.seekord.sebastian"
+        applicationId ApplicationId.id
 
-        minSdkVersion project.sdk_min
-        targetSdkVersion project.sdk_target
+        minSdkVersion Sdk.min
+        targetSdkVersion Sdk.target
 
-        versionCode project.version_code
-        versionName project.version_name
+        versionCode Releases.version_code
+        versionName Releases.version_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -32,57 +34,56 @@ kotlin {
 dependencies {
 
     // other
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
-    implementation "ru.terrakok.cicerone:cicerone:$project.version_cicerone"
-    implementation "com.jakewharton.timber:timber:$project.version_timber"
-    implementation "net.danlew:android.joda:$project.version_joda_time"
+    implementation Libraries.Core.kotlin_stdlib
+    implementation Libraries.Other.cicerone
+    implementation Libraries.Other.timber
+    implementation Libraries.Other.joda_time
 
-    // data binding
-    kapt "com.android.databinding:compiler:$project.version_gradle"
+    kapt Libraries.Core.data_binding
 
     // xml
-    implementation "com.tickaroo.tikxml:annotation:$project.version_tikxml"
-    implementation "com.tickaroo.tikxml:core:$project.version_tikxml"
-    implementation "com.tickaroo.tikxml:retrofit-converter:$project.version_tikxml"
-    kapt "com.tickaroo.tikxml:processor:$project.version_tikxml"
+    implementation Libraries.Network.tikxml
+    implementation Libraries.Network.tikxml_annotations
+    implementation Libraries.Network.tikxml_converter
+    kapt Libraries.Network.tikxml_compiler
 
     // http
-    implementation "com.squareup.retrofit2:retrofit:$project.version_retrofit"
-    implementation "com.squareup.retrofit2:converter-scalars:$project.version_retrofit"
-    implementation "com.squareup.okhttp3:okhttp:$project.version_okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$project.version_okhttp"
+    implementation Libraries.Network.retrofit
+    implementation Libraries.Network.retrofit_converter_scalars
+    implementation Libraries.Network.okhttp
+    implementation Libraries.Network.okhttp_logging
 
     // coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$project.version_coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$project.version_coroutines"
+    implementation Libraries.Core.coroutines
+    implementation Libraries.Core.coroutines_android
 
     // rx
-    implementation "io.reactivex.rxjava2:rxjava:$project.version_rx_java"
-    implementation "io.reactivex.rxjava2:rxandroid:$project.version_rx_android"
+    implementation Libraries.Rx.java
+    implementation Libraries.Rx.android
 
     // dagger
-    implementation "com.google.dagger:dagger:$project.version_dagger"
-    implementation "com.google.dagger:dagger-android:$project.version_dagger"
-    implementation "com.google.dagger:dagger-android-support:$project.version_dagger"
-    kapt "com.google.dagger:dagger-compiler:$project.version_dagger"
-    kapt "com.google.dagger:dagger-android-processor:$project.version_dagger"
+    implementation Libraries.Core.dagger
+    implementation Libraries.Core.dagger_android
+    implementation Libraries.Core.dagger_android_support
+    kapt Libraries.Core.dagger_compiler
+    kapt Libraries.Core.dagger_compiler_android
 
     // moxy
-    implementation "com.arello-mobile:moxy:$project.version_moxy"
-    implementation "com.arello-mobile:moxy-app-compat:$project.version_moxy"
-    kapt "com.arello-mobile:moxy-compiler:$project.version_moxy"
+    implementation Libraries.Other.moxy
+    implementation Libraries.Other.moxy_appcompat
+    kapt Libraries.Other.moxy_compiler
 
     // support
-    implementation "com.android.support:appcompat-v7:$project.version_support"
-    implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
+    implementation Libraries.Support.appcompat
+    implementation Libraries.Support.constraint_layout
+    implementation Libraries.Support.design
 
     // ui
-    implementation "com.android.support:design:$project.version_support"
-    implementation "com.rengwuxian.materialedittext:library:$project.version_material_edit_text"
+    implementation Libraries.Ui.material_edit_text
 
-    // unit test
-    testImplementation "junit:junit:$project.version_junit"
-    testImplementation "org.mockito:mockito-core:$project.version_mockito"
+    // testing
+    testImplementation Libraries.Testing.junit
+    testImplementation Libraries.Testing.mockito
 }
 
 kapt {

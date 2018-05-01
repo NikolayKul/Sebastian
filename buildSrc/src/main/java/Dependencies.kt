@@ -1,3 +1,5 @@
+package dependencies
+
 object ApplicationId {
     val id = "io.seekord.sebastian"
 }
