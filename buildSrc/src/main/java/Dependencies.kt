@@ -29,7 +29,7 @@ object Versions {
 
     object Core {
         const val gradle = "3.1.1"
-        const val koltin = "1.2.21"
+        const val kotlin = "1.2.21"
         const val coroutines = "0.22.5"
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
@@ -73,8 +73,8 @@ object Libs {
 
         const val data_binding = "com.android.databinding:compiler:${Versions.Core.gradle}"
 
-        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.Core.koltin}"
-        const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Core.koltin}"
+        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.Core.kotlin}"
+        const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Core.kotlin}"
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
         const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"
