@@ -2,20 +2,24 @@
 
 package dependencies
 
+
 object ApplicationId {
     const val id = "io.seekord.sebastian"
 }
+
 
 object Releases {
     const val version_code = 1
     const val version_name = "0.0.1"
 }
 
+
 object Sdk {
     const val min = 19
     const val target = 27
     const val compile = 27
 }
+
 
 object Versions {
 
@@ -57,6 +61,7 @@ object Versions {
 
 }
 
+
 object Libs {
 
     object Core {
@@ -95,9 +100,8 @@ object Libs {
 
     object Support {
         const val appcompat = "com.android.support:appcompat-v7:${Versions.Support.support}"
-        const val design = "com.android.support:design:${Versions.Support.support}"
-        //        const val recycler_view = "com.android.support:recyclerview-v7:${Versions.Support.support}"
         const val constraint_layout = "com.android.support.constraint:constraint-layout:${Versions.Support.constraint_layout}"
+        const val design = "com.android.support:design:${Versions.Support.support}"
     }
 
     object Ui {
