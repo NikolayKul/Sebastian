@@ -34,56 +34,56 @@ kotlin {
 dependencies {
 
     // other
-    implementation Libraries.Core.kotlin_stdlib
-    implementation Libraries.Other.cicerone
-    implementation Libraries.Other.timber
-    implementation Libraries.Other.joda_time
+    implementation Libs.Core.kotlin_stdlib
+    implementation Libs.Other.cicerone
+    implementation Libs.Other.timber
+    implementation Libs.Other.joda_time
 
-    kapt Libraries.Core.data_binding
+    kapt Libs.Core.data_binding
 
     // xml
-    implementation Libraries.Network.tikxml
-    implementation Libraries.Network.tikxml_annotations
-    implementation Libraries.Network.tikxml_converter
-    kapt Libraries.Network.tikxml_compiler
+    implementation Libs.Network.tikxml
+    implementation Libs.Network.tikxml_annotations
+    implementation Libs.Network.tikxml_converter
+    kapt Libs.Network.tikxml_compiler
 
     // http
-    implementation Libraries.Network.retrofit
-    implementation Libraries.Network.retrofit_converter_scalars
-    implementation Libraries.Network.okhttp
-    implementation Libraries.Network.okhttp_logging
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.retrofit_converter_scalars
+    implementation Libs.Network.okhttp
+    implementation Libs.Network.okhttp_logging
 
     // coroutines
-    implementation Libraries.Core.coroutines
-    implementation Libraries.Core.coroutines_android
+    implementation Libs.Core.coroutines
+    implementation Libs.Core.coroutines_android
 
     // rx
-    implementation Libraries.Rx.java
-    implementation Libraries.Rx.android
+    implementation Libs.Rx.java
+    implementation Libs.Rx.android
 
     // dagger
-    implementation Libraries.Core.dagger
-    implementation Libraries.Core.dagger_android
-    implementation Libraries.Core.dagger_android_support
-    kapt Libraries.Core.dagger_compiler
-    kapt Libraries.Core.dagger_compiler_android
+    implementation Libs.Core.dagger
+    implementation Libs.Core.dagger_android
+    implementation Libs.Core.dagger_android_support
+    kapt Libs.Core.dagger_compiler
+    kapt Libs.Core.dagger_compiler_android
 
     // moxy
-    implementation Libraries.Other.moxy
-    implementation Libraries.Other.moxy_appcompat
-    kapt Libraries.Other.moxy_compiler
+    implementation Libs.Other.moxy
+    implementation Libs.Other.moxy_appcompat
+    kapt Libs.Other.moxy_compiler
 
     // support
-    implementation Libraries.Support.appcompat
-    implementation Libraries.Support.constraint_layout
-    implementation Libraries.Support.design
+    implementation Libs.Support.appcompat
+    implementation Libs.Support.constraint_layout
+    implementation Libs.Support.design
 
     // ui
-    implementation Libraries.Ui.material_edit_text
+    implementation Libs.Ui.material_edit_text
 
     // testing
-    testImplementation Libraries.Testing.junit
-    testImplementation Libraries.Testing.mockito
+    testImplementation Libs.Testing.junit
+    testImplementation Libs.Testing.mockito
 }
 
 kapt {

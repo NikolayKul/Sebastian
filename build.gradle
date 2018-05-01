@@ -1,4 +1,4 @@
-import dependencies.Libraries
+import dependencies.Libs
 
 buildscript {
     repositories {
@@ -6,8 +6,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath Libraries.Core.gradle
-        classpath Libraries.Core.kotlin_plugin
+        classpath Libs.Core.gradle
+        classpath Libs.Core.kotlin_plugin
     }
 }
 

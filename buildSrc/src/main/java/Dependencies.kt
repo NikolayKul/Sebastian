@@ -58,7 +58,7 @@ object Versions {
 
 }
 
-object Libraries {
+object Libs {
 
     object Core {
         const val gradle = "com.android.tools.build:gradle:${Versions.Core.gradle}"
