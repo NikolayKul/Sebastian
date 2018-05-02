@@ -34,6 +34,7 @@ object Versions {
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
         const val dagger = "2.13"
+        const val room = "1.1.0-beta3"
     }
 
     object Network {
@@ -87,6 +88,10 @@ object Libs {
         const val dagger_android_support = "com.google.dagger:dagger-android-support:${Versions.Core.dagger}"
         const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.Core.dagger}"
         const val dagger_compiler_android = "com.google.dagger:dagger-android-processor:${Versions.Core.dagger}"
+
+        const val room_runtime = "android.arch.persistence.room:runtime:${Versions.Core.room}"
+        const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"
+        const val room_rx = "android.arch.persistence.room:rxjava2:${Versions.Core.room}"
     }
 
     object Network {

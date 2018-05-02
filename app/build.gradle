@@ -54,6 +54,10 @@ dependencies {
     kapt Libs.Core.dagger_compiler
     kapt Libs.Core.dagger_compiler_android
 
+    implementation Libs.Core.room_runtime
+    implementation Libs.Core.room_rx
+    kapt Libs.Core.room_compiler
+
     // network
 
     implementation Libs.Network.retrofit
