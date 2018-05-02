@@ -1,6 +1,6 @@
 package io.seekord.sebastian.data.network
 
-import io.seekord.sebastian.data.models.RssMainDto
+import io.seekord.sebastian.data.network.models.RssMainDto
 import retrofit2.Call
 import retrofit2.http.GET
 
