@@ -29,7 +29,7 @@ object Versions {
 
     object Core {
         const val gradle = "3.1.1"
-        const val kotlin = "1.2.21"
+        const val kotlin = "1.2.41"
         const val coroutines = "0.22.5"
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
