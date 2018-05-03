@@ -74,7 +74,7 @@ object Libs {
 
         const val data_binding = "com.android.databinding:compiler:${Versions.Core.gradle}"
 
-        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.Core.kotlin}"
+        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Core.kotlin}"
         const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Core.kotlin}"
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
