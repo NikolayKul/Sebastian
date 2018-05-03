@@ -6,7 +6,7 @@ import io.seekord.sebastian.data.db.daos.RssItemDao
 import io.seekord.sebastian.data.db.models.RssItemEntity
 
 @Database(entities = [RssItemEntity::class], version = 1)
-abstract class SebastianDataBase : RoomDatabase() {
+abstract class SebastianDatabase : RoomDatabase() {
 
     abstract fun rssItemDao(): RssItemDao
 
