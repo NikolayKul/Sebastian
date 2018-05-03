@@ -34,7 +34,7 @@ object Versions {
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
         const val dagger = "2.13"
-        const val room = "1.1.0-beta3"
+        const val room = "1.1.0-rc1"
     }
 
     object Network {
