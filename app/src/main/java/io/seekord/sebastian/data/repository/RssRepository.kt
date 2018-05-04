@@ -2,6 +2,7 @@ package io.seekord.sebastian.data.repository
 
 import dagger.Reusable
 import io.seekord.sebastian.data.network.RssApi
+import io.seekord.sebastian.domain.channel.models.RssChannel
 import io.seekord.sebastian.domain.rss.models.RssItem
 import io.seekord.sebastian.utils.network.await
 import javax.inject.Inject
@@ -19,6 +20,11 @@ class RssRepository @Inject constructor(
         val mainDto = rssApi.getRssMain().await()
         return mainDto.items
                 .map { RssItem(it.title, it.description, it.date) }
+    }
+
+    suspend fun getRssChannel(): RssChannel {
+        val channelDto = rssApi.getChannel().await()
+        return RssChannel(channelDto.title, channelDto.link, channelDto.description)
     }
 
 }
