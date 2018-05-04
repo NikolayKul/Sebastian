@@ -1,9 +1,9 @@
-package io.seekord.sebastian.data.db.daos
+package io.seekord.sebastian.data.db.rss
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import io.seekord.sebastian.data.db.models.RssItemEntity
+import io.seekord.sebastian.data.db.rss.models.RssItemEntity
 
 @Dao
 interface RssItemDao {
