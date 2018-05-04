@@ -17,8 +17,8 @@ class RssChannelToDtoMapper @Inject constructor() : Mapper<RssChannel, RssChanne
 @Reusable
 class RssChannelFromDtoMapper @Inject constructor() : Mapper<RssChannelDto, RssChannel> {
     override fun map(input: RssChannelDto) = RssChannel(
-            title = input.title,
-            link = input.link,
-            description = input.description
+            title = input.title.orEmpty(),
+            link = input.link.orEmpty(),
+            description = input.description.orEmpty()
     )
 }

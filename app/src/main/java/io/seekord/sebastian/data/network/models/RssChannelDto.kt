@@ -4,9 +4,9 @@ import com.tickaroo.tikxml.annotation.Xml
 
 @Xml(name = "rss")
 class RssChannelDto(
-        var title: String,
-        var link: String,
-        var description: String
+        var title: String? = null,
+        var link: String? = null,
+        var description: String? = null
 ) {
 
     override fun toString(): String {
