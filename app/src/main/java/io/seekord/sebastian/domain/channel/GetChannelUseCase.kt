@@ -8,11 +8,11 @@ import javax.inject.Inject
 
 @Reusable
 class GetChannelUseCase @Inject constructor(
-        private val rssRepository: RssRepository
+        private val repository: RssRepository
 ) : UseCaseNoParams<RssChannel> {
 
     override suspend fun execute(): RssChannel {
-        return rssRepository.getRssChannel()
+        return repository.getRssChannel()
     }
 
 }
