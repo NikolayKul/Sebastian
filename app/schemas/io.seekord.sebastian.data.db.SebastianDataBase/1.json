@@ -2,15 +2,59 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e478409b9cf3b61f7852164efb4a4f51",
+    "identityHash": "19c5bc6ab44e20ea6d20b25e909b086e",
     "entities": [
       {
-        "tableName": "RssItemEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `date` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "tableName": "rss_channels",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `link` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "link",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "rss_feeds",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `channel_id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `date` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`channel_id`) REFERENCES `rss_channels`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "channelId",
+            "columnName": "channel_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -30,7 +74,7 @@
             "fieldPath": "date",
             "columnName": "date",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -40,12 +84,24 @@
           "autoGenerate": false
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "rss_channels",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "channel_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e478409b9cf3b61f7852164efb4a4f51\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"19c5bc6ab44e20ea6d20b25e909b086e\")"
     ]
   }
 }
