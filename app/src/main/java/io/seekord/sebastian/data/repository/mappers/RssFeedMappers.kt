@@ -15,6 +15,7 @@ class RssFeedToDtoMapper @Inject constructor() : Mapper<RssFeed, RssFeedDto> {
     )
 }
 
+
 @Reusable
 class RssFeedFromDtoMapper @Inject constructor() : Mapper<RssFeedDto, RssFeed> {
     override fun map(input: RssFeedDto) = RssFeed(
