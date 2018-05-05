@@ -3,6 +3,7 @@ package io.seekord.sebastian.data.repository.rss.mappers
 import dagger.Reusable
 import io.seekord.sebastian.data.network.rss.models.RssChannelDto
 import io.seekord.sebastian.domain.rss.models.RssChannel
+import io.seekord.sebastian.utils.common.Mapper
 import javax.inject.Inject
 
 @Reusable
