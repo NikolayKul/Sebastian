@@ -1,4 +1,4 @@
-package io.seekord.sebastian.utils.logger
+package io.seekord.sebastian.utils.common
 
 import io.seekord.sebastian.BuildConfig
 import timber.log.Timber
@@ -9,7 +9,7 @@ import timber.log.Timber
 
 object TimberFactory {
     fun init() {
-        // TODO: add Crashlytics Tree
+        // we can add Crashlytics/Analytics/etc Trees
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

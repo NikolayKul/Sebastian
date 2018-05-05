@@ -6,7 +6,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import io.seekord.sebastian.di.AppInjector
-import io.seekord.sebastian.utils.logger.TimberFactory
+import io.seekord.sebastian.utils.common.TimberFactory
 import net.danlew.android.joda.JodaTimeAndroid
 import javax.inject.Inject
 

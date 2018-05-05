@@ -1,6 +1,6 @@
 package io.seekord.sebastian.utils.rules
 
-import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider
+import io.seekord.sebastian.utils.common.CoroutineContextProvider
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement

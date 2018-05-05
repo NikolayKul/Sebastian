@@ -1,6 +1,6 @@
 @file:Suppress("PropertyName")
 
-package io.seekord.sebastian.utils.coroutine
+package io.seekord.sebastian.utils.common
 
 import android.support.annotation.VisibleForTesting
 import kotlinx.coroutines.experimental.CommonPool
