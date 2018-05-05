@@ -11,8 +11,6 @@ class GetChannelUseCase @Inject constructor(
         private val repository: RssRepository
 ) : UseCaseNoParams<RssChannel> {
 
-    override suspend fun execute(): RssChannel {
-        return repository.getRssChannel()
-    }
+    override suspend fun execute() = repository.getRssChannel()
 
 }

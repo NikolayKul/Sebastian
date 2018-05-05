@@ -19,6 +19,7 @@ class RssChannelFromDtoMapper @Inject constructor() : Mapper<RssChannelDto, RssC
     override fun map(input: RssChannelDto) = RssChannel(
             title = input.title.orEmpty(),
             link = input.link.orEmpty(),
-            description = input.description.orEmpty()
+            description = input.description.orEmpty(),
+            feeds = emptyList()
     )
 }
