@@ -1,7 +1,7 @@
 package io.seekord.sebastian.presentation.main
 
 import com.arellomobile.mvp.InjectViewState
-import io.seekord.sebastian.domain.channel.GetChannelUseCase
+import io.seekord.sebastian.domain.rss.GetChannelUseCase
 import io.seekord.sebastian.utils.coroutine.CoroutineContextProvider.UI
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject

@@ -1,8 +1,8 @@
-package io.seekord.sebastian.data.repository.mappers
+package io.seekord.sebastian.data.repository.rss.mappers
 
 import dagger.Reusable
-import io.seekord.sebastian.data.network.models.RssFeedDto
-import io.seekord.sebastian.domain.channel.models.RssFeed
+import io.seekord.sebastian.data.network.rss.models.RssFeedDto
+import io.seekord.sebastian.domain.rss.models.RssFeed
 import javax.inject.Inject
 
 @Reusable

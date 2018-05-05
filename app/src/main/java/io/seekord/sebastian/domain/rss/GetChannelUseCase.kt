@@ -1,9 +1,9 @@
-package io.seekord.sebastian.domain.channel
+package io.seekord.sebastian.domain.rss
 
 import dagger.Reusable
-import io.seekord.sebastian.data.repository.RssRepository
+import io.seekord.sebastian.data.repository.rss.RssRepository
 import io.seekord.sebastian.domain.UseCaseNoParams
-import io.seekord.sebastian.domain.channel.models.RssChannel
+import io.seekord.sebastian.domain.rss.models.RssChannel
 import javax.inject.Inject
 
 @Reusable

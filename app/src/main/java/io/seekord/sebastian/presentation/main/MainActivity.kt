@@ -3,11 +3,12 @@ package io.seekord.sebastian.presentation.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityMainBinding
-import io.seekord.sebastian.domain.channel.models.RssFeed
+import io.seekord.sebastian.domain.rss.models.RssFeed
 import io.seekord.sebastian.presentation.base.BaseActivity
 import io.seekord.sebastian.presentation.main.adapter.RssPreviewAdapter
 import javax.inject.Inject

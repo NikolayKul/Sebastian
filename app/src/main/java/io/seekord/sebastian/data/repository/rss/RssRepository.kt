@@ -1,9 +1,9 @@
-package io.seekord.sebastian.data.repository
+package io.seekord.sebastian.data.repository.rss
 
 import dagger.Reusable
-import io.seekord.sebastian.data.network.RssApi
-import io.seekord.sebastian.data.repository.mappers.RssChannelFromDtoMapper
-import io.seekord.sebastian.domain.channel.models.RssChannel
+import io.seekord.sebastian.data.network.rss.RssApi
+import io.seekord.sebastian.data.repository.rss.mappers.RssChannelFromDtoMapper
+import io.seekord.sebastian.domain.rss.models.RssChannel
 import io.seekord.sebastian.utils.network.await
 import javax.inject.Inject
 

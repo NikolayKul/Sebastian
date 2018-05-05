@@ -2,7 +2,7 @@ package io.seekord.sebastian.presentation.main.adapter
 
 import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ItemRssPreviewBinding
-import io.seekord.sebastian.domain.channel.models.RssFeed
+import io.seekord.sebastian.domain.rss.models.RssFeed
 import io.seekord.sebastian.utils.rv.BaseViewHolder
 import io.seekord.sebastian.utils.rv.BaseViewItem
 

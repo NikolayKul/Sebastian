@@ -1,4 +1,4 @@
-package io.seekord.sebastian.data.network.models
+package io.seekord.sebastian.data.network.rss.models
 
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.Path

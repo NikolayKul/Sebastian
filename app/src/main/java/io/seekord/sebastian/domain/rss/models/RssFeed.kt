@@ -1,4 +1,4 @@
-package io.seekord.sebastian.domain.channel.models
+package io.seekord.sebastian.domain.rss.models
 
 import org.joda.time.DateTime
 

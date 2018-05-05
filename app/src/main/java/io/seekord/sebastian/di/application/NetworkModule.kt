@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
 import io.seekord.sebastian.BuildConfig
-import io.seekord.sebastian.data.network.RssApi
+import io.seekord.sebastian.data.network.rss.RssApi
 import io.seekord.sebastian.utils.network.TikXmlFactory
 import okhttp3.Cache
 import okhttp3.Interceptor

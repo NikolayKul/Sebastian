@@ -1,7 +1,7 @@
-package io.seekord.sebastian.domain.channel
+package io.seekord.sebastian.domain.rss
 
-import io.seekord.sebastian.data.repository.RssRepository
-import io.seekord.sebastian.domain.channel.models.RssChannel
+import io.seekord.sebastian.data.repository.rss.RssRepository
+import io.seekord.sebastian.domain.rss.models.RssChannel
 import io.seekord.sebastian.utils.mockito.givenSuspended
 import io.seekord.sebastian.utils.mockito.willReturn
 import kotlinx.coroutines.experimental.runBlocking

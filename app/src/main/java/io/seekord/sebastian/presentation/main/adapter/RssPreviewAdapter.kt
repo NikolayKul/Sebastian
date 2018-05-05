@@ -1,6 +1,6 @@
 package io.seekord.sebastian.presentation.main.adapter
 
-import io.seekord.sebastian.domain.channel.models.RssFeed
+import io.seekord.sebastian.domain.rss.models.RssFeed
 import io.seekord.sebastian.utils.rv.BaseAdapter
 
 /**

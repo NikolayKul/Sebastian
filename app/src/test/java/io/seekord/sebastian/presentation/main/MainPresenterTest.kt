@@ -1,9 +1,9 @@
 package io.seekord.sebastian.presentation.main
 
 import io.seekord.sebastian.domain.NetworkException
-import io.seekord.sebastian.domain.channel.GetChannelUseCase
-import io.seekord.sebastian.domain.channel.models.RssChannel
-import io.seekord.sebastian.domain.channel.models.RssFeed
+import io.seekord.sebastian.domain.rss.GetChannelUseCase
+import io.seekord.sebastian.domain.rss.models.RssChannel
+import io.seekord.sebastian.domain.rss.models.RssFeed
 import io.seekord.sebastian.utils.mockito.givenSuspended
 import io.seekord.sebastian.utils.mockito.willReturn
 import io.seekord.sebastian.utils.mockito.willThrow
