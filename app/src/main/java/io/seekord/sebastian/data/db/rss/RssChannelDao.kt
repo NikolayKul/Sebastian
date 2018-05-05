@@ -3,16 +3,16 @@ package io.seekord.sebastian.data.db.rss
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import io.seekord.sebastian.data.db.rss.models.RssItemEntity
+import io.seekord.sebastian.data.db.rss.models.RssChannelEntity
 
 @Dao
-interface RssItemDao {
+interface RssChannelDao {
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(item: RssItemEntity)
+    fun insertOrUpdate(channel: RssChannelEntity)
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(items: List<RssItemEntity>)
+    fun insertOrUpdate(channels: List<RssChannelEntity>)
 
 
 }
