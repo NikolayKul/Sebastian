@@ -3,10 +3,10 @@ package io.seekord.sebastian.data.db
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
-import io.seekord.sebastian.data.db.rss.RssChannelDao
-import io.seekord.sebastian.data.db.rss.RssFeedDao
-import io.seekord.sebastian.data.db.rss.models.RssChannelEntity
-import io.seekord.sebastian.data.db.rss.models.RssFeedEntity
+import io.seekord.sebastian.data.db.rss.channel.RssChannelDao
+import io.seekord.sebastian.data.db.rss.feed.RssFeedDao
+import io.seekord.sebastian.data.db.rss.channel.RssChannelEntity
+import io.seekord.sebastian.data.db.rss.feed.RssFeedEntity
 
 @Database(
         version = 1,

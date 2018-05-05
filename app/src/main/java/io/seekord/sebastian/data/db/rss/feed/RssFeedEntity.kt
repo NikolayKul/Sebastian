@@ -1,9 +1,10 @@
-package io.seekord.sebastian.data.db.rss.models
+package io.seekord.sebastian.data.db.rss.feed
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.PrimaryKey
+import io.seekord.sebastian.data.db.rss.channel.RssChannelEntity
 import org.joda.time.DateTime
 
 @Entity(
