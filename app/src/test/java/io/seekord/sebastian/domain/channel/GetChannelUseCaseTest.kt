@@ -25,7 +25,7 @@ class GetChannelUseCaseTest {
 
     @Test
     fun `load channel`() = runBlocking {
-        val givenChannel = RssChannel("title", "link", "description")
+        val givenChannel = RssChannel("title", "link", "description", emptyList())
         givenSuspended { repository.getRssChannel() } willReturn { givenChannel }
 
         val resultChannel = useCase.execute()
