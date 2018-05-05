@@ -10,7 +10,7 @@ import io.seekord.sebastian.R
 import io.seekord.sebastian.databinding.ActivityMainBinding
 import io.seekord.sebastian.domain.rss.models.RssFeed
 import io.seekord.sebastian.presentation.base.BaseActivity
-import io.seekord.sebastian.presentation.main.adapter.RssPreviewAdapter
+import io.seekord.sebastian.presentation.main.adapter.MainFeedAdapter
 import javax.inject.Inject
 
 /**
@@ -23,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
     }
 
     @Inject @InjectPresenter lateinit var presenter: MainPresenter
-    private val adapter = RssPreviewAdapter()
+    private val adapter = MainFeedAdapter()
 
     @ProvidePresenter
     fun providePresenter() = presenter
@@ -36,16 +36,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
 
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun showRssPreviews(items: List<RssFeed>) {
-        adapter.setItems(items)
+    override fun showFeeds(feeds: List<RssFeed>) {
+        adapter.setItems(feeds)
     }
 
     private fun initListeners() {
-        binding.fab.setOnClickListener { presenter.loadRssPreviews() }
+        binding.fab.setOnClickListener { presenter.loadFeeds() }
     }
 
     private fun initRecyclerView() {
-        binding.rvPreviews.also {
+        binding.rvFeeds.also {
             it.layoutManager = LinearLayoutManager(this)
             it.adapter = adapter
         }

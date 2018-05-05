@@ -15,7 +15,7 @@ class MainPresenterImpl @Inject constructor(
         private val getChannelUseCase: GetChannelUseCase
 ) : MainPresenter() {
 
-    override fun loadRssPreviews() {
+    override fun loadFeeds() {
         launch(UI) {
             val channel = try {
                 getChannelUseCase.execute()
@@ -24,7 +24,7 @@ class MainPresenterImpl @Inject constructor(
                 return@launch
             }
 
-            viewState.showRssPreviews(channel.feeds)
+            viewState.showFeeds(channel.feeds)
 
         }.attachToLifecycle()
     }

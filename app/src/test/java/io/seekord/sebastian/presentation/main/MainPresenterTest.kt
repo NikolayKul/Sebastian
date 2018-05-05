@@ -41,9 +41,9 @@ class MainPresenterTest {
         val channel = RssChannel("", "", "", feeds)
         givenSuspended { getRssChannelUseCase.execute() } willReturn { channel }
 
-        presenter.loadRssPreviews()
+        presenter.loadFeeds()
 
-        verify(view).showRssPreviews(feeds)
+        verify(view).showFeeds(feeds)
     }
 
     @Test
@@ -51,7 +51,7 @@ class MainPresenterTest {
         val exception = NetworkException()
         givenSuspended { getRssChannelUseCase.execute() } willThrow { exception }
 
-        presenter.loadRssPreviews()
+        presenter.loadFeeds()
 
         verify(view).showError(exception)
     }

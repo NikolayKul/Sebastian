@@ -9,9 +9,10 @@ import io.seekord.sebastian.presentation.base.ErrorMvpView
  */
 
 interface MainMvpView : ErrorMvpView {
-    fun showRssPreviews(items: List<RssFeed>)
+    fun showFeeds(feeds: List<RssFeed>)
 }
 
+
 abstract class MainPresenter : BasePresenter<MainMvpView>() {
-    abstract fun loadRssPreviews()
+    abstract fun loadFeeds()
 }
