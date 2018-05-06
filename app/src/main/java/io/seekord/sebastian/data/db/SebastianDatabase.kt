@@ -14,8 +14,8 @@ import io.seekord.sebastian.data.db.rss.feed.RssFeedEntity
 @TypeConverters(Converters::class)
 abstract class SebastianDatabase : RoomDatabase() {
 
-    abstract fun rssChannelDao(): RssChannelDao
+    abstract fun channelDao(): RssChannelDao
 
-    abstract fun rssFeedDao(): RssFeedDao
+    abstract fun feedDao(): RssFeedDao
 
 }

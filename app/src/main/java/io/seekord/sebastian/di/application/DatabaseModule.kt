@@ -16,9 +16,15 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideSebastianDatabase(application: Application): SebastianDatabase {
+    fun sebastianDatabase(application: Application): SebastianDatabase {
         return Room.databaseBuilder(application, SebastianDatabase::class.java, DATABASE_NAME)
                 .build()
     }
+
+    @Provides
+    fun channelDao(database: SebastianDatabase) = database.channelDao()
+
+    @Provides
+    fun feedDao(database: SebastianDatabase) = database.feedDao()
 
 }
