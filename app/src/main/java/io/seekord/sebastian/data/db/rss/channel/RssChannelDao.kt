@@ -9,9 +9,9 @@ import io.seekord.sebastian.data.db.rss.channel.RssChannelEntity
 interface RssChannelDao {
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(channel: RssChannelEntity)
+    fun insert(channel: RssChannelEntity)
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(channels: List<RssChannelEntity>)
+    fun insert(channels: List<RssChannelEntity>)
 
 }

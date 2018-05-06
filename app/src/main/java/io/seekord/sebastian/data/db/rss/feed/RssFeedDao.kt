@@ -9,9 +9,9 @@ import io.seekord.sebastian.data.db.rss.feed.RssFeedEntity
 interface RssFeedDao {
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(feed: RssFeedEntity)
+    fun insert(feed: RssFeedEntity)
 
     @Insert(onConflict = REPLACE)
-    fun insertOrUpdate(feeds: List<RssFeedEntity>)
+    fun insert(feeds: List<RssFeedEntity>)
 
 }
