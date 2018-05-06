@@ -21,15 +21,38 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
-/**
- * @author NikolayKul
- */
-
-
 private const val GEEKTIMES_BASE_URL = "https://geektimes.ru/rss/"
 private const val CACHE_MAX_SIZE = 1024 * 1024 * 10L // 10 MB
 
 
+/**
+ * Restrict Kotlin to generate an invariant [Set] method argument for Java.
+ *
+ * By default Kotlin generates a covariant [Collection] for method arguments that are used from Java
+ * but Dagger looks for an invariant one.
+ */
+private typealias InvariantSet<T> = Set<@JvmSuppressWildcards T>
+
+
+/**
+ * Qualifier for [OkHttpClient.interceptors]
+ */
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+private annotation class AppInterceptor
+
+
+/**
+ * Qualifier for [OkHttpClient.networkInterceptors]
+ */
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+private annotation class NetworkInterceptor
+
+
+/**
+ * Module that provides an [RssApi] and it's dependencies
+ */
 @Module
 class NetworkModule {
 
@@ -39,7 +62,7 @@ class NetworkModule {
 
     @Provides
     fun retrofit(client: OkHttpClient,
-                 converterFactories: Set<@JvmSuppressWildcards Converter.Factory>): Retrofit {
+                 converterFactories: InvariantSet<Converter.Factory>): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(GEEKTIMES_BASE_URL)
                 .client(client)
@@ -49,8 +72,8 @@ class NetworkModule {
 
     @Provides
     fun client(cache: Cache,
-               @AppInterceptor appInterceptors: Set<@JvmSuppressWildcards Interceptor>,
-               @NetworkInterceptor networkInterceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
+               @AppInterceptor appInterceptors: InvariantSet<Interceptor>,
+               @NetworkInterceptor networkInterceptors: InvariantSet<Interceptor>): OkHttpClient {
         return OkHttpClient.Builder()
                 .cache(cache)
                 .apply { interceptors().addAll(appInterceptors) }
@@ -96,11 +119,3 @@ class NetworkModule {
     fun interceptorStetho(): Interceptor = StethoInterceptor()
 
 }
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class AppInterceptor
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class NetworkInterceptor
