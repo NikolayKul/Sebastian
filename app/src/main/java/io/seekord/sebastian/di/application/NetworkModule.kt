@@ -1,6 +1,7 @@
 package io.seekord.sebastian.di.application
 
 import android.app.Application
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -16,6 +17,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import timber.log.Timber
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
@@ -46,10 +48,13 @@ class NetworkModule {
     }
 
     @Provides
-    fun client(cache: Cache, interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
+    fun client(cache: Cache,
+               @AppInterceptor appInterceptors: Set<@JvmSuppressWildcards Interceptor>,
+               @NetworkInterceptor networkInterceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
         return OkHttpClient.Builder()
                 .cache(cache)
-                .apply { interceptors().addAll(interceptors) }
+                .apply { interceptors().addAll(appInterceptors) }
+                .apply { networkInterceptors().addAll(networkInterceptors) }
                 .build()
     }
 
@@ -67,10 +72,11 @@ class NetworkModule {
     fun converterFactoryXml(): Converter.Factory = TikXmlFactory.create()
             .let { TikXmlConverterFactory.create(it) }
 
-    // interceptors
+    // app interceptors
 
     @Provides
     @IntoSet
+    @AppInterceptor
     fun interceptorLogging(): Interceptor {
         val level = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
@@ -82,4 +88,19 @@ class NetworkModule {
                 .setLevel(level)
     }
 
+    // network interceptors
+
+    @Provides
+    @IntoSet
+    @NetworkInterceptor
+    fun interceptorStetho(): Interceptor = StethoInterceptor()
+
 }
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class AppInterceptor
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class NetworkInterceptor

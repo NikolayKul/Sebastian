@@ -93,6 +93,10 @@ dependencies {
     implementation Libs.Other.timber
     implementation Libs.Other.joda_time
 
+    debugImplementation Libs.Other.stetho_debug
+    debugImplementation Libs.Other.stetho_debug_okhttp
+    releaseImplementation Libs.Other.stetho_release
+
     implementation Libs.Other.moxy
     implementation Libs.Other.moxy_appcompat
     kapt Libs.Other.moxy_compiler

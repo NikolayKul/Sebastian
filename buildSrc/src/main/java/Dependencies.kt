@@ -57,6 +57,9 @@ object Versions {
         const val moxy = "1.5.3"
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
+
+        const val stetho_debug = "1.5.0"
+        const val stetho_release = "1.1"
     }
 
     object Testing {
@@ -121,6 +124,10 @@ object Libs {
         const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.Other.cicerone}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
+
+        const val stetho_debug = "com.facebook.stetho:stetho:${Versions.Other.stetho_debug}"
+        const val stetho_debug_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Other.stetho_debug}"
+        const val stetho_release = "net.igenius:stetho-no-op:${Versions.Other.stetho_release}"
 
         const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
         const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"

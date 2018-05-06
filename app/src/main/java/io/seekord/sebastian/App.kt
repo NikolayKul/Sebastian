@@ -2,6 +2,7 @@ package io.seekord.sebastian
 
 import android.app.Activity
 import android.app.Application
+import com.facebook.stetho.Stetho
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -24,6 +25,7 @@ class App : Application(), HasActivityInjector {
         AppInjector.init(this)
         TimberFactory.init()
         JodaTimeAndroid.init(this)
+        Stetho.initializeWithDefaults(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
