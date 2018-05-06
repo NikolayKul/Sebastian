@@ -1,4 +1,4 @@
-package io.seekord.sebastian.data.repository.rss.mappers
+package io.seekord.sebastian.data.store.rss.remote.mappers
 
 import dagger.Reusable
 import io.seekord.sebastian.data.network.rss.models.RssFeedDto
