@@ -8,7 +8,7 @@ package dependencies
 
 
 object ApplicationId {
-    const val id = "io.seekord.sebastian"
+    const val id = "com.nikolaykul.sebastian"
 }
 
 
