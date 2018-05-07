@@ -20,6 +20,12 @@ object AndroidPlugin {
 }
 
 
+object BuildPlugins {
+    const val gradle = "com.android.tools.build:gradle:${Versions.Core.gradle}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Core.kotlin}"
+}
+
+
 object Versions {
 
     object Core {
@@ -68,12 +74,9 @@ object Versions {
 object Libs {
 
     object Core {
-        const val gradle = "com.android.tools.build:gradle:${Versions.Core.gradle}"
+        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Core.kotlin}"
 
         const val data_binding = "com.android.databinding:compiler:${Versions.Core.gradle}"
-
-        const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Core.kotlin}"
-        const val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Core.kotlin}"
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
         const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"

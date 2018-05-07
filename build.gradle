@@ -1,4 +1,4 @@
-import dependencies.Libs
+import dependencies.BuildPlugins
 
 buildscript {
     repositories {
@@ -7,8 +7,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath Libs.Core.gradle
-        classpath Libs.Core.kotlin_plugin
+        classpath BuildPlugins.gradle
+        classpath BuildPlugins.kotlin
     }
 }
 
