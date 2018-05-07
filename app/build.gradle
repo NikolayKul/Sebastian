@@ -106,7 +106,3 @@ dependencies {
     testImplementation Libs.Testing.junit
     testImplementation Libs.Testing.mockito
 }
-
-kapt {
-    generateStubs = true
-}
