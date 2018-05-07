@@ -1,22 +1,22 @@
-import dependencies.ApplicationId
+import dependencies.AndroidPlugin
 import dependencies.Libs
-import dependencies.Releases
-import dependencies.Sdk
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion Sdk.compile
+    compileSdkVersion AndroidPlugin.sdk_version_compile
+    buildToolsVersion AndroidPlugin.build_tools_version
+
     defaultConfig {
-        applicationId ApplicationId.id
+        applicationId AndroidPlugin.application_id
 
-        minSdkVersion Sdk.min
-        targetSdkVersion Sdk.target
+        minSdkVersion AndroidPlugin.sdk_version_min
+        targetSdkVersion AndroidPlugin.sdk_version_target
 
-        versionCode Releases.version_code
-        versionName Releases.version_name
+        versionCode AndroidPlugin.version_code
+        versionName AndroidPlugin.version_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

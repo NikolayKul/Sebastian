@@ -7,21 +7,16 @@
 package dependencies
 
 
-object ApplicationId {
-    const val id = "com.nikolaykul.sebastian"
-}
+object AndroidPlugin {
+    const val sdk_version_min = 19
+    const val sdk_version_target = 27
+    const val sdk_version_compile = 27
 
-
-object Releases {
     const val version_code = 1
     const val version_name = "0.0.1"
-}
 
-
-object Sdk {
-    const val min = 19
-    const val target = 27
-    const val compile = 27
+    const val application_id = "com.nikolaykul.sebastian"
+    const val build_tools_version = "27.0.3"
 }
 
 
