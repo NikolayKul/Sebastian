@@ -21,7 +21,7 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
-private const val GEEKTIMES_BASE_URL = "https://geektimes.ru/rss/"
+private const val GEEKTIMES_BASE_URL = "https://geektimes.com/rss/"
 private const val CACHE_MAX_SIZE = 1024 * 1024 * 10L // 10 MB
 
 
