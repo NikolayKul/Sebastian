@@ -1,6 +1,6 @@
 package com.nikolaykul.sebastian.presentation.main
 
-import com.nikolaykul.sebastian.domain.NetworkException
+import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
@@ -34,7 +34,7 @@ class MainPresenterTest {
     }
 
     @Test
-    fun `load rss previews`() = runBlocking {
+    fun `shows feeds from UseCase`() = runBlocking {
         val feeds = (0..10).map {
             RssFeed("id_$it", "title_$it", "subtitle_$it", DateTime())
         }
@@ -47,8 +47,8 @@ class MainPresenterTest {
     }
 
     @Test
-    fun `load rss previews no internet exception`() = runBlocking {
-        val exception = NetworkException()
+    fun `handles no network exception`() = runBlocking {
+        val exception = NoNetworkException()
         givenSuspended { getRssChannelUseCase.execute() } willThrow { exception }
 
         presenter.loadFeeds()
