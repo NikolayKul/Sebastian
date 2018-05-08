@@ -20,7 +20,7 @@ class RssLocalStore @Inject constructor(
         private val feedToEntityMapper: RssFeedToEntityMapper
 ) {
 
-    suspend fun saveChannel(channel: RssChannel) = withContext(IO) {
+    suspend fun saveChannel(channel: RssChannel): Unit = withContext(IO) {
         channelToEntityMapper.map(channel)
                 .also { channelDao.insert(it) }
         channel.feeds
