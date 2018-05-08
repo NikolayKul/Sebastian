@@ -1,16 +1,32 @@
+import dependencies.AndroidPlugin
+import dependencies.Libs
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion project.sdk_compile
+    compileSdkVersion AndroidPlugin.sdk_version_compile
+    buildToolsVersion AndroidPlugin.build_tools_version
+
     defaultConfig {
-        applicationId "io.seekord.sebastian"
-        minSdkVersion project.sdk_min
-        targetSdkVersion project.sdk_target
-        versionCode project.version_code
-        versionName project.version_name
+        applicationId AndroidPlugin.application_id
+
+        minSdkVersion AndroidPlugin.sdk_version_min
+        targetSdkVersion AndroidPlugin.sdk_version_target
+
+        versionCode AndroidPlugin.version_code
+        versionName AndroidPlugin.version_name
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        // store the Room database's schema
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -18,21 +34,75 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding.enabled true
+}
+
+kotlin {
+    experimental.coroutines = "enable"
 }
 
 dependencies {
 
-    // other
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$project.version_kotlin"
+    // core
+
+    implementation Libs.Core.kotlin_stdlib
+
+    kapt Libs.Core.data_binding
+
+    implementation Libs.Core.coroutines
+    implementation Libs.Core.coroutines_android
+
+    implementation Libs.Core.rx_java
+    implementation Libs.Core.rx_android
+
+    implementation Libs.Core.dagger
+    implementation Libs.Core.dagger_android
+    implementation Libs.Core.dagger_android_support
+    kapt Libs.Core.dagger_compiler
+    kapt Libs.Core.dagger_compiler_android
+
+    implementation Libs.Core.room_runtime
+    implementation Libs.Core.room_rx
+    kapt Libs.Core.room_compiler
+
+    // network
+
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.retrofit_converter_scalars
+    implementation Libs.Network.okhttp
+    implementation Libs.Network.okhttp_logging
+
+    implementation Libs.Network.tikxml
+    implementation Libs.Network.tikxml_annotations
+    implementation Libs.Network.tikxml_converter
+    kapt Libs.Network.tikxml_compiler
 
     // support
-    implementation "com.android.support:appcompat-v7:$project.version_support"
-    implementation "com.android.support.constraint:constraint-layout:$project.version_constraint_layout"
 
-    // design
-    implementation "com.android.support:design:$project.version_support"
-    implementation "com.rengwuxian.materialedittext:library:$project.version_material_edit_text"
+    implementation Libs.Support.appcompat
+    implementation Libs.Support.constraint_layout
+    implementation Libs.Support.design
 
-    // test
-    testImplementation "junit:junit:$project.version_junit"
+    // ui
+
+    implementation Libs.Ui.material_edit_text
+
+    // other
+
+    implementation Libs.Other.cicerone
+    implementation Libs.Other.timber
+    implementation Libs.Other.joda_time
+
+    debugImplementation Libs.Other.stetho_debug
+    debugImplementation Libs.Other.stetho_debug_okhttp
+    releaseImplementation Libs.Other.stetho_release
+
+    implementation Libs.Other.moxy
+    implementation Libs.Other.moxy_appcompat
+    kapt Libs.Other.moxy_compiler
+
+    // testing
+
+    testImplementation Libs.Testing.junit
+    testImplementation Libs.Testing.mockito
 }
