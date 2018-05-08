@@ -11,7 +11,7 @@ import javax.inject.Inject
 @Reusable
 class RssChannelToEntityMapper @Inject constructor() : Mapper<RssChannel, RssChannelEntity> {
     override fun map(input: RssChannel) = RssChannelEntity(
-            id = "id_${input.link}",    // TODO: use a factory to generate `id`
+            id = input.id,
             title = input.title,
             description = input.description,
             link = input.link
@@ -25,6 +25,7 @@ class RssChannelFromEntityMapper @Inject constructor(
 ) : Mapper<Params, RssChannel> {
 
     override fun map(input: Params) = RssChannel(
+            id = input.channelEntity.id,
             title = input.channelEntity.title,
             link = input.channelEntity.link,
             description = input.channelEntity.description,

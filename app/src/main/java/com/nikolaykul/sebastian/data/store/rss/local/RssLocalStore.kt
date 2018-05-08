@@ -22,7 +22,7 @@ class RssLocalStore @Inject constructor(
         channelToEntityMapper.map(channel)
                 .also { channelDao.insert(it) }
         channel.feeds
-                .map { RssFeedToEntityMapper.Params(channelId = "id_${channel.link}", feed = it) }
+                .map { RssFeedToEntityMapper.Params(channelId = channel.id, feed = it) }
                 .map { feedToEntityMapper.map(it) }
                 .let { feedDao.insert(it) }
     }

@@ -38,7 +38,7 @@ class MainPresenterTest {
         val feeds = (0..10).map {
             RssFeed("id_$it", "title_$it", "subtitle_$it", DateTime())
         }
-        val channel = RssChannel("", "", "", feeds)
+        val channel = RssChannel("", "", "", "", feeds)
         givenSuspended { getRssChannelUseCase.execute() } willReturn { channel }
 
         presenter.loadFeeds()
