@@ -1,9 +1,9 @@
 package com.nikolaykul.sebastian.di.application
 
 import android.app.Application
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.nikolaykul.sebastian.BuildConfig
 import com.nikolaykul.sebastian.data.network.rss.RssApi
+import com.nikolaykul.sebastian.utils.debug.StethoUtils
 import com.nikolaykul.sebastian.utils.network.TikXmlFactory
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
@@ -116,6 +116,6 @@ class NetworkModule {
     @Provides
     @IntoSet
     @NetworkInterceptor
-    fun interceptorStetho(): Interceptor = StethoInterceptor()
+    fun interceptorStetho(): Interceptor = StethoUtils.provideInterceptor()
 
 }
