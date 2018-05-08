@@ -17,8 +17,13 @@ class RssRepository @Inject constructor(
 ) {
 
     suspend fun getRssChannel(): RssChannel {
-        return remoteStore.fetchChannel()
-                .also { localStore.saveChannel(it) }
+        val channels = localStore.getAllChannels()
+        return if (channels.isNotEmpty()) {
+            channels[0]
+        } else {
+            remoteStore.fetchChannel()
+                    .also { localStore.saveChannel(it) }
+        }
     }
 
 }
