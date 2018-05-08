@@ -2,9 +2,9 @@ package com.nikolaykul.sebastian
 
 import android.app.Activity
 import android.app.Application
-import com.facebook.stetho.Stetho
 import com.nikolaykul.sebastian.di.AppInjector
 import com.nikolaykul.sebastian.utils.common.TimberFactory
+import com.nikolaykul.sebastian.utils.debug.StethoUtils
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -25,7 +25,7 @@ class App : Application(), HasActivityInjector {
         AppInjector.init(this)
         TimberFactory.init()
         JodaTimeAndroid.init(this)
-        Stetho.initializeWithDefaults(this)
+        StethoUtils.init(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
