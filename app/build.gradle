@@ -104,6 +104,9 @@ dependencies {
     debugImplementation Libs.Debug.stetho
     debugImplementation Libs.Debug.stetho_okhttp
 
+    debugImplementation Libs.Debug.leak_canary_debug
+    releaseImplementation Libs.Debug.leak_canary_release
+
     // test
 
     testImplementation Libs.Test.junit

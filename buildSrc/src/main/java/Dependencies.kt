@@ -62,6 +62,7 @@ object Versions {
 
     object Debug {
         const val stetho = "1.5.0"
+        const val leak_canary = "1.5.4"
     }
 
     object Test {
@@ -132,6 +133,9 @@ object Libs {
     object Debug {
         const val stetho = "com.facebook.stetho:stetho:${Versions.Debug.stetho}"
         const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Debug.stetho}"
+
+        const val leak_canary_debug = "com.squareup.leakcanary:leakcanary-android:${Versions.Debug.leak_canary}"
+        const val leak_canary_release = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.Debug.leak_canary}"
     }
 
     object Test {
