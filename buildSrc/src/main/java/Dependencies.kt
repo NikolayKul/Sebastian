@@ -58,10 +58,13 @@ object Versions {
         const val moxy = "1.5.3"
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
+    }
+
+    object Debug {
         const val stetho = "1.5.0"
     }
 
-    object Testing {
+    object Test {
         const val junit = "4.12"
         const val mockito = "2.13.0"
     }
@@ -121,17 +124,19 @@ object Libs {
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
 
-        const val stetho = "com.facebook.stetho:stetho:${Versions.Other.stetho}"
-        const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Other.stetho}"
-
         const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
         const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"
         const val moxy_compiler = "com.arello-mobile:moxy-compiler:${Versions.Other.moxy}"
     }
 
-    object Testing {
-        const val junit = "junit:junit:${Versions.Testing.junit}"
-        const val mockito = "org.mockito:mockito-core:${Versions.Testing.mockito}"
+    object Debug {
+        const val stetho = "com.facebook.stetho:stetho:${Versions.Debug.stetho}"
+        const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Debug.stetho}"
+    }
+
+    object Test {
+        const val junit = "junit:junit:${Versions.Test.junit}"
+        const val mockito = "org.mockito:mockito-core:${Versions.Test.mockito}"
     }
 
 }

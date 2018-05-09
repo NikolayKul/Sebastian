@@ -28,12 +28,14 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding.enabled true
 }
 
@@ -93,15 +95,17 @@ dependencies {
     implementation Libs.Other.timber
     implementation Libs.Other.joda_time
 
-    debugImplementation Libs.Other.stetho
-    debugImplementation Libs.Other.stetho_okhttp
-
     implementation Libs.Other.moxy
     implementation Libs.Other.moxy_appcompat
     kapt Libs.Other.moxy_compiler
 
-    // testing
+    // debug
 
-    testImplementation Libs.Testing.junit
-    testImplementation Libs.Testing.mockito
+    debugImplementation Libs.Debug.stetho
+    debugImplementation Libs.Debug.stetho_okhttp
+
+    // test
+
+    testImplementation Libs.Test.junit
+    testImplementation Libs.Test.mockito
 }
