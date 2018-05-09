@@ -19,7 +19,7 @@ import org.joda.time.DateTime
 data class RssFeedEntity(
         @PrimaryKey val id: String,
 
-        @ColumnInfo(name = "channel_id")
+        @ColumnInfo(name = "channel_id", index = true)
         val channelId: String,
 
         val title: String,

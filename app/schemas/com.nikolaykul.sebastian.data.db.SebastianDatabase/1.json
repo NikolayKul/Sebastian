@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "19c5bc6ab44e20ea6d20b25e909b086e",
+    "identityHash": "a0bde6bbdc10286b4a5ce2e22a8c9101",
     "entities": [
       {
         "tableName": "rss_channels",
@@ -83,7 +83,16 @@
           ],
           "autoGenerate": false
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_rss_feeds_channel_id",
+            "unique": false,
+            "columnNames": [
+              "channel_id"
+            ],
+            "createSql": "CREATE  INDEX `index_rss_feeds_channel_id` ON `${TABLE_NAME}` (`channel_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "rss_channels",
@@ -101,7 +110,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"19c5bc6ab44e20ea6d20b25e909b086e\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a0bde6bbdc10286b4a5ce2e22a8c9101\")"
     ]
   }
 }
