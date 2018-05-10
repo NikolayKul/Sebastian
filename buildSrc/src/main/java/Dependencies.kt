@@ -32,10 +32,13 @@ object Versions {
         const val gradle = "3.1.2"
         const val kotlin = "1.2.41"
         const val coroutines = "0.22.5"
+
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
+
         const val dagger = "2.13"
         const val room = "1.1.0-rc1"
+        const val view_model = "1.1.1"
     }
 
     object Network {
@@ -55,7 +58,7 @@ object Versions {
 
     object Other {
         const val cicerone = "3.0.0"
-        const val moxy = "1.5.3"
+        const val moxy = "1.5.3"    // TODO: replace with ViewModel
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
     }
@@ -95,6 +98,8 @@ object Libs {
         const val room_runtime = "android.arch.persistence.room:runtime:${Versions.Core.room}"
         const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"
         const val room_rx = "android.arch.persistence.room:rxjava2:${Versions.Core.room}"
+
+        const val view_model = "android.arch.lifecycle:viewmodel:${Versions.Core.view_model}"
     }
 
     object Network {
@@ -125,6 +130,7 @@ object Libs {
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
 
+        // TODO: replace with ViewModel
         const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
         const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"
         const val moxy_compiler = "com.arello-mobile:moxy-compiler:${Versions.Other.moxy}"
