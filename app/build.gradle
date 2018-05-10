@@ -67,7 +67,7 @@ dependencies {
     implementation Libs.Core.room_rx
     kapt Libs.Core.room_compiler
 
-    implementation Libs.Core.view_model
+    implementation Libs.Core.lifecycle_ext
 
     // network
 

@@ -38,7 +38,7 @@ object Versions {
 
         const val dagger = "2.13"
         const val room = "1.1.0-rc1"
-        const val view_model = "1.1.1"
+        const val lifecycle = "1.1.1"
     }
 
     object Network {
@@ -99,7 +99,7 @@ object Libs {
         const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"
         const val room_rx = "android.arch.persistence.room:rxjava2:${Versions.Core.room}"
 
-        const val view_model = "android.arch.lifecycle:viewmodel:${Versions.Core.view_model}"
+        const val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.Core.lifecycle}"
     }
 
     object Network {
