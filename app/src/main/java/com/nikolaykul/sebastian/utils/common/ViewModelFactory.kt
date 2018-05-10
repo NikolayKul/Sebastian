@@ -6,9 +6,22 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
+
+/**
+ * Alias for [Map.Entry.key] used by [ViewModelFactory.providers]
+ */
+typealias ProviderKey = Class<out ViewModel>
+
+
+/**
+ * Alias for [Map.Entry.value] used by [ViewModelFactory.providers]
+ */
+typealias ProviderValue = @JvmSuppressWildcards Provider<ViewModel>
+
+
 @Singleton
 class ViewModelFactory @Inject constructor(
-        private val providers: Map<Class<out ViewModel>, Provider<ViewModel>>
+        private val providers: Map<ProviderKey, ProviderValue>
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
