@@ -1,6 +1,5 @@
 package com.nikolaykul.sebastian.presentation.main
 
-import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +9,8 @@ import com.nikolaykul.sebastian.databinding.ActivityMainBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
 import com.nikolaykul.sebastian.presentation.main.adapter.MainFeedAdapter
-import com.nikolaykul.sebastian.utils.vm.viewModelDelegate
 import io.reactivex.android.schedulers.AndroidSchedulers
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
  * @author NikolayKul
@@ -24,8 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
         fun createStartIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModelDelegate<MainViewModel>(this, { viewModelFactory })
+    private val viewModel by lazyViewModelDelegate<MainViewModel>()
     private val adapter = MainFeedAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
         viewModel.observeFeeds()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        (this::showFeeds),
+                        this::showFeeds,
                         Timber::e
                 )
         viewModel.observeLoading()
