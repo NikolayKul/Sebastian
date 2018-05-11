@@ -3,7 +3,7 @@ package com.nikolaykul.sebastian.di.application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.nikolaykul.sebastian.presentation.main.MainViewModel
-import com.nikolaykul.sebastian.utils.common.ViewModelFactory
+import com.nikolaykul.sebastian.utils.vm.ViewModelFactory
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
