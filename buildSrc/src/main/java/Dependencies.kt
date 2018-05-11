@@ -58,7 +58,6 @@ object Versions {
 
     object Other {
         const val cicerone = "3.0.0"
-        const val moxy = "1.5.3"    // TODO: replace with ViewModel
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
     }
@@ -129,11 +128,6 @@ object Libs {
         const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.Other.cicerone}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
-
-        // TODO: replace with ViewModel
-        const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
-        const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"
-        const val moxy_compiler = "com.arello-mobile:moxy-compiler:${Versions.Other.moxy}"
     }
 
     object Debug {

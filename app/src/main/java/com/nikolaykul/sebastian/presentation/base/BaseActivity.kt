@@ -6,7 +6,7 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import com.arellomobile.mvp.MvpAppCompatActivity
+import android.support.v7.app.AppCompatActivity
 import com.nikolaykul.sebastian.di.Injectable
 import com.nikolaykul.sebastian.utils.vm.viewModelDelegate
 import io.reactivex.Flowable
@@ -21,8 +21,7 @@ import javax.inject.Inject
  * @author NikolayKul
  */
 
-abstract class BaseActivity<B : ViewDataBinding>
-    : MvpAppCompatActivity(), Injectable {
+abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectable {
 
     @Inject protected lateinit var navigator: Navigator
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
