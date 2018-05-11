@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ActivityMainBinding
-import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
 import com.nikolaykul.sebastian.presentation.main.adapter.MainFeedAdapter
 import timber.log.Timber
@@ -15,7 +14,7 @@ import timber.log.Timber
  * @author NikolayKul
  */
 
-class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     companion object {
         fun createStartIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
@@ -30,17 +29,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
         initObservers()
     }
 
-    private fun initObservers() {
-        viewModel.observeFeeds()
-                .easySubscribe { showFeeds(it) }
-        viewModel.observeLoading()
-                .easySubscribe { Timber.d("Show loading: %b", it) }
-    }
-
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun showFeeds(feeds: List<RssFeed>) {
-        adapter.setItems(feeds)
+    private fun initObservers() {
+        viewModel.observeFeeds()
+                .easySubscribe { adapter.setItems(it) }
+        viewModel.observeLoading()
+                .easySubscribe { Timber.d("Show loading: %b", it) }
     }
 
     private fun initListeners() {

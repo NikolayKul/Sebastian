@@ -22,7 +22,7 @@ import javax.inject.Inject
  */
 
 abstract class BaseActivity<B : ViewDataBinding>
-    : MvpAppCompatActivity(), Injectable, ErrorMvpView {
+    : MvpAppCompatActivity(), Injectable {
 
     @Inject protected lateinit var navigator: Navigator
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
@@ -43,10 +43,6 @@ abstract class BaseActivity<B : ViewDataBinding>
     override fun onPause() {
         super.onPause()
         navigatorHolder.removeNavigator()
-    }
-
-    override fun showError(error: Throwable) {
-        Timber.e(error)
     }
 
     override fun onDestroy() {
