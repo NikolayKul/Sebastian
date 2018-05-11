@@ -4,9 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.utils.common.CoroutineContextProvider.UI
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
-import io.reactivex.subjects.BehaviorSubject
+import com.nikolaykul.sebastian.utils.rx.RxRelay
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 
@@ -14,8 +12,8 @@ class MainViewModel @Inject constructor(
         private val getChannelUseCase: GetChannelUseCase
 ) : ViewModel() {
 
-    private val loadingRelay = BehaviorRelay<Boolean>()
-    private val feedsRelay = BehaviorRelay<List<RssFeed>>()
+    private val loadingRelay = RxRelay<Boolean>()
+    private val feedsRelay = RxRelay<List<RssFeed>>()
 
     fun observeLoading() = loadingRelay.observe()
 
@@ -25,23 +23,9 @@ class MainViewModel @Inject constructor(
         launch(UI) {
             loadingRelay.push(true)
             val channel = getChannelUseCase.execute()
-            loadingRelay.push(false)
             feedsRelay.push(channel.feeds)
+            loadingRelay.push(false)
         }
-    }
-
-}
-
-// TODO: move to utils
-private class BehaviorRelay<T>(
-        private val _relay: BehaviorSubject<T> = BehaviorSubject.create()
-) {
-
-    fun observe(strategy: BackpressureStrategy = BackpressureStrategy.LATEST): Flowable<T> =
-            _relay.toFlowable(strategy)
-
-    fun push(value: T) {
-        _relay.onNext(value)
     }
 
 }
