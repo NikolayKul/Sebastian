@@ -9,6 +9,9 @@ import android.support.annotation.LayoutRes
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.nikolaykul.sebastian.di.Injectable
 import com.nikolaykul.sebastian.utils.vm.viewModelDelegate
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
@@ -25,6 +28,7 @@ abstract class BaseActivity<B : ViewDataBinding>
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
     @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
     protected lateinit var binding: B
+    private val disposables = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +49,21 @@ abstract class BaseActivity<B : ViewDataBinding>
         Timber.e(error)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposables.clear()
+    }
+
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
     protected inline fun <reified T : ViewModel> lazyViewModelDelegate() =
             viewModelDelegate<T>(this, { viewModelFactory })
+
+    protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
+        subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(consumer::invoke, Timber::e)
+                .also { disposables.add(it) }
+    }
 
 }

@@ -9,7 +9,6 @@ import com.nikolaykul.sebastian.databinding.ActivityMainBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
 import com.nikolaykul.sebastian.presentation.main.adapter.MainFeedAdapter
-import io.reactivex.android.schedulers.AndroidSchedulers
 import timber.log.Timber
 
 /**
@@ -33,17 +32,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainMvpView {
 
     private fun initObservers() {
         viewModel.observeFeeds()
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        this::showFeeds,
-                        Timber::e
-                )
+                .easySubscribe { showFeeds(it) }
         viewModel.observeLoading()
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { Timber.d("Show loading: %b", it) },
-                        Timber::e
-                )
+                .easySubscribe { Timber.d("Show loading: %b", it) }
     }
 
     override fun getLayoutId() = R.layout.activity_main
