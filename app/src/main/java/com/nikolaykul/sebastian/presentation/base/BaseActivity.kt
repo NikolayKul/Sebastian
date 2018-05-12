@@ -56,7 +56,7 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectab
             viewModelDelegate<T>(this, { viewModelFactory })
 
     protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
-        subscribeOn(AndroidSchedulers.mainThread())
+        observeOn(AndroidSchedulers.mainThread())
                 .subscribe(consumer::invoke, Timber::e)
                 .also { disposables.add(it) }
     }
