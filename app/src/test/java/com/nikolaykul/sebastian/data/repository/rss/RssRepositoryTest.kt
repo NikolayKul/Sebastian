@@ -6,6 +6,7 @@ import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.utils.mockito.given
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
+import com.nikolaykul.sebastian.utils.mockito.mock
 import com.nikolaykul.sebastian.utils.mockito.willReturn
 import com.nikolaykul.sebastian.utils.network.NetworkManager
 import com.nikolaykul.sebastian.utils.rules.CoroutineContextRule
@@ -36,7 +37,7 @@ class RssRepositoryTest {
 
     @Test
     fun `fetches channel from local`() = runBlocking {
-        val givenChannels = listOf(RssChannel("", "", "", "", emptyList()))
+        val givenChannels = listOf(mock<RssChannel>())
         givenSuspended { localStore.getAllChannels() } willReturn { givenChannels }
 
         val resultChannel = repository.getRssChannel()
@@ -48,7 +49,7 @@ class RssRepositoryTest {
 
     @Test
     fun `fetches channel from remote`() = runBlocking {
-        val givenChannel = RssChannel("", "", "", "", emptyList())
+        val givenChannel = mock<RssChannel>()
         givenSuspended { localStore.getAllChannels() } willReturn { emptyList() }
         given { networkManager.isNetworkAvailable() } willReturn { true }
         givenSuspended { remoteStore.fetchChannel() } willReturn { givenChannel }
@@ -64,7 +65,7 @@ class RssRepositoryTest {
 
     @Test
     fun `saves repository from network`() = runBlocking {
-        val givenChannel = RssChannel("", "", "", "", emptyList())
+        val givenChannel = mock<RssChannel>()
         givenSuspended { localStore.getAllChannels() } willReturn { emptyList() }
         given { networkManager.isNetworkAvailable() } willReturn { true }
         givenSuspended { remoteStore.fetchChannel() } willReturn { givenChannel }
