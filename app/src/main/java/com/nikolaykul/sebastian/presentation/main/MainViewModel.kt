@@ -1,11 +1,13 @@
 package com.nikolaykul.sebastian.presentation.main
 
+import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseViewModel
 import com.nikolaykul.sebastian.utils.common.CoroutineContextProvider.UI
 import com.nikolaykul.sebastian.utils.rx.RxRelay
 import kotlinx.coroutines.experimental.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -22,8 +24,12 @@ class MainViewModel @Inject constructor(
     fun loadChannel() {
         launch(UI) {
             loadingRelay.push(true)
-            val channel = getChannelUseCase.execute()
-            feedsRelay.push(channel.feeds)
+            try {
+                val channel = getChannelUseCase.execute()
+                feedsRelay.push(channel.feeds)
+            } catch (e: NoNetworkException) {
+                Timber.d(e, "Loading channel error")
+            }
             loadingRelay.push(false)
         }.attachToLifecycle()
     }
