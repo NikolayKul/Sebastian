@@ -26,16 +26,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         initRecyclerView()
         initListeners()
-        initObservers()
+        viewModel.observeState().easySubscribe(this::setState)
     }
 
     override fun getLayoutId() = R.layout.activity_main
 
-    private fun initObservers() {
-        viewModel.observeFeeds()
-                .easySubscribe { adapter.setItems(it) }
-        viewModel.observeLoading()
-                .easySubscribe { Timber.d("Show loading: %b", it) }
+    private fun setState(state: MainState) {
+        val loadingStub = if (state.isLoading) "Show loading" else "Hide loading"
+        Timber.d(loadingStub)
+
+        state.error?.also { Timber.d("Show error: $it") }
+
+        state.feeds?.also { adapter.setItems(it) }
     }
 
     private fun initListeners() {

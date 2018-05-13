@@ -5,33 +5,43 @@ import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseViewModel
 import com.nikolaykul.sebastian.utils.common.CoroutineContextProvider.UI
-import com.nikolaykul.sebastian.utils.rx.RxRelay
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.experimental.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
         private val getChannelUseCase: GetChannelUseCase
 ) : BaseViewModel() {
+    private val stateRelay = BehaviorSubject.createDefault(MainState())
 
-    private val loadingRelay = RxRelay<Boolean>()
-    private val feedsRelay = RxRelay<List<RssFeed>>()
-
-    fun observeLoading() = loadingRelay.observe()
-
-    fun observeFeeds() = feedsRelay.observe()
+    fun observeState(): Flowable<MainState> = stateRelay.toFlowable(BackpressureStrategy.LATEST)
 
     fun loadChannel() {
         launch(UI) {
-            loadingRelay.push(true)
+            mutateState(isLoading = true)
             try {
                 val channel = getChannelUseCase.execute()
-                feedsRelay.push(channel.feeds)
+                newState(MainState(feeds = channel.feeds))
             } catch (e: NoNetworkException) {
-                Timber.d(e, "Loading channel error")
+                newState(MainState(error = e))
             }
-            loadingRelay.push(false)
         }.attachToLifecycle()
+    }
+
+    private fun lastState() = stateRelay.value
+
+    private fun mutateState(
+            isLoading: Boolean = lastState().isLoading,
+            error: Exception? = lastState().error,
+            feeds: List<RssFeed>? = lastState().feeds
+    ) {
+        newState(MainState(isLoading, error, feeds))
+    }
+
+    private fun newState(newState: MainState) {
+        stateRelay.onNext(newState)
     }
 
 }
