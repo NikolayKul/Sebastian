@@ -1,5 +1,6 @@
 package com.nikolaykul.sebastian.presentation.main
 
+import android.support.annotation.VisibleForTesting
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
@@ -42,6 +43,11 @@ class MainViewModel @Inject constructor(
 
     private fun newState(newState: MainState) {
         stateRelay.onNext(newState)
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
+    fun setState(state: MainState) {
+        newState(state)
     }
 
 }
