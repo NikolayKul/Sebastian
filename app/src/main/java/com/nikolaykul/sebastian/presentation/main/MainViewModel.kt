@@ -10,6 +10,7 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.experimental.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -22,13 +23,21 @@ class MainViewModel @Inject constructor(
     fun loadChannel() {
         launch(UI) {
             mutateState(isLoading = true)
-            try {
-                val channel = getChannelUseCase.execute()
-                newState(MainState(feeds = channel.feeds))
+
+            val channel = try {
+                getChannelUseCase.execute()
             } catch (e: NoNetworkException) {
                 newState(MainState(error = e))
+                return@launch
             }
+
+            newState(MainState(feeds = channel.feeds))
+
         }.attachToLifecycle()
+    }
+
+    fun onFeedClicked(feed: RssFeed) {
+        Timber.d("Feed was clicked: $feed")
     }
 
     private fun lastState() = stateRelay.value

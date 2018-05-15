@@ -1,9 +1,11 @@
 package com.nikolaykul.sebastian.presentation.main
 
+import com.nhaarman.mockito_kotlin.verify
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
+import com.nikolaykul.sebastian.presentation.SCREEN_FEED_DETAILS
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
 import com.nikolaykul.sebastian.utils.mockito.willReturn
 import com.nikolaykul.sebastian.utils.mockito.willThrow
@@ -17,12 +19,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import ru.terrakok.cicerone.Router
 
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
     @get:Rule val coroutineContextRule = CoroutineContextRule()
     @get:Rule val rxSchedulerRule = RxSchedulerRule()
     @Mock private lateinit var getRssChannelUseCase: GetChannelUseCase
+    @Mock private lateinit var router: Router
     private lateinit var viewModel: MainViewModel
 
     @Before
@@ -83,6 +87,16 @@ class MainViewModelTest {
         actualStateRelay.assertValues(*expectedStates)
 
         return@runBlocking
+    }
+
+    @Test
+    fun `navigates to the details screen on feed click`() {
+        val expectedId = "id"
+        val givenFeed = RssFeed(expectedId, "", "", null)
+
+        viewModel.onFeedClicked(givenFeed)
+
+        verify(router).navigateTo(SCREEN_FEED_DETAILS, expectedId)
     }
 
     /**
