@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.presentation.main
+package com.nikolaykul.sebastian.presentation.feed.list
 
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
@@ -22,16 +22,16 @@ import org.mockito.junit.MockitoJUnitRunner
 import ru.terrakok.cicerone.Router
 
 @RunWith(MockitoJUnitRunner::class)
-class MainViewModelTest {
+class FeedListViewModelTest {
     @get:Rule val coroutineContextRule = CoroutineContextRule()
     @get:Rule val rxSchedulerRule = RxSchedulerRule()
     @Mock private lateinit var getRssChannelUseCase: GetChannelUseCase
     @Mock private lateinit var router: Router
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: FeedListViewModel
 
     @Before
     fun setUp() {
-        viewModel = MainViewModel(getRssChannelUseCase, router)
+        viewModel = FeedListViewModel(getRssChannelUseCase, router)
     }
 
     @Test
@@ -40,9 +40,9 @@ class MainViewModelTest {
         givenSuspended { getRssChannelUseCase.execute() } willReturn { stubChannel(givenFeeds) }
 
         val expectedStates = arrayOf(
-                MainState(),
-                MainState(isLoading = true),
-                MainState(feeds = givenFeeds))
+                FeedListState(),
+                FeedListState(isLoading = true),
+                FeedListState(feeds = givenFeeds))
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
@@ -59,9 +59,9 @@ class MainViewModelTest {
 
         val givenError = NoNetworkException()
         val expectedStates = arrayOf(
-                MainState(error = givenError),
-                MainState(isLoading = true, error = givenError),
-                MainState(feeds = givenFeeds))
+                FeedListState(error = givenError),
+                FeedListState(isLoading = true, error = givenError),
+                FeedListState(feeds = givenFeeds))
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
@@ -77,9 +77,9 @@ class MainViewModelTest {
         givenSuspended { getRssChannelUseCase.execute() } willThrow { givenException }
 
         val expectedStates = arrayOf(
-                MainState(),
-                MainState(isLoading = true),
-                MainState(error = givenException))
+                FeedListState(),
+                FeedListState(isLoading = true),
+                FeedListState(error = givenException))
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
@@ -100,9 +100,9 @@ class MainViewModelTest {
     }
 
     /**
-     * Set initial [MainState] and return a [TestSubscriber] to the State relay
+     * Set initial [FeedListState] and return a [TestSubscriber] to the State relay
      */
-    private fun observeFromGivenState(state: MainState) = with(viewModel) {
+    private fun observeFromGivenState(state: FeedListState) = with(viewModel) {
         setState(state)
         return@with observeState().test()
     }

@@ -2,7 +2,7 @@ package com.nikolaykul.sebastian.di.application
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.nikolaykul.sebastian.presentation.main.MainViewModel
+import com.nikolaykul.sebastian.presentation.feed.list.FeedListViewModel
 import com.nikolaykul.sebastian.utils.vm.ViewModelFactory
 import dagger.Binds
 import dagger.MapKey
@@ -27,7 +27,7 @@ interface ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    fun mainViewModel(mainViewModel: MainViewModel): ViewModel
+    @ViewModelKey(FeedListViewModel::class)
+    fun feedListViewModel(mainViewModel: FeedListViewModel): ViewModel
 
 }

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme.ItemMainFeed" />
+    <style name="AppTheme.ItemFeedList" />
 
-    <style name="AppTheme.ItemMainFeed.Date">
+    <style name="AppTheme.ItemFeedList.Date">
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:textColor">@color/gray_500</item>
     </style>
 
-    <style name="AppTheme.ItemMainFeed.Title">
+    <style name="AppTheme.ItemFeedList.Title">
         <item name="android:maxLines">2</item>
         <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:ellipsize">end</item>
         <item name="textAllCaps">true</item>
     </style>
 
-    <style name="AppTheme.ItemMainFeed.Subtitle">
+    <style name="AppTheme.ItemFeedList.Subtitle">
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/gray_600</item>
     </style>

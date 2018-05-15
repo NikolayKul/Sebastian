@@ -1,8 +1,8 @@
-package com.nikolaykul.sebastian.presentation.main
+package com.nikolaykul.sebastian.presentation.feed.list
 
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 
-data class MainState(
+data class FeedListState(
         val isLoading: Boolean = false,
         val error: Exception? = null,
         val feeds: List<RssFeed>? = null

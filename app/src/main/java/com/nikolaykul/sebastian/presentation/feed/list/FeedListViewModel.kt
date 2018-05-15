@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.presentation.main
+package com.nikolaykul.sebastian.presentation.feed.list
 
 import android.support.annotation.VisibleForTesting
 import com.nikolaykul.sebastian.domain.NoNetworkException
@@ -14,13 +14,13 @@ import kotlinx.coroutines.experimental.launch
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class FeedListViewModel @Inject constructor(
         private val getChannelUseCase: GetChannelUseCase,
         private val router: Router
 ) : BaseViewModel() {
-    private val stateRelay = BehaviorSubject.createDefault(MainState())
+    private val stateRelay = BehaviorSubject.createDefault(FeedListState())
 
-    fun observeState(): Flowable<MainState> = stateRelay.toFlowable(BackpressureStrategy.LATEST)
+    fun observeState(): Flowable<FeedListState> = stateRelay.toFlowable(BackpressureStrategy.LATEST)
 
     fun loadChannel() {
         launch(UI) {
@@ -29,11 +29,11 @@ class MainViewModel @Inject constructor(
             val channel = try {
                 getChannelUseCase.execute()
             } catch (e: NoNetworkException) {
-                newState(MainState(error = e))
+                newState(FeedListState(error = e))
                 return@launch
             }
 
-            newState(MainState(feeds = channel.feeds))
+            newState(FeedListState(feeds = channel.feeds))
 
         }.attachToLifecycle()
     }
@@ -49,15 +49,15 @@ class MainViewModel @Inject constructor(
             error: Exception? = lastState().error,
             feeds: List<RssFeed>? = lastState().feeds
     ) {
-        newState(MainState(isLoading, error, feeds))
+        newState(FeedListState(isLoading, error, feeds))
     }
 
-    private fun newState(newState: MainState) {
+    private fun newState(newState: FeedListState) {
         stateRelay.onNext(newState)
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    fun setState(state: MainState) {
+    fun setState(state: FeedListState) {
         newState(state)
     }
 

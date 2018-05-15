@@ -1,28 +1,24 @@
-package com.nikolaykul.sebastian.presentation.main
+package com.nikolaykul.sebastian.presentation.feed.list
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.nikolaykul.sebastian.R
-import com.nikolaykul.sebastian.databinding.ActivityMainBinding
+import com.nikolaykul.sebastian.databinding.ActivityFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
-import com.nikolaykul.sebastian.presentation.main.adapter.MainFeedAdapter
-import com.nikolaykul.sebastian.presentation.main.adapter.MainFeedViewItem
+import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
+import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import timber.log.Timber
 
-/**
- * @author NikolayKul
- */
-
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
     companion object {
-        fun createStartIntent(context: Context) = Intent(context, MainActivity::class.java)
+        fun startIntent(context: Context) = Intent(context, FeedListActivity::class.java)
     }
 
-    private val viewModel by lazyViewModelDelegate<MainViewModel>()
-    private val adapter = MainFeedAdapter()
+    private val viewModel by lazyViewModelDelegate<FeedListViewModel>()
+    private val adapter = FeedListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +27,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.observeState().easySubscribe(this::setState)
     }
 
-    override fun getLayoutId() = R.layout.activity_main
+    override fun getLayoutId() = R.layout.activity_feed_list
 
-    private fun setState(state: MainState) {
+    private fun setState(state: FeedListState) {
         val loadingStub = if (state.isLoading) "Show loading" else "Hide loading"
         Timber.d(loadingStub)
 
@@ -43,7 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setItems(feeds: List<RssFeed>) {
-        feeds.map { MainFeedViewItem(it, viewModel::onFeedClicked) }
+        feeds.map { FeedListViewItem(it, viewModel::onFeedClicked) }
                 .also(adapter::setItems)
     }
 
