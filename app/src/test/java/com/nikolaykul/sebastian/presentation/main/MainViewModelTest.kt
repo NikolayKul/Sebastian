@@ -1,6 +1,5 @@
 package com.nikolaykul.sebastian.presentation.main
 
-import com.nhaarman.mockito_kotlin.verify
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
@@ -18,6 +17,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import ru.terrakok.cicerone.Router
 
@@ -31,7 +31,7 @@ class MainViewModelTest {
 
     @Before
     fun setUp() {
-        viewModel = MainViewModel(getRssChannelUseCase)
+        viewModel = MainViewModel(getRssChannelUseCase, router)
     }
 
     @Test
