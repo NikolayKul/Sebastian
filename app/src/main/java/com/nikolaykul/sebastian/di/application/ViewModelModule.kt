@@ -8,6 +8,7 @@ import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
+import javax.inject.Singleton
 import kotlin.reflect.KClass
 
 /**
@@ -23,6 +24,7 @@ private annotation class ViewModelKey(val value: KClass<out ViewModel>)
 interface ViewModelModule {
 
     @Binds
+    @Singleton
     fun viewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds

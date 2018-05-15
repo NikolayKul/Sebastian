@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
 
 /**
@@ -19,7 +18,6 @@ typealias ProviderKey = Class<out ViewModel>
 typealias ProviderValue = @JvmSuppressWildcards Provider<ViewModel>
 
 
-@Singleton
 class ViewModelFactory @Inject constructor(
         private val providers: Map<ProviderKey, ProviderValue>
 ) : ViewModelProvider.Factory {
