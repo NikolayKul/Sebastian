@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class BaseAdapter<TViewItem extends BaseViewItem<?>>
         extends RecyclerView.Adapter<BaseViewHolder<?>> {
 
-    protected List<? extends TViewItem> items = new ArrayList<>();
+    protected List<TViewItem> items = new ArrayList<>();
 
     @NonNull
     @Override
