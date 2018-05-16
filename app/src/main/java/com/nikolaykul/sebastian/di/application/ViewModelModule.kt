@@ -2,6 +2,7 @@ package com.nikolaykul.sebastian.di.application
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsViewModel
 import com.nikolaykul.sebastian.presentation.feed.list.FeedListViewModel
 import com.nikolaykul.sebastian.utils.vm.ViewModelFactory
 import dagger.Binds
@@ -17,7 +18,7 @@ import kotlin.reflect.KClass
 @MapKey
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-private annotation class ViewModelKey(val value: KClass<out ViewModel>)
+annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
 
 @Module
@@ -30,6 +31,11 @@ interface ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(FeedListViewModel::class)
-    fun feedListViewModel(mainViewModel: FeedListViewModel): ViewModel
+    fun feedListViewModel(viewModel: FeedListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FeedDetailsViewModel::class)
+    fun feedDetailsViewModel(viewModel: FeedDetailsViewModel): ViewModel
 
 }
