@@ -1,5 +1,6 @@
 package com.nikolaykul.sebastian.presentation.feed.details
 
+import android.support.annotation.VisibleForTesting
 import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.domain.rss.GetFeedUseCase
 import com.nikolaykul.sebastian.presentation.base.BaseViewModel
@@ -12,5 +13,10 @@ class FeedDetailsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     fun observeState(): Flowable<FeedDetailsState> = TODO("Not implemented yet")
+
+    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
+    fun setState(state: FeedDetailsState) {
+        TODO("Not implemented yet")
+    }
 
 }
