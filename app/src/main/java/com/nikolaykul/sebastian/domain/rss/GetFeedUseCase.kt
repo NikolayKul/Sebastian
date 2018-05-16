@@ -9,9 +9,9 @@ import javax.inject.Inject
 @Reusable
 class GetFeedUseCase @Inject constructor(
     private val repository: RssRepository
-) : UseCase<FeedId, RssFeed> {
+) : UseCase<FeedId, RssFeed?> {
 
-    override suspend fun execute(params: FeedId): RssFeed = TODO("not implemented")
+    override suspend fun execute(params: FeedId): RssFeed? = TODO("not implemented")
 
 }
 

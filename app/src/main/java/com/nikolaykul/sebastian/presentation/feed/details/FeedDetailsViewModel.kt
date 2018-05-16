@@ -11,6 +11,6 @@ class FeedDetailsViewModel @Inject constructor(
     private val getFeedUseCase: GetFeedUseCase
 ) : BaseViewModel() {
 
-    fun observeState(): Flowable<FeedId> = TODO("Not implemented yet")
+    fun observeState(): Flowable<FeedDetailsState> = TODO("Not implemented yet")
 
 }
