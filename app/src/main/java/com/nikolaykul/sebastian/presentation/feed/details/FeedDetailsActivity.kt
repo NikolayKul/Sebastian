@@ -16,7 +16,7 @@ class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.observeState(feedId)
+        viewModel.observeState()
             .easySubscribe { Timber.d("FeedId from VM is $it") }
     }
 

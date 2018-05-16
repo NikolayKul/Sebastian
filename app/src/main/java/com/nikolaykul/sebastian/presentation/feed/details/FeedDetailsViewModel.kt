@@ -7,9 +7,10 @@ import io.reactivex.Flowable
 import javax.inject.Inject
 
 class FeedDetailsViewModel @Inject constructor(
+    private val feedId: FeedId,
     private val getFeedUseCase: GetFeedUseCase
 ) : BaseViewModel() {
 
-    fun observeState(feedId: FeedId): Flowable<FeedId> = TODO("Not implemented yet")
+    fun observeState(): Flowable<FeedId> = TODO("Not implemented yet")
 
 }
