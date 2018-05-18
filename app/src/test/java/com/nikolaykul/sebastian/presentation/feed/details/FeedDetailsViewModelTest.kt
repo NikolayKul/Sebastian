@@ -12,7 +12,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.verifyNoMoreInteractions
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -47,7 +46,6 @@ class FeedDetailsViewModelTest {
 
         val actualStateRelay = viewModel.observeState().test()
 
-        verifyNoMoreInteractions(getFeedUseCase)
         actualStateRelay.assertValue(expectedState)
         actualStateRelay.assertNotTerminated()
     }
