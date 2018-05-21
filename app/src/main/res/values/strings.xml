@@ -4,4 +4,9 @@
     <!-- Feed List -->
     <string name="feed_list_text_no_items">Empty</string>
 
+    <!-- Main menu -->
+    <string name="menu_item_feeds">Feeds</string>
+    <string name="menu_item_search">Search</string>
+    <string name="menu_item_channels">Channels</string>
+
 </resources>
