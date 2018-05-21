@@ -3,7 +3,7 @@ package com.nikolaykul.sebastian.presentation.launcher
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.nikolaykul.sebastian.R
-import com.nikolaykul.sebastian.presentation.feed.list.FeedListActivity
+import com.nikolaykul.sebastian.presentation.main.MainActivity
 
 class LauncherActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class LauncherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // navigate & finish
-        startActivity(FeedListActivity.startIntent(this))
+        startActivity(MainActivity.getStartIntent(this))
         finish()
     }
 

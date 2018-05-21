@@ -1,5 +1,7 @@
 package com.nikolaykul.sebastian.presentation.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
@@ -20,5 +22,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
             else -> true
         }
+    }
+
+    companion object {
+        fun getStartIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 }
