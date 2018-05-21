@@ -7,6 +7,7 @@ import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.Reusable
+import dagger.multibindings.Multibinds
 import kotlin.reflect.KClass
 
 /**
@@ -25,6 +26,12 @@ interface ViewModelModule {
     @Binds
     @Reusable
     fun viewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
+    /*
+        Remove this stub after declaring at least one common ViewModel
+     */
+    @Multibinds
+    fun viewModelStub(): Map<Class<out ViewModel>, ViewModel>
 
 }
 
