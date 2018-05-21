@@ -17,4 +17,7 @@ interface RssFeedDao {
     @Query("SELECT * FROM rss_feeds WHERE channel_id=:channelId")
     fun getFeeds(channelId: String): List<RssFeedEntity>
 
+    @Query("SELECT * FROM rss_feeds WHERE id=:id")
+    fun findFeed(id: String): RssFeedEntity?
+
 }

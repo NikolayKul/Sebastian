@@ -28,12 +28,14 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding.enabled true
 }
 
@@ -65,6 +67,8 @@ dependencies {
     implementation Libs.Core.room_rx
     kapt Libs.Core.room_compiler
 
+    implementation Libs.Core.lifecycle_ext
+
     // network
 
     implementation Libs.Network.retrofit
@@ -93,15 +97,16 @@ dependencies {
     implementation Libs.Other.timber
     implementation Libs.Other.joda_time
 
-    debugImplementation Libs.Other.stetho
-    debugImplementation Libs.Other.stetho_okhttp
+    // debug
 
-    implementation Libs.Other.moxy
-    implementation Libs.Other.moxy_appcompat
-    kapt Libs.Other.moxy_compiler
+    debugImplementation Libs.Debug.stetho
+    debugImplementation Libs.Debug.stetho_okhttp
 
-    // testing
+    debugImplementation Libs.Debug.leak_canary_debug
+    releaseImplementation Libs.Debug.leak_canary_release
 
-    testImplementation Libs.Testing.junit
-    testImplementation Libs.Testing.mockito
+    // test
+
+    testImplementation Libs.Test.junit
+    testImplementation Libs.Test.mockito
 }

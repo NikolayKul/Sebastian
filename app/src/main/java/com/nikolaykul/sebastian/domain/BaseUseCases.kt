@@ -5,7 +5,7 @@ package com.nikolaykul.sebastian.domain
  *
  * @see UseCaseNoParams
  */
-interface UseCase<in TParams : Any, out TResult : Any> {
+interface UseCase<in TParams : Any, out TResult : Any?> {
     suspend fun execute(params: TParams): TResult
 
 }
@@ -15,6 +15,6 @@ interface UseCase<in TParams : Any, out TResult : Any> {
  *
  * @see UseCase
  */
-interface UseCaseNoParams<out TResult : Any> {
+interface UseCaseNoParams<out TResult : Any?> {
     suspend fun execute(): TResult
 }

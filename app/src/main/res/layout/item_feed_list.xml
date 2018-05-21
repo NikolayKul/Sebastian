@@ -10,7 +10,7 @@
 
         <TextView
             android:id="@+id/tvDate"
-            style="@style/AppTheme.ItemMainFeed.Date"
+            style="@style/AppTheme.ItemFeedList.Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            style="@style/AppTheme.ItemMainFeed.Title"
+            style="@style/AppTheme.ItemFeedList.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_normal"
@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/tvSubtitle"
-            style="@style/AppTheme.ItemMainFeed.Subtitle"
+            style="@style/AppTheme.ItemFeedList.Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

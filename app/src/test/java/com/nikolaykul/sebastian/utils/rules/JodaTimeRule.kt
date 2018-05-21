@@ -8,16 +8,18 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 /**
- * @author NikolayKul
+ * A [TestRule] that mocks [DateTimeZone]'s [Provider] with the given one
  */
 class JodaTimeRule(
         private val provider: Provider = UTCProvider()
 ) : TestRule {
-    override fun apply(base: Statement, description: Description) = object : Statement() {
-        @Throws(Throwable::class)
-        override fun evaluate() {
-            DateTimeZone.setProvider(provider)
-            base.evaluate()
+    override fun apply(base: Statement, description: Description): Statement {
+        return object : Statement() {
+            @Throws(Throwable::class)
+            override fun evaluate() {
+                DateTimeZone.setProvider(provider)
+                base.evaluate()
+            }
         }
     }
 }

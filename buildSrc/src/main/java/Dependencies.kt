@@ -32,10 +32,13 @@ object Versions {
         const val gradle = "3.1.2"
         const val kotlin = "1.2.41"
         const val coroutines = "0.22.5"
+
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
+
         const val dagger = "2.13"
         const val room = "1.1.0-rc1"
+        const val lifecycle = "1.1.1"
     }
 
     object Network {
@@ -55,13 +58,16 @@ object Versions {
 
     object Other {
         const val cicerone = "3.0.0"
-        const val moxy = "1.5.3"
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
-        const val stetho = "1.5.0"
     }
 
-    object Testing {
+    object Debug {
+        const val stetho = "1.5.0"
+        const val leak_canary = "1.5.4"
+    }
+
+    object Test {
         const val junit = "4.12"
         const val mockito = "2.13.0"
     }
@@ -91,6 +97,8 @@ object Libs {
         const val room_runtime = "android.arch.persistence.room:runtime:${Versions.Core.room}"
         const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"
         const val room_rx = "android.arch.persistence.room:rxjava2:${Versions.Core.room}"
+
+        const val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.Core.lifecycle}"
     }
 
     object Network {
@@ -120,18 +128,19 @@ object Libs {
         const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.Other.cicerone}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
-
-        const val stetho = "com.facebook.stetho:stetho:${Versions.Other.stetho}"
-        const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Other.stetho}"
-
-        const val moxy = "com.arello-mobile:moxy:${Versions.Other.moxy}"
-        const val moxy_appcompat = "com.arello-mobile:moxy-app-compat:${Versions.Other.moxy}"
-        const val moxy_compiler = "com.arello-mobile:moxy-compiler:${Versions.Other.moxy}"
     }
 
-    object Testing {
-        const val junit = "junit:junit:${Versions.Testing.junit}"
-        const val mockito = "org.mockito:mockito-core:${Versions.Testing.mockito}"
+    object Debug {
+        const val stetho = "com.facebook.stetho:stetho:${Versions.Debug.stetho}"
+        const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Debug.stetho}"
+
+        const val leak_canary_debug = "com.squareup.leakcanary:leakcanary-android:${Versions.Debug.leak_canary}"
+        const val leak_canary_release = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.Debug.leak_canary}"
+    }
+
+    object Test {
+        const val junit = "junit:junit:${Versions.Test.junit}"
+        const val mockito = "org.mockito:mockito-core:${Versions.Test.mockito}"
     }
 
 }

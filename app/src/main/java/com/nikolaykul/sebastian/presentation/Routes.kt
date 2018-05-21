@@ -1,19 +1,14 @@
 package com.nikolaykul.sebastian.presentation
 
 import android.content.Context
-import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import com.nikolaykul.sebastian.presentation.main.MainActivity
+import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsActivity
+import com.nikolaykul.sebastian.presentation.feed.list.FeedListActivity
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
-/**
- * @author NikolayKul
- */
-
-
-const val MAIN_SCREEN = "main_screen"
-
+const val SCREEN_FEED_LIST = "screen_feed_list"
+const val SCREEN_FEED_DETAILS = "screen_feed_details"
 
 class BaseNavigator(
         activity: FragmentActivity,
@@ -22,11 +17,10 @@ class BaseNavigator(
 
     override fun createActivityIntent(context: Context,
                                       screenKey: String,
-                                      data: Any?): Intent {
-        return when (screenKey) {
-            MAIN_SCREEN -> MainActivity.createStartIntent(context)
-            else -> throw IllegalStateException("Unknown screen key: $screenKey")
-        }
+                                      data: Any?) = when (screenKey) {
+        SCREEN_FEED_LIST -> FeedListActivity.startIntent(context)
+        SCREEN_FEED_DETAILS -> FeedDetailsActivity.startIntent(context, data as String)
+        else -> throw IllegalStateException("Unknown screen key: $screenKey")
     }
 
     override fun createFragment(screenKey: String, data: Any?): Fragment {

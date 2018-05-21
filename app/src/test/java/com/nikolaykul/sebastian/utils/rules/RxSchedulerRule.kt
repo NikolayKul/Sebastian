@@ -9,13 +9,12 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 /**
- * @author NikolayKul
+ * A [TestRule] that mocks all [Schedulers] with the [Schedulers.trampoline]
  */
-
 class RxSchedulerRule : TestRule {
     val scheduler = TestScheduler()
 
-    override fun apply(base: Statement?, description: Description?): Statement {
+    override fun apply(base: Statement, description: Description?): Statement {
         return object : Statement() {
             @Throws(Throwable::class)
             override fun evaluate() {
@@ -24,7 +23,7 @@ class RxSchedulerRule : TestRule {
                 RxJavaPlugins.setNewThreadSchedulerHandler { scheduler }
                 RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
                 try {
-                    base?.evaluate()
+                    base.evaluate()
                 } finally {
                     RxJavaPlugins.reset()
                     RxAndroidPlugins.reset()

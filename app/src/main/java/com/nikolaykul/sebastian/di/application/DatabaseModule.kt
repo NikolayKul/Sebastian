@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room
 import com.nikolaykul.sebastian.data.db.SebastianDatabase
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import javax.inject.Singleton
 
 
@@ -22,9 +23,11 @@ class DatabaseModule {
     }
 
     @Provides
+    @Reusable
     fun channelDao(database: SebastianDatabase) = database.channelDao()
 
     @Provides
+    @Reusable
     fun feedDao(database: SebastianDatabase) = database.feedDao()
 
 }

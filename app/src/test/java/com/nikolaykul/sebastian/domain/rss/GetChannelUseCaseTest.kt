@@ -4,6 +4,7 @@ import com.nikolaykul.sebastian.data.repository.rss.RssRepository
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
+import com.nikolaykul.sebastian.utils.mockito.mock
 import com.nikolaykul.sebastian.utils.mockito.willReturn
 import com.nikolaykul.sebastian.utils.mockito.willThrow
 import kotlinx.coroutines.experimental.runBlocking
@@ -27,7 +28,7 @@ class GetChannelUseCaseTest {
 
     @Test
     fun `loads channel from repository`() = runBlocking {
-        val givenChannel = RssChannel("id", "title", "link", "description", emptyList())
+        val givenChannel = mock<RssChannel>()
         givenSuspended { repository.getRssChannel() } willReturn { givenChannel }
 
         val resultChannel = useCase.execute()
@@ -37,8 +38,7 @@ class GetChannelUseCaseTest {
 
     @Test(expected = NoNetworkException::class)
     fun `propagates no network exception`() = runBlocking {
-        val exception = NoNetworkException()
-        givenSuspended { repository.getRssChannel() } willThrow { exception }
+        givenSuspended { repository.getRssChannel() } willThrow { NoNetworkException() }
 
         useCase.execute()
 

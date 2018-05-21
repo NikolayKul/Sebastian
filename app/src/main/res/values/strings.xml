@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sebastian</string>
 
-    <!-- Main -->
-    <string name="main_text_no_items">Empty</string>
+    <!-- Feed List -->
+    <string name="feed_list_text_no_items">Empty</string>
 
 </resources>
