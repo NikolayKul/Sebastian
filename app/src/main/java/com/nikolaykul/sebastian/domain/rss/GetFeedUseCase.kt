@@ -11,8 +11,8 @@ class GetFeedUseCase @Inject constructor(
     private val repository: RssRepository
 ) : UseCase<FeedId, RssFeed?> {
 
-    override suspend fun execute(params: FeedId): RssFeed? = TODO("not implemented")
+    override suspend fun execute(params: FeedId): RssFeed? = repository.getFeed(params.id)
 
 }
 
-class FeedId(private val id: String)
+class FeedId(val id: String)
