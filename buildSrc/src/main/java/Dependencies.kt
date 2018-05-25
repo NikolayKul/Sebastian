@@ -10,7 +10,7 @@ package dependencies
 object AndroidPlugin {
     const val sdk_version_min = 19
     const val sdk_version_target = 27
-    const val sdk_version_compile = 27
+    const val sdk_version_compile = "android-P"
 
     const val version_code = 1
     const val version_name = "0.0.1"
@@ -49,11 +49,8 @@ object Versions {
 
     object Support {
         const val support = "27.1.0"
+        const val design = "28.0.0-alpha1"
         const val constraint_layout = "1.0.2"
-    }
-
-    object Ui {
-        const val material_edit_text = "2.1.4"
     }
 
     object Other {
@@ -82,17 +79,21 @@ object Libs {
 
         const val data_binding = "com.android.databinding:compiler:${Versions.Core.gradle}"
 
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
-        const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"
+        const val coroutines =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutines}"
+        const val coroutines_android =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"
 
         const val rx_java = "io.reactivex.rxjava2:rxjava:${Versions.Core.rx_java}"
         const val rx_android = "io.reactivex.rxjava2:rxandroid:${Versions.Core.rx_android}"
 
         const val dagger = "com.google.dagger:dagger:${Versions.Core.dagger}"
         const val dagger_android = "com.google.dagger:dagger-android:${Versions.Core.dagger}"
-        const val dagger_android_support = "com.google.dagger:dagger-android-support:${Versions.Core.dagger}"
+        const val dagger_android_support =
+            "com.google.dagger:dagger-android-support:${Versions.Core.dagger}"
         const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.Core.dagger}"
-        const val dagger_compiler_android = "com.google.dagger:dagger-android-processor:${Versions.Core.dagger}"
+        const val dagger_compiler_android =
+            "com.google.dagger:dagger-android-processor:${Versions.Core.dagger}"
 
         const val room_runtime = "android.arch.persistence.room:runtime:${Versions.Core.room}"
         const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"
@@ -103,25 +104,25 @@ object Libs {
 
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Network.retrofit}"
-        const val retrofit_converter_scalars = "com.squareup.retrofit2:converter-scalars:${Versions.Network.retrofit}"
+        const val retrofit_converter_scalars =
+            "com.squareup.retrofit2:converter-scalars:${Versions.Network.retrofit}"
 
         const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.Network.okhttp}"
-        const val okhttp_logging = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.okhttp}"
+        const val okhttp_logging =
+            "com.squareup.okhttp3:logging-interceptor:${Versions.Network.okhttp}"
 
         const val tikxml = "com.tickaroo.tikxml:core:${Versions.Network.tikxml}"
         const val tikxml_annotations = "com.tickaroo.tikxml:annotation:${Versions.Network.tikxml}"
-        const val tikxml_converter = "com.tickaroo.tikxml:retrofit-converter:${Versions.Network.tikxml}"
+        const val tikxml_converter =
+            "com.tickaroo.tikxml:retrofit-converter:${Versions.Network.tikxml}"
         const val tikxml_compiler = "com.tickaroo.tikxml:processor:${Versions.Network.tikxml}"
     }
 
     object Support {
         const val appcompat = "com.android.support:appcompat-v7:${Versions.Support.support}"
-        const val constraint_layout = "com.android.support.constraint:constraint-layout:${Versions.Support.constraint_layout}"
-        const val design = "com.android.support:design:${Versions.Support.support}"
-    }
-
-    object Ui {
-        const val material_edit_text = "com.rengwuxian.materialedittext:library:${Versions.Ui.material_edit_text}"
+        const val design = "com.android.support:design:${Versions.Support.design}"
+        const val constraint_layout =
+            "com.android.support.constraint:constraint-layout:${Versions.Support.constraint_layout}"
     }
 
     object Other {
@@ -134,8 +135,10 @@ object Libs {
         const val stetho = "com.facebook.stetho:stetho:${Versions.Debug.stetho}"
         const val stetho_okhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.Debug.stetho}"
 
-        const val leak_canary_debug = "com.squareup.leakcanary:leakcanary-android:${Versions.Debug.leak_canary}"
-        const val leak_canary_release = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.Debug.leak_canary}"
+        const val leak_canary_debug =
+            "com.squareup.leakcanary:leakcanary-android:${Versions.Debug.leak_canary}"
+        const val leak_canary_release =
+            "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.Debug.leak_canary}"
     }
 
     object Test {

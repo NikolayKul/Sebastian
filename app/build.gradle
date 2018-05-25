@@ -84,12 +84,8 @@ dependencies {
     // support
 
     implementation Libs.Support.appcompat
-    implementation Libs.Support.constraint_layout
     implementation Libs.Support.design
-
-    // ui
-
-    implementation Libs.Ui.material_edit_text
+    implementation Libs.Support.constraint_layout
 
     // other
 
