@@ -2,7 +2,7 @@ package com.nikolaykul.sebastian
 
 import android.app.Activity
 import android.app.Application
-import com.nikolaykul.sebastian.di.AppInjector
+import com.nikolaykul.sebastian.di.application.DaggerAppComponent
 import com.nikolaykul.sebastian.utils.common.TimberFactory
 import com.nikolaykul.sebastian.utils.debug.StethoUtils
 import com.squareup.leakcanary.LeakCanary
@@ -11,10 +11,6 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import net.danlew.android.joda.JodaTimeAndroid
 import javax.inject.Inject
-
-/**
- * @author NikolayKul
- */
 
 class App : Application(), HasActivityInjector {
 
@@ -29,7 +25,7 @@ class App : Application(), HasActivityInjector {
             return
         }
 
-        AppInjector.init(this)
+        initInjection()
         TimberFactory.init()
         JodaTimeAndroid.init(this)
         StethoUtils.init(this)
@@ -37,5 +33,12 @@ class App : Application(), HasActivityInjector {
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+
+    private fun initInjection() {
+        DaggerAppComponent.builder()
+            .application(this)
+            .build()
+            .inject(this)
+    }
 
 }

@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import com.nikolaykul.sebastian.di.Injectable
 import com.nikolaykul.sebastian.utils.vm.viewModelActivityDelegate
+import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -21,9 +21,7 @@ import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(),
-    HasSupportFragmentInjector,
-    Injectable {
+abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject protected lateinit var navigator: Navigator
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
@@ -33,6 +31,7 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(),
     private val disposables = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
     }
