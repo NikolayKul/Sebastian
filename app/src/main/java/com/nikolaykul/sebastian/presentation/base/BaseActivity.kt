@@ -6,9 +6,13 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.nikolaykul.sebastian.di.Injectable
 import com.nikolaykul.sebastian.utils.vm.viewModelActivityDelegate
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,15 +21,14 @@ import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
 import javax.inject.Inject
 
-/**
- * @author NikolayKul
- */
-
-abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectable {
+abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(),
+    HasSupportFragmentInjector,
+    Injectable {
 
     @Inject protected lateinit var navigator: Navigator
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
     @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject protected lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
     protected lateinit var binding: B
     private val disposables = CompositeDisposable()
 
@@ -49,6 +52,8 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectab
         disposables.clear()
     }
 
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
+
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
@@ -57,8 +62,8 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectab
 
     protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
         observeOn(AndroidSchedulers.mainThread())
-                .subscribe(consumer::invoke, Timber::e)
-                .also { disposables.add(it) }
+            .subscribe(consumer::invoke, Timber::e)
+            .also { disposables.add(it) }
     }
 
 }
