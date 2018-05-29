@@ -8,24 +8,23 @@ import dagger.Provides
 import dagger.Reusable
 import javax.inject.Singleton
 
-
-private const val DATABASE_NAME = "sebastian.db"
-
-
 @Module
-class DatabaseModule {
+object DatabaseModule {
 
+    @JvmStatic
     @Provides
     @Singleton
     fun sebastianDatabase(application: Application): SebastianDatabase {
-        return Room.databaseBuilder(application, SebastianDatabase::class.java, DATABASE_NAME)
-                .build()
+        return Room.databaseBuilder(application, SebastianDatabase::class.java, "sebastian.db")
+            .build()
     }
 
+    @JvmStatic
     @Provides
     @Reusable
     fun channelDao(database: SebastianDatabase) = database.channelDao()
 
+    @JvmStatic
     @Provides
     @Reusable
     fun feedDao(database: SebastianDatabase) = database.feedDao()

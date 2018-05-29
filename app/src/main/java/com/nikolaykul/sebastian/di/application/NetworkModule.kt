@@ -25,6 +25,86 @@ private const val GEEKTIMES_BASE_URL = "https://geektimes.com/rss/"
 private const val CACHE_MAX_SIZE = 1024 * 1024 * 10L // 10 MB
 
 
+@Module
+object NetworkModule {
+
+    @JvmStatic
+    @Provides
+    @Singleton
+    fun rssApi(retrofit: Retrofit): RssApi = retrofit.create(RssApi::class.java)
+
+    @JvmStatic
+    @Provides
+    fun retrofit(
+        client: OkHttpClient,
+        converterFactories: InvariantSet<Converter.Factory>
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(GEEKTIMES_BASE_URL)
+            .client(client)
+            .apply { converterFactories().addAll(converterFactories) }
+            .build()
+    }
+
+    @JvmStatic
+    @Provides
+    fun client(
+        cache: Cache,
+        @AppInterceptor appInterceptors: InvariantSet<Interceptor>,
+        @NetworkInterceptor networkInterceptors: InvariantSet<Interceptor>
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .cache(cache)
+            .apply { interceptors().addAll(appInterceptors) }
+            .apply { networkInterceptors().addAll(networkInterceptors) }
+            .build()
+    }
+
+    @JvmStatic
+    @Provides
+    fun cache(application: Application): Cache = Cache(application.cacheDir, CACHE_MAX_SIZE)
+
+    // converters
+
+    @JvmStatic
+    @Provides
+    @IntoSet
+    fun converterFactoryScalars(): Converter.Factory = ScalarsConverterFactory.create()
+
+    @JvmStatic
+    @Provides
+    @IntoSet
+    fun converterFactoryXml(): Converter.Factory = TikXmlFactory.create()
+        .let { TikXmlConverterFactory.create(it) }
+
+    // app interceptors
+
+    @JvmStatic
+    @Provides
+    @IntoSet
+    @AppInterceptor
+    fun interceptorLogging(): Interceptor {
+        val level = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor.Level.HEADERS
+        } else {
+            HttpLoggingInterceptor.Level.NONE
+        }
+
+        return HttpLoggingInterceptor { Timber.tag("[OkHttp]").d(it) }
+            .setLevel(level)
+    }
+
+    // network interceptors
+
+    @JvmStatic
+    @Provides
+    @IntoSet
+    @NetworkInterceptor
+    fun interceptorStetho(): Interceptor = StethoUtils.provideInterceptor()
+
+}
+
+
 /**
  * Restrict Kotlin to generate an invariant [Set] method argument for Java.
  *
@@ -48,74 +128,3 @@ private annotation class AppInterceptor
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
 private annotation class NetworkInterceptor
-
-
-/**
- * Module that provides an [RssApi] and it's dependencies
- */
-@Module
-class NetworkModule {
-
-    @Provides
-    @Singleton
-    fun rssApi(retrofit: Retrofit): RssApi = retrofit.create(RssApi::class.java)
-
-    @Provides
-    fun retrofit(client: OkHttpClient,
-                 converterFactories: InvariantSet<Converter.Factory>): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl(GEEKTIMES_BASE_URL)
-                .client(client)
-                .apply { converterFactories().addAll(converterFactories) }
-                .build()
-    }
-
-    @Provides
-    fun client(cache: Cache,
-               @AppInterceptor appInterceptors: InvariantSet<Interceptor>,
-               @NetworkInterceptor networkInterceptors: InvariantSet<Interceptor>): OkHttpClient {
-        return OkHttpClient.Builder()
-                .cache(cache)
-                .apply { interceptors().addAll(appInterceptors) }
-                .apply { networkInterceptors().addAll(networkInterceptors) }
-                .build()
-    }
-
-    @Provides
-    fun cache(application: Application): Cache = Cache(application.cacheDir, CACHE_MAX_SIZE)
-
-    // converters
-
-    @Provides
-    @IntoSet
-    fun converterFactoryScalars(): Converter.Factory = ScalarsConverterFactory.create()
-
-    @Provides
-    @IntoSet
-    fun converterFactoryXml(): Converter.Factory = TikXmlFactory.create()
-            .let { TikXmlConverterFactory.create(it) }
-
-    // app interceptors
-
-    @Provides
-    @IntoSet
-    @AppInterceptor
-    fun interceptorLogging(): Interceptor {
-        val level = if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor.Level.HEADERS
-        } else {
-            HttpLoggingInterceptor.Level.NONE
-        }
-
-        return HttpLoggingInterceptor { Timber.tag("[OkHttp]").d(it) }
-                .setLevel(level)
-    }
-
-    // network interceptors
-
-    @Provides
-    @IntoSet
-    @NetworkInterceptor
-    fun interceptorStetho(): Interceptor = StethoUtils.provideInterceptor()
-
-}
