@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import com.nikolaykul.sebastian.di.Injectable
-import com.nikolaykul.sebastian.utils.vm.viewModelDelegate
+import com.nikolaykul.sebastian.utils.vm.viewModelActivityDelegate
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -52,8 +52,8 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), Injectab
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
-    protected inline fun <reified T : ViewModel> lazyViewModelDelegate() =
-            viewModelDelegate<T>(this, { viewModelFactory })
+    protected inline fun <reified T : ViewModel> viewModelDelegate() =
+        viewModelActivityDelegate<T>(this, { viewModelFactory })
 
     protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
         observeOn(AndroidSchedulers.mainThread())

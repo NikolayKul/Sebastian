@@ -14,7 +14,7 @@ import timber.log.Timber
 class FeedListFragment : BaseFragment<ActivityFeedListBinding>() {
     override val layoutResId get() = R.layout.activity_feed_list
 
-    private val viewModel by lazyViewModelDelegate<FeedListViewModel>()
+    private val viewModel by viewModelDelegate<FeedListViewModel>()
     private val adapter = FeedListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

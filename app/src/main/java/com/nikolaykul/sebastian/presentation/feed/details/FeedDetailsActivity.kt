@@ -12,7 +12,7 @@ import timber.log.Timber
 
 class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
 
-    private val viewModel by lazyViewModelDelegate<FeedDetailsViewModel>()
+    private val viewModel by viewModelDelegate<FeedDetailsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

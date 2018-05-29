@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nikolaykul.sebastian.di.Injectable
-import com.nikolaykul.sebastian.utils.vm.viewModelDelegate
+import com.nikolaykul.sebastian.utils.vm.viewModelFragmentDelegate
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -41,8 +41,8 @@ abstract class BaseFragment<TBinding : ViewDataBinding> : Fragment(), Injectable
         disposables.clear()
     }
 
-    protected inline fun <reified T : ViewModel> lazyViewModelDelegate() =
-        viewModelDelegate<T>(activity!!, { viewModelFactory })
+    protected inline fun <reified T : ViewModel> viewModelDelegate() =
+        viewModelFragmentDelegate<T>(this, { viewModelFactory })
 
     protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
         observeOn(AndroidSchedulers.mainThread())

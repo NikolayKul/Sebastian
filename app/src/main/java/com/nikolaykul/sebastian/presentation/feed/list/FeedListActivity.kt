@@ -17,7 +17,7 @@ class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
         fun startIntent(context: Context) = Intent(context, FeedListActivity::class.java)
     }
 
-    private val viewModel by lazyViewModelDelegate<FeedListViewModel>()
+    private val viewModel by viewModelDelegate<FeedListViewModel>()
     private val adapter = FeedListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
