@@ -22,7 +22,7 @@ class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
     }
 
     companion object {
-        fun startIntent(context: Context, feedId: String): Intent {
+        fun getStartIntent(context: Context, feedId: String): Intent {
             return Intent(context, FeedDetailsActivity::class.java)
                 .putExtra(EXTRA_FEED_ID, feedId)
         }

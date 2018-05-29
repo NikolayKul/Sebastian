@@ -18,8 +18,8 @@ class BaseNavigator(
     override fun createActivityIntent(context: Context,
                                       screenKey: String,
                                       data: Any?) = when (screenKey) {
-        SCREEN_FEED_LIST -> FeedListActivity.startIntent(context)
-        SCREEN_FEED_DETAILS -> FeedDetailsActivity.startIntent(context, data as String)
+        SCREEN_FEED_LIST -> FeedListActivity.getStartIntent(context)
+        SCREEN_FEED_DETAILS -> FeedDetailsActivity.getStartIntent(context, data as String)
         else -> throw IllegalStateException("Unknown screen key: $screenKey")
     }
 

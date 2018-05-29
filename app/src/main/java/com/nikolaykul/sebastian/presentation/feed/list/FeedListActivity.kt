@@ -51,6 +51,6 @@ class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
     }
 
     companion object {
-        fun startIntent(context: Context) = Intent(context, FeedListActivity::class.java)
+        fun getStartIntent(context: Context) = Intent(context, FeedListActivity::class.java)
     }
 }
