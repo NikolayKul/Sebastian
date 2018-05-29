@@ -8,7 +8,7 @@ package dependencies
 
 
 object AndroidPlugin {
-    const val sdk_version_min = 19
+    const val sdk_version_min = 21
     const val sdk_version_target = 27
     const val sdk_version_compile = "android-P"
 
@@ -48,8 +48,7 @@ object Versions {
     }
 
     object Support {
-        const val support = "27.1.0"
-        const val design = "28.0.0-alpha1"
+        const val support = "28.0.0-alpha1"
         const val constraint_layout = "1.0.2"
     }
 
@@ -120,7 +119,7 @@ object Libs {
 
     object Support {
         const val appcompat = "com.android.support:appcompat-v7:${Versions.Support.support}"
-        const val design = "com.android.support:design:${Versions.Support.design}"
+        const val design = "com.android.support:design:${Versions.Support.support}"
         const val constraint_layout =
             "com.android.support.constraint:constraint-layout:${Versions.Support.constraint_layout}"
     }
