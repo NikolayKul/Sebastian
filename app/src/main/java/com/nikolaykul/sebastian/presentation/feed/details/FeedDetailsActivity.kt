@@ -11,6 +11,7 @@ import timber.log.Timber
 
 
 class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
+    override val layoutResId get() = R.layout.activity_feed_details
 
     private val viewModel by viewModelDelegate<FeedDetailsViewModel>()
 
@@ -19,8 +20,6 @@ class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
         viewModel.observeState()
             .easySubscribe { Timber.d("FeedId from VM is $it") }
     }
-
-    override fun getLayoutId() = R.layout.activity_feed_details
 
     companion object {
         fun startIntent(context: Context, feedId: String): Intent {

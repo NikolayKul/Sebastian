@@ -13,9 +13,7 @@ import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import timber.log.Timber
 
 class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
-    companion object {
-        fun startIntent(context: Context) = Intent(context, FeedListActivity::class.java)
-    }
+    override val layoutResId get() = R.layout.activity_feed_list
 
     private val viewModel by viewModelDelegate<FeedListViewModel>()
     private val adapter = FeedListAdapter()
@@ -26,8 +24,6 @@ class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
         initListeners()
         viewModel.observeState().easySubscribe(this::setState)
     }
-
-    override fun getLayoutId() = R.layout.activity_feed_list
 
     private fun setState(state: FeedListState) {
         val loadingStub = if (state.isLoading) "Show loading" else "Hide loading"
@@ -40,7 +36,7 @@ class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
 
     private fun setItems(feeds: List<RssFeed>) {
         feeds.map { FeedListViewItem(it, viewModel::onFeedClicked) }
-                .also(adapter::setItems)
+            .also(adapter::setItems)
     }
 
     private fun initListeners() {
@@ -54,4 +50,7 @@ class FeedListActivity : BaseActivity<ActivityFeedListBinding>() {
         }
     }
 
+    companion object {
+        fun startIntent(context: Context) = Intent(context, FeedListActivity::class.java)
+    }
 }

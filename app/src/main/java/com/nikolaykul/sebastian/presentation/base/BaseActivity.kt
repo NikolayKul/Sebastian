@@ -30,10 +30,13 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), HasSuppo
     protected lateinit var binding: B
     private val disposables = CompositeDisposable()
 
+    @get:LayoutRes
+    protected abstract val layoutResId: Int
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, getLayoutId())
+        binding = DataBindingUtil.setContentView(this, layoutResId)
     }
 
     override fun onResume() {
@@ -52,9 +55,6 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), HasSuppo
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
-
-    @LayoutRes
-    protected abstract fun getLayoutId(): Int
 
     protected inline fun <reified T : ViewModel> viewModelDelegate() =
         viewModelActivityDelegate<T>(this, { viewModelFactory })
