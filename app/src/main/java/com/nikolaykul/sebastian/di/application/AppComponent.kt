@@ -2,22 +2,19 @@ package com.nikolaykul.sebastian.di.application
 
 import android.app.Application
 import com.nikolaykul.sebastian.App
+import com.nikolaykul.sebastian.di.activity.ActivityInjectionModule
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-/**
- * @author NikolayKul
- */
-
-@Singleton
-@Component(modules = [
-    AppInjectionModule::class,
-    ViewModelModule::class,
-    DatabaseModule::class,
-    NetworkModule::class,
-    RouterModule::class
-])
+@Component(
+    modules = [
+        ActivityInjectionModule::class,
+        ViewModelModule::class,
+        DatabaseModule::class,
+        NetworkModule::class,
+        RouterModule::class
+    ]
+)
 interface AppComponent {
 
     fun inject(app: App)

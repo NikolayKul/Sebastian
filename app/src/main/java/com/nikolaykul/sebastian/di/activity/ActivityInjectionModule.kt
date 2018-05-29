@@ -1,9 +1,5 @@
-package com.nikolaykul.sebastian.di.application
+package com.nikolaykul.sebastian.di.activity
 
-import com.nikolaykul.sebastian.di.activity.FeedDetailsActivityModule
-import com.nikolaykul.sebastian.di.activity.FeedListActivityModule
-import com.nikolaykul.sebastian.di.activity.MainActivityModule
-import com.nikolaykul.sebastian.di.activity.PerActivity
 import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsActivity
 import com.nikolaykul.sebastian.presentation.feed.list.FeedListActivity
 import com.nikolaykul.sebastian.presentation.main.MainActivity
@@ -12,7 +8,7 @@ import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 
 @Module(includes = [AndroidSupportInjectionModule::class])
-interface AppInjectionModule {
+interface ActivityInjectionModule {
 
     @PerActivity
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
