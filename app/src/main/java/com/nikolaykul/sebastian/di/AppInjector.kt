@@ -15,8 +15,6 @@ import dagger.android.support.AndroidSupportInjection
 /**
  * Class that injects Application, Activities and Fragments.
  * The last two must be marked as [Injectable]
- *
- * @author NikolayKul
  */
 object AppInjector {
 
@@ -26,9 +24,9 @@ object AppInjector {
     }
 
     private fun handleActivity(activity: Activity) {
-        if (activity is Injectable) {
-            AndroidInjection.inject(activity)
-        }
+        if (activity !is Injectable) return
+
+        AndroidInjection.inject(activity)
         (activity as? FragmentActivity)?.registerOnFragmentAttachedCallback(this::handleFragment)
     }
 
@@ -40,9 +38,9 @@ object AppInjector {
 
     private fun injectApp(app: App) {
         DaggerAppComponent.builder()
-                .application(app)
-                .build()
-                .inject(app)
+            .application(app)
+            .build()
+            .inject(app)
     }
 
 }
@@ -52,8 +50,11 @@ object AppInjector {
  * Helper method that uses [FragmentManager.registerFragmentLifecycleCallbacks]
  * to invoke [block] on *onFragmentAttached*
  */
-private fun FragmentActivity.registerOnFragmentAttachedCallback(block: (Fragment) -> Unit) {
-    supportFragmentManager.registerFragmentLifecycleCallbacks(object : FragmentManager.FragmentLifecycleCallbacks() {
+private fun FragmentActivity.registerOnFragmentAttachedCallback(
+    block: (Fragment) -> Unit
+) {
+    supportFragmentManager.registerFragmentLifecycleCallbacks(object :
+        FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentAttached(fm: FragmentManager, fragment: Fragment, context: Context) {
             block(fragment)
         }
@@ -64,10 +65,10 @@ private fun FragmentActivity.registerOnFragmentAttachedCallback(block: (Fragment
 /**
  * Helper method that uses [Application.registerActivityLifecycleCallbacks]
  * to invoke [block] on *onActivityCreated*
- *
- * @author NikolayKul
  */
-private fun Application.registerOnActivityCreateCallback(block: (Activity) -> Unit) {
+private fun Application.registerOnActivityCreateCallback(
+    block: (Activity) -> Unit
+) {
     registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             block(activity)
