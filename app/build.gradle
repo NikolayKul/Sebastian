@@ -49,8 +49,6 @@ dependencies {
 
     implementation Libs.Core.kotlin_stdlib
 
-    kapt Libs.Core.data_binding
-
     implementation Libs.Core.coroutines
     implementation Libs.Core.coroutines_android
 
