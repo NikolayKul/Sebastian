@@ -60,26 +60,22 @@ class ViewModelFragmentDelegate<T : ViewModel>(
 
 abstract class BaseViewModelDelegate<T : ViewModel>(private val clazz: Class<T>) {
     @Volatile
-    private var _viewModel: T? = null
+    private var _value: T? = null
 
     operator fun getValue(thisRef: Any?, prop: KProperty<*>): T {
-        val vm1 = _viewModel
+        val vm1 = _value
         if (vm1 != null) {
             return vm1
         }
 
-        return synchronized(this) {
-            var vm2 = _viewModel
+        synchronized(this) {
+            var vm2 = _value
             if (vm2 == null) {
                 vm2 = getViewModelProvider().get(clazz)
-                    .also { _viewModel = it }
+                    .also { _value = it }
             }
-            return@synchronized vm2
+            return vm2
         }
-    }
-
-    operator fun setValue(thisRef: Any?, prop: KProperty<*>, value: T) {
-        _viewModel = value
     }
 
     protected abstract fun getViewModelProvider(): ViewModelProvider
