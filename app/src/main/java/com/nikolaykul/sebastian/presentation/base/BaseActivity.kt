@@ -21,13 +21,14 @@ import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity(), HasSupportFragmentInjector {
+abstract class BaseActivity<TBinding : ViewDataBinding> : AppCompatActivity(),
+    HasSupportFragmentInjector {
 
     @Inject protected lateinit var navigator: Navigator
     @Inject protected lateinit var navigatorHolder: NavigatorHolder
     @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject protected lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    protected lateinit var binding: B
+    protected lateinit var binding: TBinding
     private val disposables = CompositeDisposable()
 
     @get:LayoutRes
