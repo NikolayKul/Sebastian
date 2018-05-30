@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.nikolaykul.sebastian.R
-import com.nikolaykul.sebastian.databinding.ActivityFeedListBinding
+import com.nikolaykul.sebastian.databinding.FragmentFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseFragment
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import timber.log.Timber
 
-class FeedListFragment : BaseFragment<ActivityFeedListBinding>() {
-    override val layoutResId get() = R.layout.activity_feed_list
+class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
+    override val layoutResId get() = R.layout.fragment_feed_list
 
     private val viewModel by viewModelDelegate<FeedListViewModel>()
     private val adapter = FeedListAdapter()

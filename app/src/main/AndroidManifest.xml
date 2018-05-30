@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.main.MainActivity" />
-        <activity android:name=".presentation.feed.list.FeedListActivity" />
         <activity android:name=".presentation.feed.details.FeedDetailsActivity" />
     </application>
 
