@@ -7,10 +7,17 @@ import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ActivityMainBinding
+import com.nikolaykul.sebastian.presentation.BaseNavigator
+import com.nikolaykul.sebastian.presentation.SCREEN_FEED_LIST
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
-import com.nikolaykul.sebastian.presentation.feed.list.FeedListFragment
+import ru.terrakok.cicerone.Router
+import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    // TODO: move to the ViewModel
+    @Inject lateinit var router: Router
+
     override val layoutResId get() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,20 +25,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.navView.setOnNavigationItemSelectedListener(NavigationListener())
     }
 
+    override fun provideNavigator() = BaseNavigator(this, binding.container.id)
+
     private inner class NavigationListener : BottomNavigationView.OnNavigationItemSelectedListener {
         override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
             R.id.action_feeds -> {
-                showFeeds()
+                router.navigateTo(SCREEN_FEED_LIST)
                 true
             }
             else -> true
         }
-    }
-
-    private fun showFeeds() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, FeedListFragment.newInstance())
-            .commit()
     }
 
     companion object {
