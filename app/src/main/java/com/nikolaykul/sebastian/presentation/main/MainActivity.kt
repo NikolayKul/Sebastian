@@ -23,6 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.navView.setOnNavigationItemSelectedListener(NavigationListener())
+        binding.navView.selectedItemId = R.id.action_feeds
     }
 
     override fun provideNavigator() = BaseNavigator(this, binding.container.id)
