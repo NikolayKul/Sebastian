@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
+        <item name="floatingActionButtonStyle">@style/Fab</item>
     </style>
 
     <!-- Launcher -->
@@ -14,10 +15,8 @@
     </style>
 
     <!-- Fab -->
-    <style name="AppTheme.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="android:layout_width">@dimen/fab_size_normal</item>
-        <item name="android:layout_height">@dimen/fab_size_normal</item>
-        <item name="android:scaleType">center</item>
+    <style name="Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="fabSize">normal</item>
         <item name="useCompatPadding">true</item>
     </style>
 

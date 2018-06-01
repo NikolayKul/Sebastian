@@ -9,7 +9,4 @@
     <!-- Margin & padding -->
     <dimen name="space_normal">8dp</dimen>
 
-    <!-- Fab size -->
-    <dimen name="fab_size_normal">56dp</dimen>
-
 </resources>
