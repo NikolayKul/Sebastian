@@ -21,8 +21,6 @@
             android:id="@+id/navView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:itemIconTint="@color/item_main_menu_selector"
-            app:itemTextColor="@color/item_main_menu_selector"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

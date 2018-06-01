@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
     </style>
 
     <!-- Launcher -->
@@ -20,5 +21,11 @@
         <item name="useCompatPadding">true</item>
     </style>
 
+    <!-- Navigation -->
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/navigation_menu_selector</item>
+        <item name="itemTextColor">@color/navigation_menu_selector</item>
+        <item name="labelVisibilityMode">selected</item>
+    </style>
 
 </resources>
