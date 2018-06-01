@@ -22,11 +22,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.navView.setOnNavigationItemSelectedListener(NavigationListener())
-        binding.navView.selectedItemId = R.id.action_feeds
+        initNavigation()
     }
 
     override fun provideNavigator() = BaseNavigator(this, binding.container.id)
+
+    private fun initNavigation() {
+        with(binding.navView) {
+            setOnNavigationItemSelectedListener(NavigationListener())
+            selectedItemId = R.id.action_feeds
+        }
+    }
 
     private inner class NavigationListener : BottomNavigationView.OnNavigationItemSelectedListener {
         override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
