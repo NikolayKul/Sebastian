@@ -7,25 +7,28 @@ import dagger.Reusable
 import javax.inject.Inject
 
 @Reusable
-class RssFeedToEntityMapper @Inject constructor() : Mapper<RssFeedToEntityMapper.Params, RssFeedEntity> {
+class RssFeedToEntityMapper @Inject constructor() :
+    Mapper<RssFeedToEntityMapper.Params, RssFeedEntity> {
 
     override fun map(input: Params) = RssFeedEntity(
-            id = input.feed.id,
-            channelId = input.channelId,
-            title = input.feed.title,
-            description = input.feed.description,
-            date = input.feed.date
+        id = input.feed.id,
+        channelId = input.channelId,
+        title = input.feed.title,
+        description = input.feed.description,
+        pubDate = input.feed.pubDate
     )
 
     class Params(val channelId: String, val feed: RssFeed)
 }
 
 @Reusable
-class RssFeedFromEntityMapper @Inject constructor() : Mapper<RssFeedEntity, RssFeed> {
+class RssFeedFromEntityMapper @Inject constructor() :
+    Mapper<RssFeedEntity, RssFeed> {
+
     override fun map(input: RssFeedEntity) = RssFeed(
-            id = input.id,
-            title = input.title,
-            description = input.description,
-            date = input.date
+        id = input.id,
+        title = input.title,
+        description = input.description,
+        pubDate = input.pubDate
     )
 }
