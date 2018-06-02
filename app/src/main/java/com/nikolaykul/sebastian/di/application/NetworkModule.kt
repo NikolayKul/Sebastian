@@ -21,7 +21,7 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
-private const val GEEKTIMES_BASE_URL = "https://geektimes.com/rss/"
+private const val TEMP_BASE_URL = "https://habr.com/rss/interesting/"
 private const val CACHE_MAX_SIZE = 1024 * 1024 * 10L // 10 MB
 
 
@@ -40,7 +40,7 @@ object NetworkModule {
         converterFactories: InvariantSet<Converter.Factory>
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(GEEKTIMES_BASE_URL)
+            .baseUrl(TEMP_BASE_URL)
             .client(client)
             .apply { converterFactories().addAll(converterFactories) }
             .build()
