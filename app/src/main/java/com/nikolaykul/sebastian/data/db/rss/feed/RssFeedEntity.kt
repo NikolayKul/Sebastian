@@ -25,5 +25,6 @@ data class RssFeedEntity(
 
     val title: String,
     val description: String,
+    val imageUrl: String?,
     val pubDate: DateTime?
 )

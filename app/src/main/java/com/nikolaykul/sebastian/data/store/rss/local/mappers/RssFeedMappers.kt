@@ -15,6 +15,7 @@ class RssFeedToEntityMapper @Inject constructor() :
         channelId = input.channelId,
         title = input.feed.title,
         description = input.feed.description,
+        imageUrl = input.feed.imageUrl,
         pubDate = input.feed.pubDate
     )
 
@@ -29,6 +30,7 @@ class RssFeedFromEntityMapper @Inject constructor() :
         id = input.id,
         title = input.title,
         description = input.description,
+        imageUrl = input.imageUrl,
         pubDate = input.pubDate
     )
 }

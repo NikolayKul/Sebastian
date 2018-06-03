@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a0bde6bbdc10286b4a5ce2e22a8c9101",
+    "identityHash": "6400f6b7e2dab57926217db4ec636033",
     "entities": [
       {
         "tableName": "rss_channels",
@@ -44,7 +44,7 @@
       },
       {
         "tableName": "rss_feeds",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `channel_id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `date` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`channel_id`) REFERENCES `rss_channels`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `channel_id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT, `pubDate` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`channel_id`) REFERENCES `rss_channels`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -71,8 +71,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "date",
-            "columnName": "date",
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pubDate",
+            "columnName": "pubDate",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -110,7 +116,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a0bde6bbdc10286b4a5ce2e22a8c9101\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6400f6b7e2dab57926217db4ec636033\")"
     ]
   }
 }

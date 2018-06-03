@@ -17,6 +17,7 @@ class FeedListViewItem(
         with(holder.binding) {
             tvDate.text = item.pubDate.toString()
             tvTitle.text = item.title
+            tvImage.text = item.imageUrl
             tvSubtitle.text = item.description.slice(0..20)
 
             root.setOnClickListener { feedClickListener(item) }
