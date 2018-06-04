@@ -56,6 +56,7 @@ object Versions {
         const val cicerone = "3.0.0"
         const val timber = "4.6.0"
         const val joda_time = "2.9.9.3"
+        const val glide = "4.7.1"
     }
 
     object Debug {
@@ -126,6 +127,9 @@ object Libs {
         const val cicerone = "ru.terrakok.cicerone:cicerone:${Versions.Other.cicerone}"
         const val timber = "com.jakewharton.timber:timber:${Versions.Other.timber}"
         const val joda_time = "net.danlew:android.joda:${Versions.Other.joda_time}"
+
+        const val glide = "com.github.bumptech.glide:glide:${Versions.Other.glide}"
+        const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.Other.glide}"
     }
 
     object Debug {

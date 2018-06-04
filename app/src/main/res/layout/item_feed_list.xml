@@ -3,50 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <!-- TODO: temp margin -->
+    <android.support.design.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/space_normal">
+        android:layout_marginBottom="40dp">
 
-        <TextView
-            android:id="@+id/tvDate"
-            style="@style/AppTheme.ItemFeedList.Date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/date/hhmm" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/space_normal"
+            android:paddingEnd="@dimen/space_normal"
+            android:paddingStart="@dimen/space_normal"
+            android:paddingTop="@dimen/space_big">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            style="@style/AppTheme.ItemFeedList.Title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/space_normal"
-            app:layout_constraintEnd_toStartOf="@id/tvDate"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/lorem" />
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="@dimen/feed_list_image_size"
+                android:layout_height="@dimen/feed_list_image_size"
+                android:layout_marginBottom="@dimen/space_normal"
+                android:contentDescription="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@color/debug_3" />
 
-        <TextView
-            android:id="@+id/tvImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            tools:text="temp" />
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/AppTheme.ItemFeedList.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_normal"
+                app:layout_constraintBottom_toTopOf="@+id/tvContent"
+                app:layout_constraintEnd_toStartOf="@+id/ivImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                tools:text="@tools:sample/lorem" />
 
-        <TextView
-            android:id="@+id/tvSubtitle"
-            style="@style/AppTheme.ItemFeedList.Subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvImage"
-            tools:text="@tools:sample/lorem/random" />
+            <TextView
+                android:id="@+id/tvContent"
+                style="@style/AppTheme.ItemFeedList.Content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_big"
+                android:layout_marginTop="@dimen/space_normal"
+                app:layout_constraintBottom_toTopOf="@+id/tvDate"
+                app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="@tools:sample/lorem/random" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvDate"
+                style="@style/AppTheme.ItemFeedList.Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContent"
+                tools:text="@tools:sample/date/hhmm" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.card.MaterialCardView>
 
 </layout>

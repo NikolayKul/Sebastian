@@ -4,10 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="debug_1">#e3f2fd</color>
-    <color name="debug_2">#bbdefb</color>
-    <color name="debug_3">#90caf9</color>
-    <color name="debug_4">#64b5f6</color>¬
+    <color name="debug_1">#bbdefb</color>
+    <color name="debug_2">#90caf9</color>
+    <color name="debug_3">#ffd180</color>
+    <color name="debug_4">#ffb74d</color>
 
     <color name="transparent">@android:color/transparent</color>
     <color name="white">#ffffffff</color>

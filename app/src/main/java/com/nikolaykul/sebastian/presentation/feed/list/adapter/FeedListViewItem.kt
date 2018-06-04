@@ -1,5 +1,9 @@
 package com.nikolaykul.sebastian.presentation.feed.list.adapter
 
+import android.os.Build
+import android.text.Html
+import android.text.SpannableStringBuilder
+import com.bumptech.glide.Glide
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
@@ -17,10 +21,22 @@ class FeedListViewItem(
         with(holder.binding) {
             tvDate.text = item.pubDate.toString()
             tvTitle.text = item.title
-            tvImage.text = item.imageUrl
-            tvSubtitle.text = item.description.slice(0..20)
+            tvContent.text = SpannableStringBuilder(item.description.fromHtml())
+                .apply { clearSpans() }
+
+            Glide.with(ivImage)
+                .load(item.imageUrl)
+                .into(ivImage)
 
             root.setOnClickListener { feedClickListener(item) }
         }
     }
+}
+
+
+@Suppress("DEPRECATION")
+private fun String.fromHtml() = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+    Html.fromHtml(this)
+} else {
+    Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT)
 }

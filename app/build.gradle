@@ -91,6 +91,9 @@ dependencies {
     implementation Libs.Other.timber
     implementation Libs.Other.joda_time
 
+    implementation Libs.Other.glide
+    kapt Libs.Other.glide_compiler
+
     // debug
 
     debugImplementation Libs.Debug.stetho

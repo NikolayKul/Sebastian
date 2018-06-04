@@ -7,6 +7,10 @@
     <dimen name="text_size_small">14sp</dimen>
 
     <!-- Margin & padding -->
+    <dimen name="space_big">16dp</dimen>
     <dimen name="space_normal">8dp</dimen>
+
+    <!-- Feed List -->
+    <dimen name="feed_list_image_size">90dp</dimen>
 
 </resources>
