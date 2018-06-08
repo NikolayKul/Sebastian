@@ -49,7 +49,7 @@ object Versions {
 
     object Support {
         const val support = "28.0.0-alpha1"
-        const val constraint_layout = "1.0.2"
+        const val constraint_layout = "1.1.0"
     }
 
     object Other {
