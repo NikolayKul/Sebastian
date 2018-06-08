@@ -35,6 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/space_normal"
+                app:layout_constrainedHeight="true"
                 app:layout_constraintBottom_toTopOf="@+id/tvContent"
                 app:layout_constraintEnd_toStartOf="@+id/ivImage"
                 app:layout_constraintStart_toStartOf="parent"
