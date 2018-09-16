@@ -12,7 +12,7 @@ import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import timber.log.Timber
 
 class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
-    override val layoutResId get() = R.layout.fragment_feed_list
+    override val layoutResId = R.layout.fragment_feed_list
 
     private val viewModel by viewModelDelegate<FeedListViewModel>()
     private val adapter = FeedListAdapter()

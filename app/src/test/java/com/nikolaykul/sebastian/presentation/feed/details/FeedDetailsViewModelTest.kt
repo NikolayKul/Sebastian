@@ -33,23 +33,22 @@ class FeedDetailsViewModelTest {
         givenSuspended { getFeedUseCase.execute(feedId) } willReturn { givenFeed }
 
         val actualStateRelay = viewModel.observeState().test()
+        viewModel.loadFeed()
 
         val expectedState = FeedDetailsState(feed = givenFeed)
-        actualStateRelay.assertValue(expectedState)
-        actualStateRelay.assertNotTerminated()
+        actualStateRelay.assertValuesOnly(expectedState)
     }
 
     @Test
     fun `returns last state`() {
         val expectedState = FeedDetailsState(feed = null)
-        viewModel.setState(expectedState)
+        viewModel.setTestState(expectedState)
 
         val actualStateRelay = viewModel.observeState().test()
 
-        actualStateRelay.assertValue(expectedState)
-        actualStateRelay.assertNotTerminated()
+        actualStateRelay.assertValuesOnly(expectedState)
     }
 
-    private fun stubFeed() = RssFeed("", "", "", null)
+    private fun stubFeed() = RssFeed("", "", "", "", null)
 
 }

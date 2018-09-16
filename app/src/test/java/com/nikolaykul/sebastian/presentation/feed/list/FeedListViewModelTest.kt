@@ -40,14 +40,15 @@ class FeedListViewModelTest {
         givenSuspended { getRssChannelUseCase.execute() } willReturn { stubChannel(givenFeeds) }
 
         val expectedStates = arrayOf(
-                FeedListState(),
-                FeedListState(isLoading = true),
-                FeedListState(feeds = givenFeeds))
+            FeedListState(),
+            FeedListState(isLoading = true),
+            FeedListState(feeds = givenFeeds)
+        )
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
 
-        actualStateRelay.assertValues(*expectedStates)
+        actualStateRelay.assertValuesOnly(*expectedStates)
 
         return@runBlocking
     }
@@ -59,14 +60,15 @@ class FeedListViewModelTest {
 
         val givenError = NoNetworkException()
         val expectedStates = arrayOf(
-                FeedListState(error = givenError),
-                FeedListState(isLoading = true, error = givenError),
-                FeedListState(feeds = givenFeeds))
+            FeedListState(error = givenError),
+            FeedListState(isLoading = true, error = givenError),
+            FeedListState(feeds = givenFeeds)
+        )
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
 
-        actualStateRelay.assertValues(*expectedStates)
+        actualStateRelay.assertValuesOnly(*expectedStates)
 
         return@runBlocking
     }
@@ -77,14 +79,15 @@ class FeedListViewModelTest {
         givenSuspended { getRssChannelUseCase.execute() } willThrow { givenException }
 
         val expectedStates = arrayOf(
-                FeedListState(),
-                FeedListState(isLoading = true),
-                FeedListState(error = givenException))
+            FeedListState(),
+            FeedListState(isLoading = true),
+            FeedListState(error = givenException)
+        )
 
         val actualStateRelay = observeFromGivenState(expectedStates[0])
         viewModel.loadChannel()
 
-        actualStateRelay.assertValues(*expectedStates)
+        actualStateRelay.assertValuesOnly(*expectedStates)
 
         return@runBlocking
     }
@@ -92,7 +95,7 @@ class FeedListViewModelTest {
     @Test
     fun `navigates to the details screen on feed click`() {
         val expectedId = "id"
-        val givenFeed = RssFeed(expectedId, "", "", null)
+        val givenFeed = RssFeed(expectedId, "", "", "", null)
 
         viewModel.onFeedClicked(givenFeed)
 
@@ -103,12 +106,12 @@ class FeedListViewModelTest {
      * Set initial [FeedListState] and return a [TestSubscriber] to the State relay
      */
     private fun observeFromGivenState(state: FeedListState) = with(viewModel) {
-        setState(state)
+        setTestState(state)
         return@with observeState().test()
     }
 
     private fun stubChannel(feeds: List<RssFeed>) = RssChannel("", "", "", "", feeds)
 
-    private fun stubFeeds() = (1..5).map { RssFeed("$it", "title_$it", "desc_$it", null) }
+    private fun stubFeeds() = (1..5).map { RssFeed("$it", "title_$it", "desc_$it", "", null) }
 
 }
