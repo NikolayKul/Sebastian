@@ -22,24 +22,38 @@ import ru.terrakok.cicerone.NavigatorHolder
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivity<TBinding : ViewDataBinding> : AppCompatActivity(),
-    HasSupportFragmentInjector {
-
-    @Inject protected lateinit var navigatorHolder: NavigatorHolder
+abstract class BaseActivity<TBinding : ViewDataBinding> : RouterActivity() {
     @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject protected lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
     protected lateinit var binding: TBinding
     private val disposables = CompositeDisposable()
-    private val navigator: Navigator by lazy { provideNavigator() }
 
     @get:LayoutRes
     protected abstract val layoutResId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutResId)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposables.clear()
+    }
+
+    protected inline fun <reified T : ViewModel> viewModelDelegate() =
+        viewModelActivityDelegate<T>(this, { viewModelFactory })
+
+    protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
+        observeOn(AndroidSchedulers.mainThread())
+            .subscribe(consumer::invoke, Timber::e)
+            .also { disposables.add(it) }
+    }
+}
+
+
+abstract class RouterActivity : InjectableActivity() {
+    @Inject protected lateinit var navigatorHolder: NavigatorHolder
+    private val navigator: Navigator by lazy(::provideNavigator)
 
     override fun onResume() {
         super.onResume()
@@ -51,22 +65,17 @@ abstract class BaseActivity<TBinding : ViewDataBinding> : AppCompatActivity(),
         navigatorHolder.removeNavigator()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposables.clear()
+    protected open fun provideNavigator(): Navigator = BaseNavigator(this)
+}
+
+
+abstract class InjectableActivity : AppCompatActivity(), HasSupportFragmentInjector {
+    @Inject protected lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     final override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
-
-    protected open fun provideNavigator(): Navigator = BaseNavigator(this)
-
-    protected inline fun <reified T : ViewModel> viewModelDelegate() =
-        viewModelActivityDelegate<T>(this, { viewModelFactory })
-
-    protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
-        observeOn(AndroidSchedulers.mainThread())
-            .subscribe(consumer::invoke, Timber::e)
-            .also { disposables.add(it) }
-    }
-
 }
