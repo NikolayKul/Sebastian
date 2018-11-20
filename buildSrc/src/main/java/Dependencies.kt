@@ -16,7 +16,6 @@ object AndroidPlugin {
     const val version_name = "0.0.1"
 
     const val application_id = "com.nikolaykul.sebastian"
-    const val build_tools_version = "27.0.3"
 }
 
 
