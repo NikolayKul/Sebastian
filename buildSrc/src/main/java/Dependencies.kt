@@ -29,7 +29,7 @@ object BuildPlugins {
 object Versions {
 
     object Core {
-        const val gradle = "3.1.2"
+        const val gradle = "3.2.1"
         const val kotlin = "1.2.41"
         const val coroutines = "0.22.5"
 
