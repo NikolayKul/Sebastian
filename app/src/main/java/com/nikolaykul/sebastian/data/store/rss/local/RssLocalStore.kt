@@ -8,7 +8,7 @@ import com.nikolaykul.sebastian.data.store.rss.local.mappers.RssFeedFromEntityMa
 import com.nikolaykul.sebastian.data.store.rss.local.mappers.RssFeedToEntityMapper
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
-import com.nikolaykul.sebastian.utils.common.CoroutineContextProvider.IO
+import com.nikolaykul.sebastian.utils.common.CoroutineDispatchersProvider.IO
 import dagger.Reusable
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
