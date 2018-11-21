@@ -29,43 +29,43 @@ object Versions {
 
     object Core {
         const val gradle = "3.2.1"
-        const val kotlin = "1.2.41"
-        const val coroutines = "0.22.5"
+        const val kotlin = "1.2.51"     // "1.3.10"
+        const val coroutines = "0.30.2" // "1.0.1"
 
         const val rx_java = "2.1.7"
         const val rx_android = "2.0.1"
 
-        const val dagger = "2.13"
-        const val room = "1.1.0-rc1"
+        const val dagger = "2.16"
+        const val room = "1.1.1"
         const val lifecycle = "1.1.1"
     }
 
     object Network {
-        const val retrofit = "2.4.0"
-        const val okhttp = "3.10.0"
+        const val retrofit = "2.5.0"
+        const val okhttp = "3.12.0"
         const val tikxml = "0.8.13"
     }
 
     object Support {
-        const val support = "28.0.0-alpha1"
-        const val constraint_layout = "1.1.0"
+        const val support = "28.0.0"
+        const val constraint_layout = "1.1.2"
     }
 
     object Other {
         const val cicerone = "3.0.0"
-        const val timber = "4.6.0"
-        const val joda_time = "2.9.9.3"
-        const val glide = "4.7.1"
+        const val timber = "4.7.1"
+        const val joda_time = "2.9.9.3" // migrate to ThreeTenABP
+        const val glide = "4.8.0"
     }
 
     object Debug {
         const val stetho = "1.5.0"
-        const val leak_canary = "1.5.4"
+        const val leak_canary = "1.6.2"
     }
 
     object Test {
         const val junit = "4.12"
-        const val mockito = "2.13.0"
+        const val mockito = "2.23.0"
     }
 
 }
