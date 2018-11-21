@@ -3,13 +3,10 @@
 package com.nikolaykul.sebastian.utils.common
 
 import android.support.annotation.VisibleForTesting
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.Unconfined
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
-/**
- * @author NikolayKul
- */
+// TODO: rename interfaces to match `DispatcherProvider`
 
 object CoroutineContextProvider : ContextProvider {
     private var provider: ContextProvider = DefaultContextProvider()
@@ -26,25 +23,21 @@ object CoroutineContextProvider : ContextProvider {
 
 
 private interface ContextProvider {
-    val UI: CoroutineContext
-    val IO: CoroutineContext
-    val COMPUTATION: CoroutineContext
+    val UI: CoroutineDispatcher
+    val IO: CoroutineDispatcher
+    val COMPUTATION: CoroutineDispatcher
 }
 
 
 private class DefaultContextProvider : ContextProvider {
-    override val UI by lazy { kotlinx.coroutines.experimental.android.UI }
-
-    // See: https://github.com/Kotlin/kotlinx.coroutines/issues/79
-    // Change later on a real IO Handler Context implementation
-    override val IO by lazy { CommonPool }
-
-    override val COMPUTATION by lazy { CommonPool }
+    override val UI by lazy { Dispatchers.Main }
+    override val IO by lazy { Dispatchers.IO }
+    override val COMPUTATION by lazy { Dispatchers.Default }
 }
 
 
 private class MockContextProvider : ContextProvider {
-    override val UI = Unconfined
-    override val IO = Unconfined
-    override val COMPUTATION = Unconfined
+    override val UI = Dispatchers.Unconfined
+    override val IO = Dispatchers.Unconfined
+    override val COMPUTATION = Dispatchers.Unconfined
 }

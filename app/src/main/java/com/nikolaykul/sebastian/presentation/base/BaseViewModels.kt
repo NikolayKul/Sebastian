@@ -5,7 +5,7 @@ import android.support.annotation.VisibleForTesting
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.subjects.BehaviorSubject
-import kotlinx.coroutines.experimental.Job
+import kotlinx.coroutines.Job
 
 /**
  *  A base ViewModel class that holds a [ViewState]

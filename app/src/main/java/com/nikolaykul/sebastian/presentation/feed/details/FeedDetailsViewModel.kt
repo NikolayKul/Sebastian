@@ -4,7 +4,8 @@ import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.domain.rss.GetFeedUseCase
 import com.nikolaykul.sebastian.presentation.base.StatefulViewModel
 import com.nikolaykul.sebastian.utils.common.CoroutineContextProvider.UI
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FeedDetailsViewModel @Inject constructor(
@@ -13,7 +14,7 @@ class FeedDetailsViewModel @Inject constructor(
 ) : StatefulViewModel<FeedDetailsState>() {
 
     fun loadFeed() {
-        launch(UI) {
+        GlobalScope.launch(UI) {
             val feed = getFeedUseCase.execute(feedId)
             newState(FeedDetailsState(feed))
         }.attachToLifecycle()
