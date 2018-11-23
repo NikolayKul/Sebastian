@@ -5,8 +5,6 @@ import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.SCREEN_FEED_DETAILS
 import com.nikolaykul.sebastian.presentation.base.StatefulViewModel
-import com.nikolaykul.sebastian.utils.common.CoroutineDispatchersProvider.MAIN
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
@@ -18,7 +16,7 @@ class FeedListViewModel @Inject constructor(
     override val defaultState = FeedListState()
 
     fun loadChannel() {
-        GlobalScope.launch(MAIN) {
+        launch {
             mutateState { it.copy(isLoading = true) }
 
             val channel = try {
@@ -29,8 +27,7 @@ class FeedListViewModel @Inject constructor(
             }
 
             newState(FeedListState(feeds = channel.feeds))
-
-        }.attachToLifecycle()
+        }
     }
 
     fun onFeedClicked(feed: RssFeed) {

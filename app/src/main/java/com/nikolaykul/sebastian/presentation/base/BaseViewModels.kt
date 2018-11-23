@@ -2,9 +2,11 @@ package com.nikolaykul.sebastian.presentation.base
 
 import android.arch.lifecycle.ViewModel
 import android.support.annotation.VisibleForTesting
+import com.nikolaykul.sebastian.utils.common.CoroutineDispatchersProvider
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.subjects.BehaviorSubject
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 
 /**
@@ -43,25 +45,12 @@ abstract class StatefulViewModel<TState : ViewState> : BaseViewModel() {
 }
 
 
-abstract class BaseViewModel : ViewModel() {
-    private val jobs: MutableSet<Job> = mutableSetOf()
+abstract class BaseViewModel : ViewModel(), CoroutineScope {
+    private val lifecycleJob: Job = Job()
+
+    override val coroutineContext = lifecycleJob + CoroutineDispatchersProvider.MAIN
 
     override fun onCleared() {
-        clearJobs()
+        lifecycleJob.cancel()
     }
-
-    protected fun Job.attachToLifecycle() {
-        jobs += this
-        invokeOnCompletion {
-            jobs.remove(this)
-        }
-    }
-
-    private fun clearJobs() {
-        with(jobs) {
-            forEach { it.cancel() }
-            clear()
-        }
-    }
-
 }
