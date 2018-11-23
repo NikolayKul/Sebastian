@@ -6,12 +6,10 @@ import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.SCREEN_FEED_DETAILS
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
-import com.nikolaykul.sebastian.utils.mockito.willReturn
-import com.nikolaykul.sebastian.utils.mockito.willThrow
 import com.nikolaykul.sebastian.utils.rules.CoroutineContextRule
 import com.nikolaykul.sebastian.utils.rules.RxSchedulerRule
 import io.reactivex.subscribers.TestSubscriber
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -106,7 +104,7 @@ class FeedListViewModelTest {
      * Set initial [FeedListState] and return a [TestSubscriber] to the State relay
      */
     private fun observeFromGivenState(state: FeedListState) = with(viewModel) {
-        setTestState(state)
+        nextState { state }
         return@with observeState().test()
     }
 

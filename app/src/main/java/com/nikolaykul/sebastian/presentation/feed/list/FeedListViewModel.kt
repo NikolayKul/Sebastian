@@ -13,7 +13,7 @@ class FeedListViewModel @Inject constructor(
     private val getChannelUseCase: GetChannelUseCase,
     private val router: Router
 ) : StatefulViewModel<FeedListState>() {
-    override val defaultState = FeedListState()
+    override val initState = FeedListState()
 
     fun loadChannel() {
         launch {

@@ -10,7 +10,7 @@ class FeedDetailsViewModel @Inject constructor(
     private val feedId: FeedId,
     private val getFeedUseCase: GetFeedUseCase
 ) : StatefulViewModel<FeedDetailsState>() {
-    override val defaultState = FeedDetailsState()
+    override val initState = FeedDetailsState()
 
     fun loadFeed() {
         launch {

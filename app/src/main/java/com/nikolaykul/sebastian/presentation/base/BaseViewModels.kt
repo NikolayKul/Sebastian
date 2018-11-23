@@ -12,27 +12,23 @@ import kotlinx.coroutines.Job
 /**
  *  A base ViewModel class that holds a [ViewState]
  */
-abstract class StatefulViewModel<TState : ViewState> : BaseViewModel() {
-    private val stateRelay by lazy { BehaviorSubject.createDefault(defaultState) }
+abstract class StatefulViewModel<TState : ViewState> : StatelessViewModel() {
+    private val stateRelay by lazy { BehaviorSubject.createDefault(initState) }
 
-    protected abstract val defaultState: TState
+    protected abstract val initState: TState
 
     fun observeState(): Flowable<TState> = stateRelay.toFlowable(BackpressureStrategy.LATEST)
 
-    protected fun nextState(reducer: (TState) -> TState) {
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    fun nextState(reducer: (TState) -> TState) {
         stateRelay.value
             .let(reducer)
             .also(stateRelay::onNext)
     }
-
-    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    fun setTestState(testState: TState) {
-        stateRelay.onNext(testState)
-    }
 }
 
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
+abstract class StatelessViewModel : ViewModel(), CoroutineScope {
     private val lifecycleJob: Job = Job()
 
     override val coroutineContext = lifecycleJob + CoroutineDispatchersProvider.MAIN
