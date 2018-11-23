@@ -15,7 +15,7 @@ class FeedDetailsViewModel @Inject constructor(
     fun loadFeed() {
         launch {
             val feed = getFeedUseCase.execute(feedId)
-            newState(FeedDetailsState(feed))
+            nextState { FeedDetailsState(feed) }
         }
     }
 

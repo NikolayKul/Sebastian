@@ -22,11 +22,11 @@ class FeedListViewModel @Inject constructor(
             val channel = try {
                 getChannelUseCase.execute()
             } catch (e: NoNetworkException) {
-                newState(FeedListState(error = e))
+                nextState { FeedListState(error = e) }
                 return@launch
             }
 
-            newState(FeedListState(feeds = channel.feeds))
+            nextState { FeedListState(feeds = channel.feeds) }
         }
     }
 

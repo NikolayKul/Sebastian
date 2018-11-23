@@ -22,16 +22,12 @@ abstract class StatefulViewModel<TState : ViewState> : BaseViewModel() {
     protected fun nextState(reducer: (TState) -> TState) {
         stateRelay.value
             .let(reducer)
-            .also(this::newState)
-    }
-
-    protected fun newState(newState: TState) {
-        stateRelay.onNext(newState)
+            .also(stateRelay::onNext)
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
     fun setTestState(testState: TState) {
-        newState(testState)
+        stateRelay.onNext(testState)
     }
 }
 
