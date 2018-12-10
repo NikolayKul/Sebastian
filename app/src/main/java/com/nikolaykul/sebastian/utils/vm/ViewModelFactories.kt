@@ -4,9 +4,11 @@ package com.nikolaykul.sebastian.utils.vm
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import dagger.Reusable
 import javax.inject.Inject
 import javax.inject.Provider
 
+@Reusable
 class ViewModelCommonFactory @Inject constructor(
     private val providers: Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {

@@ -2,11 +2,8 @@ package com.nikolaykul.sebastian.di.application
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.nikolaykul.sebastian.utils.vm.ViewModelCommonFactory
-import dagger.Binds
 import dagger.MapKey
 import dagger.Module
-import dagger.Reusable
 import dagger.multibindings.Multibinds
 import kotlin.reflect.KClass
 
@@ -18,14 +15,6 @@ import kotlin.reflect.KClass
  */
 @Module
 interface ViewModelModule {
-
-    /*
-        Should declare this provider with a `Reusable` scope or without any at all.
-        Don't provide it as a `Singleton` because it'd contain only shared ViewModels then
-     */
-    @Binds
-    @Reusable
-    fun viewModelFactory(factory: ViewModelCommonFactory): ViewModelProvider.Factory
 
     /*
         Remove this stub after declaring at least one common ViewModel

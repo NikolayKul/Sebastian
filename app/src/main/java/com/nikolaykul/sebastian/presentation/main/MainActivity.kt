@@ -1,6 +1,5 @@
 package com.nikolaykul.sebastian.presentation.main
 
-import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,12 +12,13 @@ import com.nikolaykul.sebastian.presentation.base.BaseActivity
 import com.nikolaykul.sebastian.presentation.main.models.MainAdapter
 import com.nikolaykul.sebastian.utils.common.viewModelFactoryProviderDelegate
 import com.nikolaykul.sebastian.utils.view.get
+import com.nikolaykul.sebastian.utils.vm.ViewModelCommonFactory
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResId get() = R.layout.activity_main
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var viewModelFactory: ViewModelCommonFactory
     private val viewModel by viewModelFactoryProviderDelegate<MainViewModel> { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
