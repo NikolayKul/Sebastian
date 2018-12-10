@@ -8,13 +8,15 @@ import android.support.v4.app.FragmentActivity
 import kotlin.reflect.KProperty
 
 
-/**
- * An util function that creates an instance of a [ViewModelActivityDelegate]
- */
-inline fun <reified T : ViewModel> viewModelActivityDelegate(
-    activity: FragmentActivity,
-    noinline factoryProvider: FactoryProvider? = null
-) = ViewModelActivityDelegate(activity, factoryProvider, T::class.java)
+class ViewModelActivityFactoryDelegate<T : ViewModel>(
+    private val activity: FragmentActivity,
+    private val factory: () -> ViewModel,
+    clazz: Class<T>
+) : BaseViewModelDelegate<T>(clazz) {
+    override fun getViewModelProvider(): ViewModelProvider {
+        return ViewModelProviders.of(activity, ViewModelWrapperFactory(factory))
+    }
+}
 
 
 /**
@@ -24,12 +26,12 @@ inline fun <reified T : ViewModel> viewModelActivityDelegate(
  * get the instance of the factory as late as possible. It's useful when
  * [ViewModelProvider.Factory] is injected or initialized after the delegate
  */
-class ViewModelActivityDelegate<T : ViewModel>(
+class ViewModelActivityFactoryProviderDelegate<T : ViewModel>(
     private val activity: FragmentActivity,
-    private val factoryProvider: FactoryProvider?,
+    private val factoryProvider: () -> ViewModelProvider.Factory,
     clazz: Class<T>
 ) : BaseViewModelDelegate<T>(clazz) {
-    override fun getViewModelProvider() = ViewModelProviders.of(activity, factoryProvider?.invoke())
+    override fun getViewModelProvider() = ViewModelProviders.of(activity, factoryProvider())
 }
 
 
@@ -38,7 +40,7 @@ class ViewModelActivityDelegate<T : ViewModel>(
  */
 inline fun <reified T : ViewModel> viewModelFragmentDelegate(
     fragment: Fragment,
-    noinline factoryProvider: FactoryProvider? = null
+    noinline factoryProvider: () -> ViewModelProvider.Factory
 ) = ViewModelFragmentDelegate(fragment, factoryProvider, T::class.java)
 
 
@@ -51,10 +53,10 @@ inline fun <reified T : ViewModel> viewModelFragmentDelegate(
  */
 class ViewModelFragmentDelegate<T : ViewModel>(
     private val fragment: Fragment,
-    private val factoryProvider: FactoryProvider?,
+    private val factoryProvider: () -> ViewModelProvider.Factory,
     clazz: Class<T>
 ) : BaseViewModelDelegate<T>(clazz) {
-    override fun getViewModelProvider() = ViewModelProviders.of(fragment, factoryProvider?.invoke())
+    override fun getViewModelProvider() = ViewModelProviders.of(fragment, factoryProvider())
 }
 
 
@@ -81,9 +83,3 @@ abstract class BaseViewModelDelegate<T : ViewModel>(private val clazz: Class<T>)
     protected abstract fun getViewModelProvider(): ViewModelProvider
 
 }
-
-
-/**
- * Alias for a high order function that returns a [ViewModelProvider.Factory]
- */
-private typealias FactoryProvider = () -> ViewModelProvider.Factory
