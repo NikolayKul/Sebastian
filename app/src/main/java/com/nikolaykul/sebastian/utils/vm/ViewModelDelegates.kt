@@ -13,50 +13,38 @@ class ViewModelActivityFactoryDelegate<T : ViewModel>(
     private val factory: () -> ViewModel,
     clazz: Class<T>
 ) : BaseViewModelDelegate<T>(clazz) {
-    override fun getViewModelProvider(): ViewModelProvider {
-        return ViewModelProviders.of(activity, ViewModelWrapperFactory(factory))
-    }
+    override fun getViewModelProvider(): ViewModelProvider =
+        ViewModelProviders.of(activity, ViewModelWrapperFactory(factory))
 }
 
 
-/**
- * A custom Delegate that creates a generic [ViewModel] using a [ViewModelProvider.Factory]
- *
- * The provided [ViewModelProvider.Factory] is wrapped into a [FactoryProvider] in order to
- * get the instance of the factory as late as possible. It's useful when
- * [ViewModelProvider.Factory] is injected or initialized after the delegate
- */
 class ViewModelActivityFactoryProviderDelegate<T : ViewModel>(
     private val activity: FragmentActivity,
     private val factoryProvider: () -> ViewModelProvider.Factory,
     clazz: Class<T>
 ) : BaseViewModelDelegate<T>(clazz) {
-    override fun getViewModelProvider() = ViewModelProviders.of(activity, factoryProvider())
+    override fun getViewModelProvider(): ViewModelProvider =
+        ViewModelProviders.of(activity, factoryProvider())
 }
 
 
-/**
- * An util function that creates an instance of a [ViewModelFragmentDelegate]
- */
-inline fun <reified T : ViewModel> viewModelFragmentDelegate(
-    fragment: Fragment,
-    noinline factoryProvider: () -> ViewModelProvider.Factory
-) = ViewModelFragmentDelegate(fragment, factoryProvider, T::class.java)
+class ViewModelFragmentFactoryDelegate<T : ViewModel>(
+    private val fragment: Fragment,
+    private val factory: () -> ViewModel,
+    clazz: Class<T>
+) : BaseViewModelDelegate<T>(clazz) {
+    override fun getViewModelProvider(): ViewModelProvider =
+        ViewModelProviders.of(fragment, ViewModelWrapperFactory(factory))
+}
 
 
-/**
- * A custom Delegate that creates a generic [ViewModel] using a [ViewModelProvider.Factory]
- *
- * The provided [ViewModelProvider.Factory] is wrapped into a [FactoryProvider] in order to
- * get the instance of the factory as late as possible. It's useful when
- * [ViewModelProvider.Factory] is injected or initialized after the delegate
- */
-class ViewModelFragmentDelegate<T : ViewModel>(
+class ViewModelFragmentFactoryProviderDelegate<T : ViewModel>(
     private val fragment: Fragment,
     private val factoryProvider: () -> ViewModelProvider.Factory,
     clazz: Class<T>
 ) : BaseViewModelDelegate<T>(clazz) {
-    override fun getViewModelProvider() = ViewModelProviders.of(fragment, factoryProvider())
+    override fun getViewModelProvider(): ViewModelProvider =
+        ViewModelProviders.of(fragment, factoryProvider())
 }
 
 
