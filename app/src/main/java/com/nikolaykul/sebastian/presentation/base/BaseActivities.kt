@@ -1,7 +1,5 @@
 package com.nikolaykul.sebastian.presentation.base
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -9,7 +7,6 @@ import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.nikolaykul.sebastian.presentation.BaseNavigator
-import com.nikolaykul.sebastian.utils.vm.viewModelActivityDelegate
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -23,7 +20,6 @@ import timber.log.Timber
 import javax.inject.Inject
 
 abstract class BaseActivity<TBinding : ViewDataBinding> : RouterActivity() {
-    @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
     protected lateinit var binding: TBinding
     private val disposables = CompositeDisposable()
 
@@ -39,9 +35,6 @@ abstract class BaseActivity<TBinding : ViewDataBinding> : RouterActivity() {
         super.onDestroy()
         disposables.clear()
     }
-
-    protected inline fun <reified T : ViewModel> viewModelDelegate() =
-        viewModelActivityDelegate<T>(this, { viewModelFactory })
 
     protected fun <T> Flowable<T>.easySubscribe(consumer: (T) -> Unit) {
         observeOn(AndroidSchedulers.mainThread())
