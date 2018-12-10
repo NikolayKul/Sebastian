@@ -1,5 +1,6 @@
 package com.nikolaykul.sebastian.presentation.feed.list
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -9,12 +10,15 @@ import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseFragment
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
+import com.nikolaykul.sebastian.utils.common.viewModelFactoryProviderDelegate
 import timber.log.Timber
+import javax.inject.Inject
 
 class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
     override val layoutResId = R.layout.fragment_feed_list
 
-    private val viewModel by viewModelDelegate<FeedListViewModel>()
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel by viewModelFactoryProviderDelegate<FeedListViewModel> { viewModelFactory }
     private val adapter = FeedListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
