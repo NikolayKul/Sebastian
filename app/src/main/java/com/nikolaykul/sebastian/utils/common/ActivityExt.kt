@@ -7,10 +7,10 @@ import com.nikolaykul.sebastian.utils.vm.ViewModelActivityFactoryDelegate
 import com.nikolaykul.sebastian.utils.vm.ViewModelActivityFactoryProviderDelegate
 
 inline fun <reified T : ViewModel> FragmentActivity.viewModelFactoryDelegate(
-    noinline viewModelProvider: () -> ViewModel
-) = ViewModelActivityFactoryDelegate(this, viewModelProvider, T::class.java)
+    noinline factory: () -> ViewModel
+) = ViewModelActivityFactoryDelegate(this, factory, T::class.java)
 
 
 inline fun <reified T : ViewModel> FragmentActivity.viewModelFactoryProviderDelegate(
-    noinline viewModelFactoryProvider: () -> ViewModelProvider.Factory
-) = ViewModelActivityFactoryProviderDelegate(this, viewModelFactoryProvider, T::class.java)
+    noinline factoryProvider: () -> ViewModelProvider.Factory
+) = ViewModelActivityFactoryProviderDelegate(this, factoryProvider, T::class.java)
