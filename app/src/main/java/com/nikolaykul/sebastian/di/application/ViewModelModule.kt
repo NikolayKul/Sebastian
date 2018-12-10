@@ -2,7 +2,7 @@ package com.nikolaykul.sebastian.di.application
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.nikolaykul.sebastian.utils.vm.ViewModelFactory
+import com.nikolaykul.sebastian.utils.vm.ViewModelCommonFactory
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -25,7 +25,7 @@ interface ViewModelModule {
      */
     @Binds
     @Reusable
-    fun viewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    fun viewModelFactory(factory: ViewModelCommonFactory): ViewModelProvider.Factory
 
     /*
         Remove this stub after declaring at least one common ViewModel
