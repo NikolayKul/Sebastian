@@ -36,6 +36,8 @@ object Versions {
         const val rx_android = "2.0.1"
 
         const val dagger = "2.16"
+        const val assisted_inject = "0.3.2"
+
         const val room = "1.1.1"
         const val lifecycle = "1.1.1"
     }
@@ -91,6 +93,11 @@ object Libs {
         const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.Core.dagger}"
         const val dagger_compiler_android =
             "com.google.dagger:dagger-android-processor:${Versions.Core.dagger}"
+
+        const val assisted_inject_annotations =
+            "com.squareup.inject:assisted-inject-annotations-dagger2:${Versions.Core.assisted_inject}"
+        const val assisted_inject_processor =
+            "com.squareup.inject:assisted-inject-processor-dagger2:${Versions.Core.assisted_inject}"
 
         const val room_runtime = "android.arch.persistence.room:runtime:${Versions.Core.room}"
         const val room_compiler = "android.arch.persistence.room:compiler:${Versions.Core.room}"

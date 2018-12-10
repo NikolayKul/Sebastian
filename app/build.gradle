@@ -60,6 +60,9 @@ dependencies {
     kapt Libs.Core.dagger_compiler
     kapt Libs.Core.dagger_compiler_android
 
+    compileOnly Libs.Core.assisted_inject_annotations
+    kapt Libs.Core.assisted_inject_processor
+
     implementation Libs.Core.room_runtime
     implementation Libs.Core.room_rx
     kapt Libs.Core.room_compiler
