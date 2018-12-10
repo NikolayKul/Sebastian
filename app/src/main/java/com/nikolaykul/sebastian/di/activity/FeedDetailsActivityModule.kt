@@ -1,28 +1,14 @@
 package com.nikolaykul.sebastian.di.activity
 
-import android.arch.lifecycle.ViewModel
-import com.nikolaykul.sebastian.di.application.ViewModelKey
-import com.nikolaykul.sebastian.domain.rss.FeedId
-import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsActivity
 import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsViewModel
-import com.nikolaykul.sebastian.presentation.feed.details.feedId
+import com.nikolaykul.sebastian.presentation.feed.details.FeedDetailsViewModel_AssistedFactory
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import dagger.multibindings.IntoMap
 
-@Module(includes = [FeedDetailsActivityModule.Declarations::class])
-object FeedDetailsActivityModule {
+@Module
+interface FeedDetailsActivityModule {
 
-    @JvmStatic
-    @Provides
-    fun feedId(activity: FeedDetailsActivity): FeedId = activity.feedId
+    @Binds
+    fun viewModelFactory(factory: FeedDetailsViewModel_AssistedFactory): FeedDetailsViewModel.Factory
 
-    @Module
-    interface Declarations {
-        @Binds
-        @IntoMap
-        @ViewModelKey(FeedDetailsViewModel::class)
-        fun feedDetailsViewModel(viewModel: FeedDetailsViewModel): ViewModel
-    }
 }

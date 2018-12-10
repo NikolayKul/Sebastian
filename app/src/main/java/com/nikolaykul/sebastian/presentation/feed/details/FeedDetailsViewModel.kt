@@ -3,11 +3,12 @@ package com.nikolaykul.sebastian.presentation.feed.details
 import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.domain.rss.GetFeedUseCase
 import com.nikolaykul.sebastian.presentation.base.StatefulViewModel
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class FeedDetailsViewModel @Inject constructor(
-    private val feedId: FeedId,
+class FeedDetailsViewModel @AssistedInject constructor(
+    @Assisted private val feedId: FeedId,
     private val getFeedUseCase: GetFeedUseCase
 ) : StatefulViewModel<FeedDetailsState>() {
     override val initState = FeedDetailsState()
@@ -19,4 +20,8 @@ class FeedDetailsViewModel @Inject constructor(
         }
     }
 
+    @AssistedInject.Factory
+    interface Factory {
+        fun create(feedId: FeedId): FeedDetailsViewModel
+    }
 }

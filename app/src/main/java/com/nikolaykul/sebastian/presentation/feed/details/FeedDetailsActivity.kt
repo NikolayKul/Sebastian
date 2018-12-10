@@ -7,13 +7,20 @@ import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ActivityFeedDetailsBinding
 import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
+import com.nikolaykul.sebastian.utils.common.viewModelFactoryDelegate
 import timber.log.Timber
+import javax.inject.Inject
 
+private const val EXTRA_FEED_ID = "extra_feed_id"
 
 class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
     override val layoutResId = R.layout.activity_feed_details
 
-    private val viewModel by viewModelDelegate<FeedDetailsViewModel>()
+    @Inject lateinit var viewModelFactory: FeedDetailsViewModel.Factory
+    private val viewModel by viewModelFactoryDelegate<FeedDetailsViewModel> {
+        val id = intent.extras[EXTRA_FEED_ID] as String
+        viewModelFactory.create(FeedId(id))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +36,3 @@ class FeedDetailsActivity : BaseActivity<ActivityFeedDetailsBinding>() {
         }
     }
 }
-
-private const val EXTRA_FEED_ID = "extra_feed_id"
-
-val FeedDetailsActivity.feedId: FeedId
-    get() {
-        val id = intent.extras[EXTRA_FEED_ID] as String
-        return FeedId(id)
-    }
