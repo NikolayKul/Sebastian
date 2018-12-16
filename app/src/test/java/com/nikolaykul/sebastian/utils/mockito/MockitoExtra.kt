@@ -4,7 +4,7 @@
 
 package com.nikolaykul.sebastian.utils.mockito
 
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.mockito.BDDMockito
 import org.mockito.Mockito
 

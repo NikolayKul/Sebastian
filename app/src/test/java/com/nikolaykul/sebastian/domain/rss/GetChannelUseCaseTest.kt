@@ -7,7 +7,7 @@ import com.nikolaykul.sebastian.utils.mockito.givenSuspended
 import com.nikolaykul.sebastian.utils.mockito.mock
 import com.nikolaykul.sebastian.utils.mockito.willReturn
 import com.nikolaykul.sebastian.utils.mockito.willThrow
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before

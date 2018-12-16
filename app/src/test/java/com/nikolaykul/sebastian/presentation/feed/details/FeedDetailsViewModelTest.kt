@@ -4,6 +4,7 @@ import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.domain.rss.GetFeedUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
+import com.nikolaykul.sebastian.utils.mockito.willReturn
 import com.nikolaykul.sebastian.utils.rules.CoroutineContextRule
 import com.nikolaykul.sebastian.utils.rules.RxSchedulerRule
 import org.junit.Before

@@ -6,6 +6,8 @@ import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.SCREEN_FEED_DETAILS
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
+import com.nikolaykul.sebastian.utils.mockito.willReturn
+import com.nikolaykul.sebastian.utils.mockito.willThrow
 import com.nikolaykul.sebastian.utils.rules.CoroutineContextRule
 import com.nikolaykul.sebastian.utils.rules.RxSchedulerRule
 import io.reactivex.subscribers.TestSubscriber
