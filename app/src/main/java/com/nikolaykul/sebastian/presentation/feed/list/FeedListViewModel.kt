@@ -20,7 +20,7 @@ class FeedListViewModel @Inject constructor(
 
     fun loadChannel() {
         launch {
-            nextState { it.copy(isLoading = true) }
+            nextState { FeedListState(isLoading = true) }
 
             val channel = getChannelUseCase.execute()
 

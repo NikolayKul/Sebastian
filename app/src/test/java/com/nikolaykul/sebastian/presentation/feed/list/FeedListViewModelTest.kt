@@ -61,7 +61,7 @@ class FeedListViewModelTest {
         val givenError = NoNetworkException()
         val expectedStates = arrayOf(
             FeedListState(error = givenError),
-            FeedListState(isLoading = true, error = givenError),
+            FeedListState(isLoading = true),
             FeedListState(feeds = givenFeeds)
         )
 
