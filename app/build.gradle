@@ -38,10 +38,6 @@ android {
     dataBinding.enabled true
 }
 
-kotlin {
-    experimental.coroutines = "enable"
-}
-
 dependencies {
 
     // core
