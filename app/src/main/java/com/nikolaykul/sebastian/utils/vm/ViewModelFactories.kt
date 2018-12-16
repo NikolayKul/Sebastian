@@ -10,7 +10,7 @@ import javax.inject.Provider
 
 @Reusable
 class ViewModelCommonFactory @Inject constructor(
-    private val providers: Map<Class<out ViewModel>, Provider<ViewModel>>
+    private val providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(clazz: Class<T>): T {
         val provider = providers[clazz]
