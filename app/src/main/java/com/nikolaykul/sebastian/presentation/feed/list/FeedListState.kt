@@ -5,6 +5,6 @@ import com.nikolaykul.sebastian.presentation.base.ViewState
 
 data class FeedListState(
     val isLoading: Boolean = false,
-    val error: Exception? = null,
+    val error: Throwable? = null,
     val feeds: List<RssFeed>? = null
 ) : ViewState

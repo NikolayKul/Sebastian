@@ -1,10 +1,10 @@
 package com.nikolaykul.sebastian.presentation.feed.list
 
-import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.GetChannelUseCase
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.SCREEN_FEED_DETAILS
 import com.nikolaykul.sebastian.presentation.base.StatefulViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
@@ -14,17 +14,15 @@ class FeedListViewModel @Inject constructor(
     private val router: Router
 ) : StatefulViewModel<FeedListState>() {
     override val initState = FeedListState()
+    override val coroutineContext = super.coroutineContext + CoroutineExceptionHandler { _, t ->
+        nextState { FeedListState(error = t) }
+    }
 
     fun loadChannel() {
         launch {
             nextState { it.copy(isLoading = true) }
 
-            val channel = try {
-                getChannelUseCase.execute()
-            } catch (e: NoNetworkException) {
-                nextState { FeedListState(error = e) }
-                return@launch
-            }
+            val channel = getChannelUseCase.execute()
 
             nextState { FeedListState(feeds = channel.feeds) }
         }
