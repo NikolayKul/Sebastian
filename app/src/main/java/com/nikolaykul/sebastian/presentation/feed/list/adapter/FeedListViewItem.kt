@@ -9,17 +9,19 @@ import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.utils.rv.BaseViewHolder
 import com.nikolaykul.sebastian.utils.rv.BaseViewItem
+import org.joda.time.format.DateTimeFormat
 
 class FeedListViewItem(
     private val item: RssFeed,
     private val feedClickListener: (RssFeed) -> Unit
 ) : BaseViewItem<ItemFeedListBinding> {
+    private val dateFormatter = DateTimeFormat.shortDateTime()
 
     override val layoutId = R.layout.item_feed_list
 
     override fun bind(holder: BaseViewHolder<ItemFeedListBinding>) {
         with(holder.binding) {
-            tvDate.text = item.pubDate.toString()
+            tvDate.text = dateFormatter.print(item.pubDate)
             tvTitle.text = item.title
             tvContent.text = SpannableStringBuilder(item.description.fromHtml())
                 .apply { clearSpans() }
