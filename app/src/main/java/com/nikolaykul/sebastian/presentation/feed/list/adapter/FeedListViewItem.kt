@@ -3,6 +3,8 @@ package com.nikolaykul.sebastian.presentation.feed.list.adapter
 import android.os.Build
 import android.text.Html
 import android.text.SpannableStringBuilder
+import android.view.View
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
@@ -26,11 +28,19 @@ class FeedListViewItem(
             tvContent.text = SpannableStringBuilder(item.description.fromHtml())
                 .apply { clearSpans() }
 
-            Glide.with(ivImage)
-                .load(item.imageUrl)
-                .into(ivImage)
+            setImage(ivImage)
 
             root.setOnClickListener { feedClickListener(item) }
+        }
+    }
+
+    private fun setImage(imageView: ImageView) {
+        if (item.imageUrl.isNullOrEmpty()) {
+            imageView.visibility = View.GONE
+        } else {
+            Glide.with(imageView)
+                .load(item.imageUrl)
+                .into(imageView)
         }
     }
 }
