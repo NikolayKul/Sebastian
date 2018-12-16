@@ -10,6 +10,7 @@ import com.nikolaykul.sebastian.presentation.base.BaseFragment
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import com.nikolaykul.sebastian.utils.common.viewModelFactoryProviderDelegate
+import com.nikolaykul.sebastian.utils.view.setVisible
 import com.nikolaykul.sebastian.utils.vm.ViewModelCommonFactory
 import timber.log.Timber
 import javax.inject.Inject
@@ -19,17 +20,16 @@ class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
 
     @Inject lateinit var viewModelFactory: ViewModelCommonFactory
     private val viewModel by viewModelFactoryProviderDelegate<FeedListViewModel> { viewModelFactory }
-    private val adapter = FeedListAdapter()
+    private val feedAdapter = FeedListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecyclerView()
-        initListeners()
         viewModel.observeState().easySubscribe(this::setState)
+        viewModel.loadChannel()
     }
 
     private fun setState(state: FeedListState) {
-        val loadingStub = if (state.isLoading) "Show loading" else "Hide loading"
-        Timber.d(loadingStub)
+        binding.loader.setVisible(state.isLoading)
 
         state.error?.also { Timber.d("Show error: $it") }
 
@@ -38,17 +38,13 @@ class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
 
     private fun setItems(feeds: List<RssFeed>) {
         feeds.map { FeedListViewItem(it, viewModel::onFeedClicked) }
-            .also(adapter::setItems)
-    }
-
-    private fun initListeners() {
-        binding.fab.setOnClickListener { viewModel.loadChannel() }
+            .also(feedAdapter::setItems)
     }
 
     private fun initRecyclerView() {
-        binding.rvFeeds.also {
-            it.layoutManager = LinearLayoutManager(context)
-            it.adapter = adapter
+        with(binding.rvFeeds) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = feedAdapter
         }
     }
 
