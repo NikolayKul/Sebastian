@@ -7,7 +7,6 @@ package com.nikolaykul.sebastian.domain
  */
 interface UseCase<in TParams : Any, out TResult : Any?> {
     suspend fun execute(params: TParams): TResult
-
 }
 
 /**

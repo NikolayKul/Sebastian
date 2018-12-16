@@ -9,8 +9,9 @@ import com.nikolaykul.sebastian.data.db.rss.feed.RssFeedDao
 import com.nikolaykul.sebastian.data.db.rss.feed.RssFeedEntity
 
 @Database(
-        version = 1,
-        entities = [RssChannelEntity::class, RssFeedEntity::class])
+    version = 1,
+    entities = [RssChannelEntity::class, RssFeedEntity::class]
+)
 @TypeConverters(Converters::class)
 abstract class SebastianDatabase : RoomDatabase() {
 

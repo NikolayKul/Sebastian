@@ -8,11 +8,11 @@ import javax.inject.Inject
 
 @Reusable
 class RssRemoteStore @Inject constructor(
-        private val api: RssApi,
-        private val channelFromDtoMapper: RssChannelFromDtoMapper
+    private val api: RssApi,
+    private val channelFromDtoMapper: RssChannelFromDtoMapper
 ) {
 
     suspend fun fetchChannel() = api.getChannel().await()
-            .let(channelFromDtoMapper::map)
+        .let(channelFromDtoMapper::map)
 
 }

@@ -19,8 +19,6 @@ class RssFeedDto(
     @PropertyElement
     var pubDate: DateTime? = null
 ) {
-
-    override fun toString(): String {
-        return "RssFeedDto(id='$id', title='$title', description='$description', pubDate=$pubDate)"
-    }
+    override fun toString(): String =
+        "RssFeedDto(id='$id', title='$title', description='$description', pubDate=$pubDate)"
 }

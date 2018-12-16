@@ -11,12 +11,10 @@ import org.joda.time.format.DateTimeFormat
  * @author NikolayKul
  */
 object TikXmlFactory {
-
     fun create(): TikXml = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .addTypeConverter(DateTime::class.java, DateTimeTypeConverter())
-            .build()
-
+        .exceptionOnUnreadXml(false)
+        .addTypeConverter(DateTime::class.java, DateTimeTypeConverter())
+        .build()
 }
 
 
@@ -27,8 +25,8 @@ object TikXmlFactory {
  */
 private class DateTimeTypeConverter : TypeConverter<DateTime> {
     private val formatterRfc1123 = DateTimeFormat
-            .forPattern("EEE, dd MMM yyyy HH:mm:ss 'GMT'")
-            .withZoneUTC()
+        .forPattern("EEE, dd MMM yyyy HH:mm:ss 'GMT'")
+        .withZoneUTC()
 
     override fun write(value: DateTime): String = formatterRfc1123.print(value)
 

@@ -8,24 +8,22 @@ import com.tickaroo.tikxml.annotation.Xml
 @Xml(name = "rss")
 class RssChannelDto(
 
-        @Path("channel")
-        @PropertyElement
-        var title: String? = null,
+    @Path("channel")
+    @PropertyElement
+    var title: String? = null,
 
-        @Path("channel")
-        @PropertyElement
-        var link: String? = null,
+    @Path("channel")
+    @PropertyElement
+    var link: String? = null,
 
-        @Path("channel")
-        @PropertyElement
-        var description: String? = null,
+    @Path("channel")
+    @PropertyElement
+    var description: String? = null,
 
-        @Path("channel")
-        @Element
-        var feeds: List<RssFeedDto>? = null
+    @Path("channel")
+    @Element
+    var feeds: List<RssFeedDto>? = null
 ) {
-    override fun toString(): String {
-        return "RssChannelDto(title=$title, link=$link, description=$description, feeds=$feeds)"
-    }
-
+    override fun toString(): String =
+        "RssChannelDto(title=$title, link=$link, description=$description, feeds=$feeds)"
 }
