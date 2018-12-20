@@ -1,6 +1,6 @@
 package com.nikolaykul.sebastian.presentation.feed.list.adapter
 
-import com.nikolaykul.sebastian.utils.rv.BaseAdapter
+import com.nikolaykul.sebastian.presentation.base.rv.BaseAdapter
 
 class FeedListAdapter : BaseAdapter<FeedListViewItem>() {
 

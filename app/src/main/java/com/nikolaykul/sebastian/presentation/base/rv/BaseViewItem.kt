@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.rv
+package com.nikolaykul.sebastian.presentation.base.rv
 
 import android.databinding.ViewDataBinding
 import android.support.annotation.LayoutRes

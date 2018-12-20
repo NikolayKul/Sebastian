@@ -6,9 +6,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
+import com.nikolaykul.sebastian.presentation.base.rv.BaseViewHolder
+import com.nikolaykul.sebastian.presentation.base.rv.BaseViewItem
 import com.nikolaykul.sebastian.utils.ext.getColorCompat
-import com.nikolaykul.sebastian.utils.rv.BaseViewHolder
-import com.nikolaykul.sebastian.utils.rv.BaseViewItem
 import org.joda.time.format.DateTimeFormat
 
 class FeedListViewItem(
