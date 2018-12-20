@@ -24,24 +24,23 @@ class FeedListViewItem(
             tvDate.text = dateFormatter.print(item.pubDate)
             tvTitle.text = item.title
             tvContent.text = item.description
-
-            setImage(ivImage)
+            ivImage.loadImage()
 
             root.setOnClickListener { feedClickListener(item) }
         }
     }
 
-    private fun setImage(imageView: ImageView) {
-        val context = imageView.context
+    private fun ImageView.loadImage() {
         if (item.imageUrl.isNullOrEmpty()) {
-            val tmpColor = context.getColorCompat(R.color.debug_2)
-            imageView.setBackgroundColor(tmpColor)
+            Glide.with(this).clear(this)
+            setImageDrawable(null)
+            setBackgroundColor(context.getColorCompat(R.color.debug_2))
         } else {
             val imageSize = context.resources.getDimensionPixelSize(R.dimen.feed_list_image_size)
-            Glide.with(imageView)
+            Glide.with(this)
                 .load(item.imageUrl)
                 .apply(RequestOptions().override(imageSize).centerCrop())
-                .into(imageView)
+                .into(this)
         }
     }
 }
