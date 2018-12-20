@@ -1,11 +1,12 @@
 package com.nikolaykul.sebastian.presentation.feed.list.adapter
 
-import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
+import com.nikolaykul.sebastian.utils.common.getColorCompat
 import com.nikolaykul.sebastian.utils.rv.BaseViewHolder
 import com.nikolaykul.sebastian.utils.rv.BaseViewItem
 import org.joda.time.format.DateTimeFormat
@@ -31,8 +32,10 @@ class FeedListViewItem(
     }
 
     private fun setImage(imageView: ImageView) {
+        val context = imageView.context
         if (item.imageUrl.isNullOrEmpty()) {
-            imageView.visibility = View.GONE
+            val tmpColor = context.getColorCompat(R.color.debug_2)
+            imageView.setBackgroundColor(tmpColor)
         } else {
             Glide.with(imageView)
                 .load(item.imageUrl)
