@@ -5,7 +5,7 @@ import com.nikolaykul.sebastian.data.store.rss.remote.RssRemoteStore
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
-import com.nikolaykul.sebastian.utils.network.NetworkManager
+import com.nikolaykul.sebastian.utils.common.NetworkManager
 import dagger.Reusable
 import javax.inject.Inject
 

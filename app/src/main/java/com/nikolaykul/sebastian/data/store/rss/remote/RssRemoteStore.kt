@@ -2,7 +2,7 @@ package com.nikolaykul.sebastian.data.store.rss.remote
 
 import com.nikolaykul.sebastian.data.network.rss.RssApi
 import com.nikolaykul.sebastian.data.store.rss.remote.mappers.RssChannelFromDtoMapper
-import com.nikolaykul.sebastian.utils.network.await
+import com.nikolaykul.sebastian.data.utils.ext.await
 import dagger.Reusable
 import javax.inject.Inject
 

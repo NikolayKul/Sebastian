@@ -3,8 +3,8 @@ package com.nikolaykul.sebastian.di.application
 import android.app.Application
 import com.nikolaykul.sebastian.BuildConfig
 import com.nikolaykul.sebastian.data.network.rss.RssApi
+import com.nikolaykul.sebastian.data.utils.TikXmlFactory
 import com.nikolaykul.sebastian.utils.debug.StethoUtils
-import com.nikolaykul.sebastian.utils.network.TikXmlFactory
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
 import dagger.Provides

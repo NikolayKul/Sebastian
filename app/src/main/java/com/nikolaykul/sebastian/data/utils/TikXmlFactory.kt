@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.network
+package com.nikolaykul.sebastian.data.utils
 
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.TypeConverter

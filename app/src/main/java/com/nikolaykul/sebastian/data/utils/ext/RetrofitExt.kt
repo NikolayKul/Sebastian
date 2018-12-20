@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.network
+package com.nikolaykul.sebastian.data.utils.ext
 
 import kotlinx.coroutines.suspendCancellableCoroutine
 import retrofit2.Call

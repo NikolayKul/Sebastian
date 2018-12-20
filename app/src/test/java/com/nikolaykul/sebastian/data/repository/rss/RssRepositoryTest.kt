@@ -4,11 +4,11 @@ import com.nikolaykul.sebastian.data.store.rss.local.RssLocalStore
 import com.nikolaykul.sebastian.data.store.rss.remote.RssRemoteStore
 import com.nikolaykul.sebastian.domain.NoNetworkException
 import com.nikolaykul.sebastian.domain.rss.models.RssChannel
+import com.nikolaykul.sebastian.utils.common.NetworkManager
 import com.nikolaykul.sebastian.utils.mockito.given
 import com.nikolaykul.sebastian.utils.mockito.givenSuspended
 import com.nikolaykul.sebastian.utils.mockito.mock
 import com.nikolaykul.sebastian.utils.mockito.willReturn
-import com.nikolaykul.sebastian.utils.network.NetworkManager
 import com.nikolaykul.sebastian.utils.rules.CoroutineContextRule
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`

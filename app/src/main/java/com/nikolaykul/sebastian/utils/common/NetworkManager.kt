@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.network
+package com.nikolaykul.sebastian.utils.common
 
 import android.app.Application
 import android.content.Context
