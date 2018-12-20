@@ -37,8 +37,10 @@ class FeedListViewItem(
             val tmpColor = context.getColorCompat(R.color.debug_2)
             imageView.setBackgroundColor(tmpColor)
         } else {
+            val imageSize = context.resources.getDimensionPixelSize(R.dimen.feed_list_image_size)
             Glide.with(imageView)
                 .load(item.imageUrl)
+                .apply(RequestOptions().override(imageSize).centerCrop())
                 .into(imageView)
         }
     }
