@@ -7,7 +7,7 @@ import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ActivityFeedDetailsBinding
 import com.nikolaykul.sebastian.domain.rss.FeedId
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
-import com.nikolaykul.sebastian.utils.common.viewModelFactoryDelegate
+import com.nikolaykul.sebastian.utils.ext.viewModelFactoryDelegate
 import timber.log.Timber
 import javax.inject.Inject
 

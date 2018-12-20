@@ -3,8 +3,8 @@ package com.nikolaykul.sebastian.data.store.rss.remote.mappers
 import com.nikolaykul.sebastian.data.network.rss.models.RssFeedDto
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.utils.common.Mapper
-import com.nikolaykul.sebastian.utils.common.find
-import com.nikolaykul.sebastian.utils.common.fromHtml
+import com.nikolaykul.sebastian.utils.ext.find
+import com.nikolaykul.sebastian.utils.ext.fromHtml
 import dagger.Reusable
 import javax.inject.Inject
 

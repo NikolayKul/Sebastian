@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.common
+package com.nikolaykul.sebastian.utils.ext
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

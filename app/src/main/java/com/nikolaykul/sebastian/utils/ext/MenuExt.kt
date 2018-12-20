@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.view
+package com.nikolaykul.sebastian.utils.ext
 
 import android.view.Menu
 import android.view.MenuItem

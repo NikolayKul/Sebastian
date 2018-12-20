@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.common
+package com.nikolaykul.sebastian.utils.ext
 
 import android.content.Context
 import android.support.annotation.ColorInt
