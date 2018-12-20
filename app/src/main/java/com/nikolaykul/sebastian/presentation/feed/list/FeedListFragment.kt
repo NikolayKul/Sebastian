@@ -9,6 +9,7 @@ import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseFragment
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
+import com.nikolaykul.sebastian.presentation.utils.GlideApp
 import com.nikolaykul.sebastian.presentation.utils.ext.setVisible
 import com.nikolaykul.sebastian.presentation.utils.ext.viewModelFactoryProviderDelegate
 import com.nikolaykul.sebastian.presentation.utils.vm.ViewModelCommonFactory
@@ -20,6 +21,7 @@ class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
 
     @Inject lateinit var viewModelFactory: ViewModelCommonFactory
     private val viewModel by viewModelFactoryProviderDelegate<FeedListViewModel> { viewModelFactory }
+    private val glide by lazy { GlideApp.with(this) }
     private val feedAdapter = FeedListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +39,7 @@ class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
     }
 
     private fun setItems(feeds: List<RssFeed>) {
-        feeds.map { FeedListViewItem(it, viewModel::onFeedClicked) }
+        feeds.map { FeedListViewItem(it, glide, viewModel::onFeedClicked) }
             .also(feedAdapter::setItems)
     }
 

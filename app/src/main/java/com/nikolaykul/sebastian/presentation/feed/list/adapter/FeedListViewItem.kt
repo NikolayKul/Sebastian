@@ -1,18 +1,18 @@
 package com.nikolaykul.sebastian.presentation.feed.list.adapter
 
 import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.rv.BaseViewHolder
 import com.nikolaykul.sebastian.presentation.base.rv.BaseViewItem
+import com.nikolaykul.sebastian.presentation.utils.GlideRequests
 import com.nikolaykul.sebastian.presentation.utils.ext.getColorCompat
 import org.joda.time.format.DateTimeFormat
 
 class FeedListViewItem(
     private val item: RssFeed,
+    private val glide: GlideRequests,
     private val feedClickListener: (RssFeed) -> Unit
 ) : BaseViewItem<ItemFeedListBinding> {
     private val dateFormatter = DateTimeFormat.shortDateTime()
@@ -32,14 +32,13 @@ class FeedListViewItem(
 
     private fun ImageView.loadImage() {
         if (item.imageUrl.isNullOrEmpty()) {
-            Glide.with(this).clear(this)
+            glide.clear(this)
             setImageDrawable(null)
             setBackgroundColor(context.getColorCompat(R.color.debug_2))
         } else {
-            val imageSize = context.resources.getDimensionPixelSize(R.dimen.feed_list_image_size)
-            Glide.with(this)
-                .load(item.imageUrl)
-                .apply(RequestOptions().override(imageSize).centerCrop())
+            glide.load(item.imageUrl)
+                .override(context.resources.getDimensionPixelSize(R.dimen.feed_list_image_size))
+                .centerCrop()
                 .into(this)
         }
     }
