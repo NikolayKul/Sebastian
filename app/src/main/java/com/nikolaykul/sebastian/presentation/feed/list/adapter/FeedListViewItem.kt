@@ -1,8 +1,5 @@
 package com.nikolaykul.sebastian.presentation.feed.list.adapter
 
-import android.os.Build
-import android.text.Html
-import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -25,8 +22,7 @@ class FeedListViewItem(
         with(holder.binding) {
             tvDate.text = dateFormatter.print(item.pubDate)
             tvTitle.text = item.title
-            tvContent.text = SpannableStringBuilder(item.description.fromHtml())
-                .apply { clearSpans() }
+            tvContent.text = item.description
 
             setImage(ivImage)
 
@@ -43,12 +39,4 @@ class FeedListViewItem(
                 .into(imageView)
         }
     }
-}
-
-
-@Suppress("DEPRECATION")
-private fun String.fromHtml() = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-    Html.fromHtml(this)
-} else {
-    Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT)
 }
