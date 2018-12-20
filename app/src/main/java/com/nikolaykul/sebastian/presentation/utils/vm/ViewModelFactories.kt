@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.nikolaykul.sebastian.utils.vm
+package com.nikolaykul.sebastian.presentation.utils.vm
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
