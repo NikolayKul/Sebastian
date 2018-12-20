@@ -10,9 +10,9 @@ import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.ActivityMainBinding
 import com.nikolaykul.sebastian.presentation.base.BaseActivity
 import com.nikolaykul.sebastian.presentation.main.models.MainAdapter
+import com.nikolaykul.sebastian.presentation.utils.ext.get
+import com.nikolaykul.sebastian.presentation.utils.ext.viewModelFactoryProviderDelegate
 import com.nikolaykul.sebastian.presentation.utils.vm.ViewModelCommonFactory
-import com.nikolaykul.sebastian.utils.ext.get
-import com.nikolaykul.sebastian.utils.ext.viewModelFactoryProviderDelegate
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {

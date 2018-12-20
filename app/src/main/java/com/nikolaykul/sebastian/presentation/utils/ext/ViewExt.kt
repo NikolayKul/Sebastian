@@ -1,4 +1,4 @@
-package com.nikolaykul.sebastian.utils.ext
+package com.nikolaykul.sebastian.presentation.utils.ext
 
 import android.view.View
 

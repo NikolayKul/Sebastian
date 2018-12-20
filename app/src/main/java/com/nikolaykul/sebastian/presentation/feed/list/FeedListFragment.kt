@@ -9,9 +9,9 @@ import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseFragment
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
+import com.nikolaykul.sebastian.presentation.utils.ext.setVisible
+import com.nikolaykul.sebastian.presentation.utils.ext.viewModelFactoryProviderDelegate
 import com.nikolaykul.sebastian.presentation.utils.vm.ViewModelCommonFactory
-import com.nikolaykul.sebastian.utils.ext.setVisible
-import com.nikolaykul.sebastian.utils.ext.viewModelFactoryProviderDelegate
 import timber.log.Timber
 import javax.inject.Inject
 

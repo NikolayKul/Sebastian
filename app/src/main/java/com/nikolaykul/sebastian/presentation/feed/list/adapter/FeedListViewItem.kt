@@ -8,7 +8,7 @@ import com.nikolaykul.sebastian.databinding.ItemFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.rv.BaseViewHolder
 import com.nikolaykul.sebastian.presentation.base.rv.BaseViewItem
-import com.nikolaykul.sebastian.utils.ext.getColorCompat
+import com.nikolaykul.sebastian.presentation.utils.ext.getColorCompat
 import org.joda.time.format.DateTimeFormat
 
 class FeedListViewItem(
