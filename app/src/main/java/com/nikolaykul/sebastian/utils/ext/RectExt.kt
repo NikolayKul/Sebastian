@@ -2,6 +2,11 @@ package com.nikolaykul.sebastian.utils.ext
 
 import android.graphics.Rect
 
-fun Rect.update(left: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0) {
+fun Rect.update(
+    left: Int = this.left,
+    top: Int = this.top,
+    right: Int = this.right,
+    bottom: Int = this.bottom
+) {
     set(left, top, right, bottom)
 }

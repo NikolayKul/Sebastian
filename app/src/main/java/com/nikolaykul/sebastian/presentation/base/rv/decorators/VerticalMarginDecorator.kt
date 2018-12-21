@@ -17,13 +17,10 @@ class VerticalMarginDecorator private constructor(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        val halfMargin = getMargin(view) / 2
         val position = parent.getChildLayoutPosition(view)
-        val itemCount = parent.layoutManager?.itemCount ?: 0
-        outRect.update(
-            top = if (position > 0) halfMargin else 0,
-            bottom = if (position < itemCount) halfMargin else 0
-        )
+        val lastPosition = parent.layoutManager!!.itemCount - 1
+        val margin = if (position == 0 || position == lastPosition) 0 else getMargin(view) / 2
+        outRect.update(top = margin, bottom = margin)
     }
 
     private fun getMargin(view: View): Int =
