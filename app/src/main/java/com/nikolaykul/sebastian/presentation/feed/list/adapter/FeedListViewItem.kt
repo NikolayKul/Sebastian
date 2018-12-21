@@ -20,7 +20,7 @@ class FeedListViewItem(
     override val layoutId = R.layout.item_feed_list
 
     override fun bind(holder: BaseViewHolder<ItemFeedListBinding>) {
-        with(holder.binding) {
+        holder.binding.apply {
             tvDate.text = dateFormatter.print(item.pubDate)
             tvTitle.text = item.title
             tvContent.text = item.description

@@ -7,6 +7,7 @@ import com.nikolaykul.sebastian.R
 import com.nikolaykul.sebastian.databinding.FragmentFeedListBinding
 import com.nikolaykul.sebastian.domain.rss.models.RssFeed
 import com.nikolaykul.sebastian.presentation.base.BaseFragment
+import com.nikolaykul.sebastian.presentation.base.rv.decorators.VerticalMarginDecorator
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListAdapter
 import com.nikolaykul.sebastian.presentation.feed.list.adapter.FeedListViewItem
 import com.nikolaykul.sebastian.presentation.utils.GlideApp
@@ -44,9 +45,10 @@ class FeedListFragment : BaseFragment<FragmentFeedListBinding>() {
     }
 
     private fun initRecyclerView() {
-        with(binding.rvFeeds) {
+        binding.rvFeeds.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = feedAdapter
+            addItemDecoration(VerticalMarginDecorator.withDimen(R.dimen.space_big))
         }
     }
 
