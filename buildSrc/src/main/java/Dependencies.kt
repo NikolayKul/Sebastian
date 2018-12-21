@@ -9,8 +9,8 @@ package dependencies
 
 object AndroidPlugin {
     const val sdk_version_min = 21
-    const val sdk_version_target = 27
-    const val sdk_version_compile = "android-P"
+    const val sdk_version_target = 28
+    const val sdk_version_compile = 28
 
     const val version_code = 1
     const val version_name = "0.0.1"
