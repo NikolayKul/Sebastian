@@ -5,8 +5,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
+        <item name="actionBarTheme">@style/Toolbar</item>
         <item name="floatingActionButtonStyle">@style/Fab</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationView</item>
     </style>
 
     <!-- Launcher -->
@@ -25,6 +26,23 @@
         <item name="itemIconTint">@color/navigation_menu_selector</item>
         <item name="itemTextColor">@color/navigation_menu_selector</item>
         <item name="labelVisibilityMode">selected</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/AppTheme.TextAppearance.Widget.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/AppTheme.TextAppearance.Widget.Toolbar.Subtitle
+        </item>
+    </style>
+
+    <!-- AppBar -->
+    <style name="AppTheme.AppBar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
 </resources>

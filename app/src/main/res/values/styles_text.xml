@@ -3,6 +3,10 @@
 
     <style name="AppTheme.TextAppearance" />
 
+    <style name="AppTheme.TextAppearance.Widget" />
+
+    <!-- Generic -->
+
     <style name="AppTheme.TextAppearance.Title">
         <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:textColor">@color/black</item>
@@ -17,6 +21,20 @@
     <style name="AppTheme.TextAppearance.Date">
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:textColor">@color/gray_500</item>
+    </style>
+
+    <!-- Toolbar -->
+
+    <style name="AppTheme.TextAppearance.Widget.Toolbar" />
+
+    <style name="AppTheme.TextAppearance.Widget.Toolbar.Title">
+        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Widget.Toolbar.Subtitle">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/gray_300</item>
     </style>
 
 </resources>
