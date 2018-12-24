@@ -29,10 +29,12 @@
 
             <TextView
                 android:id="@+id/tvTitle"
-                style="@style/AppTheme.ItemFeedList.Title"
+                style="@style/AppTheme.TextAppearance.Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/space_normal"
+                android:ellipsize="end"
+                android:maxLines="2"
                 app:layout_constrainedHeight="true"
                 app:layout_constraintBottom_toTopOf="@+id/tvContent"
                 app:layout_constraintEnd_toStartOf="@+id/ivImage"
@@ -43,11 +45,13 @@
 
             <TextView
                 android:id="@+id/tvContent"
-                style="@style/AppTheme.ItemFeedList.Content"
+                style="@style/AppTheme.TextAppearance.Body"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_normal"
                 android:layout_marginBottom="@dimen/space_big"
+                android:ellipsize="end"
+                android:maxLines="5"
                 app:layout_constraintBottom_toTopOf="@+id/tvDate"
                 app:layout_constraintEnd_toEndOf="@+id/tvTitle"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +60,7 @@
 
             <TextView
                 android:id="@+id/tvDate"
-                style="@style/AppTheme.ItemFeedList.Date"
+                style="@style/AppTheme.TextAppearance.Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_normal"
